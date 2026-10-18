@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Where the Waves Go Quiet: prime numbers as an interference of waves, and the Riemann hypothesis"
+type: software
+authors:
+  - alias: joycemalik
+    email: joycemalik14@gmail.com
+    website: "https://primes.joycemalik.com"
+version: 1.0.0
+date-released: 2026-10-19
+url: "https://primes.joycemalik.com"
+repository-code: "https://github.com/joycemalik/primes"
+license: MIT
+abstract: >-
+  Three months of experiments on the prime numbers: the prime wave as a sieve, phases of
+  primes in the complex plane, Sacks and golden-angle spirals, machine-learning and recurrence
+  attempts, prime walks and sonification, and the connection to Riemann's explicit formula,
+  the zeros of the zeta function and Robin's inequality. Includes the primewaves libraries for
+  Python and JavaScript and an interactive scroll film.
+keywords:
+  - prime numbers
+  - Riemann hypothesis
+  - Riemann zeta function
+  - zeta zeros
+  - explicit formula
+  - Robin's inequality
+  - number theory
+  - mathematical visualization

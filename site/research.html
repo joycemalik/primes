@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The research behind Where the Waves Go Quiet · primes and the Riemann hypothesis</title>
+<meta name="description" content="An overview of three months of experiments on the prime numbers: prime waves, the complex plane, bit sequences, spirals, prime music, machine learning, the prime matrix and the Gamma function, with links to every script and notebook.">
+<meta name="author" content="joycemalik">
+<meta name="theme-color" content="#07080B">
+<link rel="canonical" href="https://primes.joycemalik.com/research">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The research behind Where the Waves Go Quiet · primes and the Riemann hypothesis">
+<meta property="og:description" content="An overview of three months of experiments on the prime numbers: prime waves, the complex plane, bit sequences, spirals, prime music, machine learning, the prime matrix and the Gamma function, with links to every script and notebook.">
+<meta property="og:image" content="https://primes.joycemalik.com/assets/og.jpg">
+<meta property="og:url" content="https://primes.joycemalik.com/research">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=La+Belle+Aurore&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/css/film.css">
+<style>
+  .page { padding: 12vh max(18px, 8vw) 10vh; display: grid; gap: 48px; justify-items: center; }
+  .page > * { width: 100%; max-width: 900px; }
+  .page h1 { font-family: var(--title); font-weight: 800; text-transform: uppercase; font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: .9; margin: 0; }
+  .page .lede { font-family: var(--hand); font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.4; }
+  .topic { display: grid; gap: 10px; padding-top: 26px; border-top: 1px solid var(--faint); }
+  .topic .when { font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; color: var(--prime); }
+  .topic h2 { font-family: var(--title); font-weight: 700; text-transform: uppercase; font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1; margin: 0; }
+  .topic p { font-size: .95rem; line-height: 1.65; color: var(--ink); max-width: 72ch; }
+  .topic .verdict { color: var(--dim); }
+  .topic a { font-size: .8rem; letter-spacing: .08em; }
+  .back { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<main class="page">
+<p class="back"><a href="/">Watch the film</a></p>
+<h1>The research</h1>
+<p class="lede">Ten lines of work from June to September 2025, in the order I explored them. Every script, notebook and figure is on GitHub, with a note on what it does and what it really showed.</p>
+<section class="topic" id="01-prime-wave-sieve">
+  <div class="when">01 · 30 Jul – 3 Aug 2025</div>
+  <h2>Prime wave sieve</h2>
+  <p>The founding idea: every small prime sends out a &quot;wave&quot; that peaks on its multiples. Add the waves and the primes are the nodes where the sum is zero. The numbered series (prime01 … prime22) is the original order of experiments. <code>detectors/</code> holds the 2 Aug class-based detectors, <code>unified-theory-crt/</code> the 3 Aug versions with Chinese-Remainder &quot;suppression waves&quot;, and <code>notebooks/</code> the write-ups and proof attempts.</p>
+  <p class="verdict"><b>What it showed.</b> The wave is exactly the Sieve of Eratosthenes. With context primes up to P it is correct on [1, P²] and nowhere beyond. Every &quot;100%&quot; result used primes up to √N, which is trial division, so the O(1) claims do not hold.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/01-prime-wave-sieve">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="02-physics-inspired-wave-models">
+  <div class="when">02 · 2 Aug 2025</div>
+  <h2>Physics-inspired wave models</h2>
+  <p>Lorenz attractors driven by prime frequencies, quantum-style standing waves, radial waves on spirals, and the scripts that produced the matching figures.</p>
+  <p class="verdict"><b>What it showed.</b> Visually rich; none of these predicts primes beyond the data they were tuned on.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/02-physics-inspired-wave-models">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="03-complex-plane">
+  <div class="when">03 · 4 – 11 Aug 2025</div>
+  <h2>Complex plane</h2>
+  <p>The complex-number work: Z(n) = Σ_{p|n} e^{i p ln n} placing primes on the unit circle, spiral trajectories and a fitted differential equation, convergence iterations, &quot;infinite convergence&quot;, wobbling (Sacks) and galactic (golden-angle) spirals, plus GPU sieves and a 2^300000 prime hunt.</p>
+  <p class="verdict"><b>What it showed.</b> Z(n) has |Z| = 1 for primes and for every prime power (the notebook says so itself). The wobbling spiral is the Sacks spiral and the galactic one is golden-angle phyllotaxis; their reported separations call isprime(n) inside the wave value.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/03-complex-plane">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="04-bit-pair-sequences">
+  <div class="when">04 · 11 – 12 Aug 2025</div>
+  <h2>Bit-pair sequences</h2>
+  <p>Primes written as bit pairs ([6k−1 prime], [6k+1 prime]) or ([10k+1 prime], [10k+3 prime]), turned into binary fractions, and fed to recurrences suggested by GPT and Gemini.</p>
+  <p class="verdict"><b>What it showed.</b> Both AI recurrences reproduce the 100 pairs they were fit to and then score 24–25% on new pairs, below the 47% of always guessing (0, 0). Berlekamp–Massey shows no short linear rule exists.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/04-bit-pair-sequences">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="05-hex-sequence-puzzle">
+  <div class="when">05 · 8 – 11 Aug 2025</div>
+  <h2>Hex sequence puzzle</h2>
+  <p>A 782-character hex string (FA57A5BA4F24D856…) analysed by grouping, pattern search, extension, XOR tests, a middle-square generator, and Conway&#x27;s Game of Life. <code>day11-…/</code> keeps the day&#x27;s original order (01 … 11).</p>
+  <p class="verdict"><b>What it showed.</b> The middle-square generator matches the string for only 9 characters, and the 0x1010101 group check matches 0 of 130 groups.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/05-hex-sequence-puzzle">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="06-prime-music">
+  <div class="when">06 · 8 Aug 2025</div>
+  <h2>Prime music</h2>
+  <p>Primes turned into MIDI: gaps as melodic intervals, digits as rhythms, factorisations as chords, golden-ratio spirals, and the hex &quot;Nexus decoder&quot;. Generated songs are in <code>midi/</code>.</p>
+  <p class="verdict"><b>What it showed.</b> A creative sonification; the web app has a playable version of the gap-interval approach.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/06-prime-music">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="07-gaps-walks-spirals">
+  <div class="when">07 · 18 – 27 Aug 2025</div>
+  <h2>Gaps, walks and spirals</h2>
+  <p>Prime gap statistics, factorisation graphs, additive-basis graphs, and the large day-18 folder: functions on a &quot;prime plane&quot;, radial spirals, 2D/3D walks, animations and sonified videos. Inside day18 the scripts keep their original v-numbers (v01 … v79) and the output folders keep their names because the scripts write to them.</p>
+  <p class="verdict"><b>What it showed.</b> Real phenomena with known explanations: gaps divisible by 6 dominate (Hardy–Littlewood), and radial &quot;webs&quot; show Dirichlet&#x27;s theorem on primes in progressions.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/07-gaps-walks-spirals">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="08-machine-learning">
+  <div class="when">08 · 30 Jul – 27 Aug 2025</div>
+  <h2>Machine learning</h2>
+  <p>Transformers, neural nets, GPU benchmarks, and the day-19 nth-prime work (datasets, regression, gplearn symbolic regression, evaluation, HTML visualisers). Day-19 scripts keep their original numbers as prefixes.</p>
+  <p class="verdict"><b>What it showed.</b> Models learn the density of primes, not their positions. The evolved formula is −1.14% at n = 10⁵; Cipolla&#x27;s textbook formula is −0.017%.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/08-machine-learning">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="09-prime-matrix">
+  <div class="when">09 · 17 Aug 2025</div>
+  <h2>Prime matrix</h2>
+  <p>Numbers 1 … N² in an N × N grid with composites zeroed, and the eigenvalues of that matrix.</p>
+  <p class="verdict"><b>What it showed.</b> Even and odd N differ because of parity: for even N every even column is empty apart from the 2, so half the eigenvalues are 0.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/09-prime-matrix">Open the folder on GitHub</a>
+</section>
+<section class="topic" id="10-factorials-and-gamma">
+  <div class="when">10 · 10 Sep 2025</div>
+  <h2>Factorials and Gamma</h2>
+  <p>Continuous and weighted factorials through the Gamma function, positive and negative arguments.</p>
+  <p class="verdict"><b>What it showed.</b> Γ(s/2) is the factor that links ζ(s) and ζ(1 − s) in the functional equation, so this is the right neighbour of the zeta work.</p>
+  <a href="https://github.com/joycemalik/primes/tree/main/research/10-factorials-and-gamma">Open the folder on GitHub</a>
+</section>
+<section class="topic"><h2>Use the code</h2><p>The mathematics from the film is packaged as <b>primewaves</b> for Python and JavaScript: the sieve, the prime wave, Z(n), complex zeta and gamma, the first 1,000 zeta zeros, Riemann's explicit formula and Robin's inequality.</p><a href="https://github.com/joycemalik/primes/releases/latest">Latest release</a></section>
+<section class="topic"><h2>Contact</h2><p>Write to me at <a href="mailto:joycemalik14@gmail.com">joycemalik14@gmail.com</a>, or open a discussion on <a href="https://github.com/joycemalik/primes/discussions">GitHub</a>.</p></section>
+</main>
+</body>
+</html>

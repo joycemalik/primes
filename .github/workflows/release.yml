@@ -1,0 +1,62 @@
+name: Release
+
+# Push a tag such as v1.0.0 to build both packages, publish the npm package to GitHub Packages,
+# and create a GitHub release with the Python wheel, the npm tarball and a zip of the site.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test and build the Python package
+        working-directory: packages/python
+        run: |
+          pip install pytest build
+          pytest -q
+          python -m build --outdir ../../dist
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: "@joycemalik"
+      - name: Test and pack the JavaScript package
+        working-directory: packages/js
+        run: |
+          cp ../../LICENSE .
+          npm test
+          npm pack --pack-destination ../../dist
+      - name: Publish to GitHub Packages
+        working-directory: packages/js
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Zip the site
+        run: cd site && zip -r ../dist/where-the-waves-go-quiet-site-${GITHUB_REF_NAME}.zip . -x "*.DS_Store"
+
+      - name: Release notes from the changelog
+        run: |
+          awk -v tag="${GITHUB_REF_NAME}" '$0 ~ "^## "tag {f=1; next} /^## / && f {exit} f' CHANGELOG.md > dist/NOTES.md
+          printf '\n---\nWatch it: https://primes.joycemalik.com\n' >> dist/NOTES.md
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: Where the Waves Go Quiet ${{ github.ref_name }}
+          body_path: dist/NOTES.md
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
+            dist/*.tgz
+            dist/*.zip
