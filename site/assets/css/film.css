@@ -136,3 +136,19 @@ p { margin: 0; }
 /* solo: render one scene still, for checks and stills (?solo=s-zeta:0.5) */
 body.solo .opening, body.solo .act, body.solo .epilogue, body.solo .scene:not(.solo-on) { display: none; }
 body.solo .scene.solo-on { height: 100vh; }
+
+/* links in the top bar */
+.bar .barlink { color: var(--ink); text-decoration: none; padding: 6px 4px; letter-spacing: .16em; font-size: .7rem; }
+.bar .barlink:hover { color: var(--prime); }
+@media (max-width: 640px) { .bar .barlink { display: none; } }
+
+/* contact */
+.contact { display: grid; gap: 20px; padding: 36px 0; border-top: 1px solid var(--faint); border-bottom: 1px solid var(--faint); }
+.contact .hand { font-family: var(--hand); font-size: clamp(1.35rem, 2.1vw, 1.9rem); line-height: 1.4; max-width: 44ch; }
+.contact .mailrow { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; }
+.contact .mail { font-family: var(--title); font-weight: 700; font-size: clamp(1.8rem, 4.6vw, 3.4rem); line-height: 1; text-decoration: none; color: var(--ink); word-break: break-all; }
+.contact .mail:hover { color: var(--prime); }
+.contact button { background: transparent; color: var(--ink); border: 1px solid rgba(237, 230, 214, .35); padding: 9px 14px; letter-spacing: .2em; text-transform: uppercase; font-size: .7rem; cursor: pointer; }
+.contact button:hover { border-color: var(--prime); color: var(--prime); }
+.contact .copied { font-size: .78rem; color: var(--green); }
+.contact .links { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: .84rem; letter-spacing: .06em; }

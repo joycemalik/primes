@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "primewaves"
+version = "1.0.0"
+description = "Prime waves and the Riemann zeta function: sieve, the prime-wave detector, Z(n), complex zeta and gamma, the first 1,000 zeta zeros, Riemann's explicit formula and Robin's inequality."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "joycemalik", email = "joycemalik14@gmail.com" }]
+keywords = ["prime numbers", "riemann hypothesis", "zeta function", "zeta zeros", "number theory", "sieve of eratosthenes", "explicit formula", "robin inequality"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Education",
+]
+
+[project.urls]
+Homepage = "https://primes.joycemalik.com"
+Source = "https://github.com/joycemalik/primes"
+Issues = "https://github.com/joycemalik/primes/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

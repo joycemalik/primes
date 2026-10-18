@@ -2,7 +2,9 @@
 
 **Prime numbers as an interference of waves, and what that has to do with the Riemann hypothesis.**
 
-Live site: **[primes.joycemalik.com](https://primes.joycemalik.com)**
+Live site: **[primes.joycemalik.com](https://primes.joycemalik.com)** · [Written overview](https://primes.joycemalik.com/research) · [Latest release](https://github.com/joycemalik/primes/releases/latest)
+
+[![CI](https://github.com/joycemalik/primes/actions/workflows/ci.yml/badge.svg)](https://github.com/joycemalik/primes/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/joycemalik/primes)](https://github.com/joycemalik/primes/releases/latest) [![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE) [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey)](LICENSE-CONTENT)
 
 [![Where the Waves Go Quiet](.github/preview.jpg)](https://primes.joycemalik.com)
 
@@ -14,7 +16,8 @@ Between June and September 2025 I tried many ways to "break or prove" the Rieman
 
 ```
 primes/
-├── site/                      the web app (static, no build): index.html + assets/
+├── site/                      the web app (static, no build): the film, /research, sitemap, robots.txt
+├── packages/                  primewaves for JavaScript (packages/js) and Python (packages/python)
 ├── research/                  all experiments, numbered in the order they were explored
 │   ├── 01-prime-wave-sieve/          the founding idea: numbered series prime01–22, detectors, CRT theory, notebooks
 │   ├── 02-physics-inspired-wave-models/  chaos attractor, standing-wave resonance, radial waves
@@ -47,6 +50,25 @@ Press *Play* (or the space bar) to let it run, or simply scroll. `?solo=s-zeta:0
 
 Run it locally: open `site/index.html`, or run `python -m http.server` inside `site/`.
 
+## Packages
+
+The mathematics from the film is packaged and tested in two languages. Both include the sieve, the prime wave and its exactness bound, Z(n), complex ζ and Γ, the first 1,000 zeta zeros, Riemann's explicit formula, Robin's criterion and Cipolla's nth-prime estimate.
+
+| Package | Install |
+|---|---|
+| **`@joycemalik/primewaves`** (JavaScript, [GitHub Packages](https://github.com/joycemalik/primes/pkgs/npm/primewaves)) | `npm install @joycemalik/primewaves` with `@joycemalik:registry=https://npm.pkg.github.com` in `.npmrc` |
+| **`primewaves`** (Python) | the wheel from the [latest release](https://github.com/joycemalik/primes/releases/latest), or `pip install "git+https://github.com/joycemalik/primes.git#subdirectory=packages/python"` |
+
+```python
+import primewaves as pw
+pw.zeta(complex(0.5, pw.ZETA_ZEROS[0]))    # ≈ 0, the first zero
+pw.psi_explicit(30.5, 1000)                # the explicit formula ≈ pw.psi(30.5)
+```
+
+## Releases
+
+Pushing a tag such as `v1.0.0` runs `.github/workflows/release.yml`. It tests both packages, publishes the JavaScript package to GitHub Packages, and creates a GitHub release with the Python wheel and sdist, the npm tarball and a zip of the site. Notes come from [CHANGELOG.md](CHANGELOG.md).
+
 ## Running the research code
 
 ```
@@ -69,6 +91,19 @@ Kept locally because they are too large for GitHub or can be regenerated (see `.
 | `day18-…/interactive_3d_walks/Interactive_3D_PrimeWalk_1000000.html` | 57 MB | `v53_3d_rotation_walk_interactive.py` |
 | `day19-…/prime_sequences_n10000_m6.png` | 52 MB | `19_shifted_prime_sequences.py` |
 
+## Contact
+
+Write to me at **joycemalik14@gmail.com**, or open a [discussion](https://github.com/joycemalik/primes/discussions). Found a mistake in the mathematics? Please [open an issue](https://github.com/joycemalik/primes/issues/new).
+
+## License and citation
+
+- Code (`research/`, `packages/`, the site's scripts): [MIT](LICENSE)
+- Writing, figures, MIDI, the film's narration: [CC BY 4.0](LICENSE-CONTENT)
+
+To cite this work, use the "Cite this repository" button on GitHub (from [CITATION.cff](CITATION.cff)).
+
 ## Deploying to Vercel
 
 Import this repository in Vercel. The root `vercel.json` publishes the `site/` folder with no build step, so no settings are needed. Then add the domain `primes.joycemalik.com` under Project → Settings → Domains, and create a DNS record `CNAME primes → cname.vercel-dns.com` at your DNS provider.
+
+The site ships `robots.txt`, `sitemap.xml`, canonical URLs, Open Graph and Twitter cards, and schema.org structured data. After deploying, add the domain in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters) and submit `https://primes.joycemalik.com/sitemap.xml`.

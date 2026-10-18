@@ -597,6 +597,17 @@ function frame(ts) {
 }
 requestAnimationFrame(frame);
 
+/* ================= contact: copy the address ================= */
+(() => {
+  const b = document.getElementById('copy-mail'), out = document.getElementById('copied'); if (!b) return;
+  b.addEventListener('click', () => {
+    const mail = b.dataset.mail;
+    const done = () => { out.textContent = 'Copied'; setTimeout(() => { out.textContent = ''; }, 2200); };
+    const fallback = () => { const a = document.querySelector('.contact .mail'); const r = document.createRange(); r.selectNodeContents(a); const s = getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = 'Selected. Press Ctrl+C to copy'; };
+    try { navigator.clipboard.writeText(mail).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+
 /* ================= epilogue: Robin tester ================= */
 (() => {
   const EG = Math.exp(0.5772156649015329);

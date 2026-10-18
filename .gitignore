@@ -31,3 +31,11 @@ __pycache__/
 Thumbs.db
 desktop.ini
 .vercel
+
+# ---- Package builds ----
+/dist/
+packages/js/node_modules/
+packages/js/LICENSE
+packages/python/build/
+*.egg-info/
+.pytest_cache/

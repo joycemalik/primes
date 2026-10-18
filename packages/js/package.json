@@ -1,0 +1,23 @@
+{
+  "name": "@joycemalik/primewaves",
+  "version": "1.0.0",
+  "description": "Prime waves and the Riemann zeta function in plain JavaScript: sieve, the prime-wave detector, Z(n), complex zeta and gamma, the first 1,000 zeta zeros, Riemann's explicit formula and Robin's inequality.",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": { "types": "./index.d.ts", "default": "./index.js" },
+    "./zeros": "./zeros.js"
+  },
+  "files": ["index.js", "index.d.ts", "zeros.js", "README.md", "LICENSE"],
+  "scripts": { "test": "node --test" },
+  "keywords": ["prime numbers", "riemann hypothesis", "zeta function", "riemann zeta", "zeta zeros", "number theory", "sieve of eratosthenes", "explicit formula", "robin inequality", "mathematics"],
+  "author": "joycemalik <joycemalik14@gmail.com> (https://primes.joycemalik.com)",
+  "license": "MIT",
+  "homepage": "https://primes.joycemalik.com",
+  "repository": { "type": "git", "url": "git+https://github.com/joycemalik/primes.git", "directory": "packages/js" },
+  "bugs": { "url": "https://github.com/joycemalik/primes/issues" },
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "engines": { "node": ">=18" },
+  "sideEffects": false
+}
