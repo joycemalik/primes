@@ -1,0 +1,24 @@
+Prime Sequences (each prime moved by +m until no more primes):
+============================================================
+
+Prime 1: 2 -> 5 (Last: 5)
+Prime 2: 3 ->  (Last: 3)
+Prime 3: 5 ->  (Last: 5)
+Prime 4: 7 ->  (Last: 7)
+Prime 5: 11 ->  (Last: 11)
+Prime 6: 13 ->  (Last: 13)
+Prime 7: 17 ->  (Last: 17)
+Prime 8: 19 ->  (Last: 19)
+Prime 9: 23 ->  (Last: 23)
+Prime 10: 29 ->  (Last: 29)
+Prime 11: 31 ->  (Last: 31)
+Prime 12: 37 ->  (Last: 37)
+Prime 13: 41 ->  (Last: 41)
+Prime 14: 43 ->  (Last: 43)
+Prime 15: 47 ->  (Last: 47)
+
+============================================================
+Last numbers: [5, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+Max last number: 47
+Min last number: 3
+Average last number: 22.07

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime vs. Standard Fibonacci Grapher</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for graphing -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for the heatmap grid to ensure consistent sizing */
+        .grid-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px; /* Fixed width */
+            height: 40px; /* Fixed height */
+            font-size: 0.8rem;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-600 dark:text-indigo-400">Fibonacci Series Comparison</h1>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Comparing the "Prime Fibonacci" series (P_n + P_n+1) with the standard Fibonacci series.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <label for="n-input" class="text-lg font-medium">Enter number of terms (n):</label>
+            <input type="number" id="n-input" value="14" min="1" max="50" class="w-full sm:w-32 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-center text-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+            <button id="generate-btn" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 ease-in-out">
+                Generate & Plot
+            </button>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl shadow-inner">
+             <canvas id="series-chart"></canvas>
+        </div>
+       
+        <!-- Series Output -->
+        <div id="series-output-container" class="mt-8 text-center hidden">
+            <h2 class="text-xl font-semibold mb-2">Generated Prime Series (for graph):</h2>
+            <p id="series-output" class="text-lg text-gray-700 dark:text-gray-300 font-mono bg-gray-100 dark:bg-gray-900 p-4 rounded-lg break-words"></p>
+        </div>
+
+        <!-- Visualization Output -->
+        <div id="viz-output-container" class="mt-8 hidden">
+            <h2 class="text-xl font-semibold mb-4 text-center">Prime Summation Visualization</h2>
+            <div id="viz-output" class="overflow-x-auto bg-gray-100 dark:bg-gray-900 p-4 rounded-lg shadow-inner flex flex-col items-center"></div>
+        </div>
+    </div>
+
+    <script>
+        const nInput = document.getElementById('n-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const chartCanvas = document.getElementById('series-chart');
+        const seriesOutput = document.getElementById('series-output');
+        const seriesOutputContainer = document.getElementById('series-output-container');
+        let seriesChart = null;
+
+        // --- Core Logic ---
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            for (let i = 5; i * i <= num; i = i + 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+            return true;
+        }
+
+        function getPrimes(count) {
+            const primes = [];
+            let num = 2;
+            while (primes.length < count) {
+                if (isPrime(num)) {
+                    primes.push(num);
+                }
+                num++;
+            }
+            return primes;
+        }
+
+        function generatePrimeFibonacci(primes) {
+            const series = [];
+            if (primes.length < 2) return [];
+            for (let i = 0; i < primes.length - 1; i++) {
+                series.push(primes[i] + primes[i + 1]);
+            }
+            return series;
+        }
+
+        function generateFibonacci(n) {
+            if (n <= 0) return [];
+            if (n === 1) return [0];
+            const series = [0, 1];
+            while (series.length < n) {
+                series.push(series[series.length - 1] + series[series.length - 2]);
+            }
+            return series.slice(0, n);
+        }
+
+        // --- Charting Logic ---
+
+        function plotGraph(labels, datasets) {
+            if (seriesChart) {
+                seriesChart.destroy();
+            }
+            const ctx = chartCanvas.getContext('2d');
+            seriesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'Value', font: { size: 16 } }, grid: { color: 'rgba(200, 200, 200, 0.2)' } },
+                        x: { title: { display: true, text: 'Term (n)', font: { size: 16 } }, grid: { color: 'rgba(200, 200, 200, 0.1)' } }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { font: { size: 14 } } },
+                        tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.8)', titleFont: { size: 16 }, bodyFont: { size: 14 }, padding: 12, cornerRadius: 8, displayColors: true }
+                    },
+                    interaction: { mode: 'index', intersect: false }
+                }
+            });
+        }
+        
+        /**
+         * Generates and displays the prime summation as a heatmap grid.
+         * @param {number[]} primes An array of prime numbers to build the visualization from.
+         */
+        function generateAndDisplayVisualization(primes) {
+            const vizContainer = document.getElementById('viz-output');
+            const vizOutputContainer = document.getElementById('viz-output-container');
+            
+            vizContainer.innerHTML = ''; // Clear previous visualization
+
+            const maxPrime = Math.max(...primes);
+
+            primes.forEach((prime, i) => {
+                const row = document.createElement('div');
+                row.className = 'flex items-center space-x-1 mb-1';
+                let rowSum = 0;
+
+                // Create a slice of primes for the current row
+                const rowPrimes = primes.slice(i);
+                
+                rowPrimes.forEach(p => {
+                    const cell = document.createElement('div');
+                    // Calculate color intensity based on the prime's value relative to the max prime
+                    const intensity = Math.floor((p / maxPrime) * 8) + 1; // Scale from 100 to 900 for Tailwind colors
+                    cell.className = `grid-cell bg-teal-${intensity * 100} text-white font-mono shadow`;
+                    cell.textContent = p;
+                    row.appendChild(cell);
+                    rowSum += p;
+                });
+                
+                // Add the sum cell at the end of the row
+                const sumCell = document.createElement('div');
+                sumCell.className = 'grid-cell text-teal-400 dark:text-teal-300 font-bold ml-4'; // Add margin
+                sumCell.textContent = `= ${rowSum}`;
+                row.appendChild(sumCell);
+
+                vizContainer.appendChild(row);
+            });
+
+            vizOutputContainer.classList.remove('hidden');
+        }
+
+        // --- Main Execution ---
+
+        function main() {
+            const n = parseInt(nInput.value, 10);
+            
+            if (isNaN(n) || n <= 0) {
+                console.error("Please enter a positive number for n.");
+                return;
+            }
+            if (n > 50) {
+                // Limiting n for visualization performance and to avoid too many elements
+                alert("For the visualization, please enter a number less than or equal to 50.");
+                nInput.value = 50;
+                return;
+            }
+
+            // --- Graph Logic ---
+            const primesForGraph = getPrimes(n + 1);
+            const primeSeries = generatePrimeFibonacci(primesForGraph);
+            const fibonacciSeries = generateFibonacci(n);
+            const labels = Array.from({ length: n }, (_, i) => i + 1);
+
+            const datasets = [
+                {
+                    label: 'Prime Fibonacci (Pn + Pn+1)',
+                    data: primeSeries,
+                    borderColor: 'rgba(79, 70, 229, 1)',
+                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: 'Standard Fibonacci',
+                    data: fibonacciSeries,
+                    borderColor: 'rgba(217, 70, 239, 1)',
+                    backgroundColor: 'rgba(217, 70, 239, 0.2)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    tension: 0.3,
+                    fill: true
+                }
+            ];
+            plotGraph(labels, datasets);
+
+            // --- Visualization Logic ---
+            const primesForViz = getPrimes(n);
+            generateAndDisplayVisualization(primesForViz);
+
+            // --- Series Text Output ---
+            seriesOutput.textContent = primeSeries.join(', ');
+            seriesOutputContainer.classList.remove('hidden');
+        }
+
+        // --- Event Listeners ---
+        generateBtn.addEventListener('click', main);
+        
+        nInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                main();
+            }
+        });
+
+        window.onload = main;
+
+    </script>
+</body>
+</html>

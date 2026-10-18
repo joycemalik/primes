@@ -1,0 +1,9 @@
+get me the pythin script that does this
+
+it takes it a mathematical function as a input and outputs the function on a graph, but the differnece here is the its not the cartesian plane , its the prime plane, so instead of 1,2,3,4,5,6,7...
+
+we will have the numbers - 2,3,5,7,11,13 and so on
+
+
+
+okay done with the cartesian plane now provide me with radial axis but something thats with prime 

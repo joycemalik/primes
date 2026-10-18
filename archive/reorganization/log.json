@@ -1,0 +1,2309 @@
+{
+ "when": "2026-10-18T23:02:55",
+ "ops": [
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/day11",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs",
+   "what": "Day 11 (11 Aug 2025): hex-string checks, Game of Life seeded from hex, seed decoding, Kolakoski, additive construction graphs."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/day17",
+   "to": "research/09-prime-matrix/day17-prime-matrix-eigenvalues",
+   "what": "Day 17 (17 Aug 2025): N x N prime matrices, eigenvalues for even and odd N, and a two-LLM conversation about primes."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/day18",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound",
+   "what": "Day 18 (18-24 Aug 2025): functions on a prime plane, radial spirals, 2D and 3D prime walks, animations and sonification. Output folders keep their original names because the scripts write to them."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/day19",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models",
+   "what": "Day 19 (19-27 Aug 2025): nth-prime datasets, regression, gplearn symbolic regression, evaluation, and HTML visualisers."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/day23",
+   "to": "research/08-machine-learning/day23-formula-f1-check",
+   "what": "Day 23: scores an evolved formula against data/test.csv."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/day37",
+   "to": "research/10-factorials-and-gamma/day37-factorial-visualizer",
+   "what": "Day 37 (10 Sep 2025): factorial and negative-factorial experiments."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/checkers",
+   "to": "research/03-complex-plane/gpu-mega-prime-hunt",
+   "what": "Copy of the complex-plane notebook extended with GPU and 2^300000 prime hunts."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/.venv",
+   "to": "research/.venv-notebooks",
+   "what": "Python environment used by the notebooks (moved; use \"python -m pip\" if pip.exe complains about its old path)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/check/__pycache__",
+   "to": "archive/pycache/learn-pime-check",
+   "what": "Python bytecode cache (regenerated automatically)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/pime/lib",
+   "to": "research/07-gaps-walks-spirals/factorization-graph/lib",
+   "what": "JavaScript libraries used by relational_model_graph.html (must stay next to it)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/rev",
+   "to": "archive/rev-older-copies-of-prime9-and-prime12",
+   "what": "Older copies of prime9.py and prime12.py."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/ub",
+   "to": "other-projects/ub-urban-transport-plots",
+   "what": "Urban transport / smart-city plotting scripts (not prime research)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "learn/react1",
+   "to": "other-projects/react1-learning-app",
+   "what": "A React learning project (not prime research)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "Kandy",
+   "to": "archive/kandy-backup-2025-08-02",
+   "what": "Backup copy of the prime-wave detector scripts from 2 Aug 2025 (4 files differ from the main versions)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "New folder",
+   "to": "archive/empty-folder-New-folder",
+   "what": "Empty folder found at the root."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "__pycache__",
+   "to": "archive/pycache/root",
+   "what": "Python bytecode cache (regenerated automatically)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "media",
+   "to": "other-projects/manim-scene-test/media",
+   "what": "Manim render output for gen_scene.py."
+  },
+  {
+   "op": "FAILED",
+   "kind": "dir",
+   "from": "simu1",
+   "to": "other-projects/simu1-fusionflow-and-3d-viewer",
+   "error": "[WinError 5] Access is denied: 'simu1' -> 'other-projects/simu1-fusionflow-and-3d-viewer'"
+  },
+  {
+   "op": "FAILED",
+   "kind": "dir",
+   "from": "simu2",
+   "to": "other-projects/simu2-workflow-server-and-web",
+   "error": "[WinError 5] Access is denied: 'simu2' -> 'other-projects/simu2-workflow-server-and-web'"
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "simu3",
+   "to": "other-projects/simu3-ai-workflow-app",
+   "what": "Separate project: AI workflow / content creator app (Flask, Groq)."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "simu4",
+   "to": "other-projects/simu4-test",
+   "what": "Separate project: test script."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "tvj2",
+   "to": "other-projects/tvj2-lyman-alpha-spectra",
+   "what": "Separate project: Lyman-alpha spectrum fitting pipeline."
+  },
+  {
+   "op": "move",
+   "kind": "dir",
+   "from": "ski",
+   "to": "other-projects/ski",
+   "what": "Separate project: scripts and a drive log."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime1.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime01_sine_product_zero_crossings.py",
+   "what": "g(x) = |prod sin(pi x / p)| for p in {2,3,5,7}: composites hit zeros, primes escape."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime2.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime02_product_of_sines_sieve.py",
+   "what": "Signed product of sines (\"sieve of zeroes\") with primes marked."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime3.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime03_small_factor_count_wave.py",
+   "what": "Counts small prime factors of n in [100000, 200000] and predicts primes where the count is 0."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime4.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime04_small_factor_count_wave_report.py",
+   "what": "Same as prime03 plus a printed comparison of predicted and actual primes."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime5.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime05_raised_cosine_interference.py",
+   "what": "Sum of raised cosines (1 + cos 2 pi x / p) / 2 for primes up to sqrt(N)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime6.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime06_raised_cosine_prediction.py",
+   "what": "Raised-cosine interference with a prediction panel."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime7.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime07_individual_and_composite_waves.py",
+   "what": "Plots each prime wave and the combined interference pattern."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime8.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime08_marking_waves_quiet_zones.py",
+   "what": "Marking waves and \"quiet zones\" where primes appear."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime9.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime09_spike_superposition.py",
+   "what": "Spike superposition: each context prime adds a spike at its multiples."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime10.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime10_spike_superposition_excluding_self.py",
+   "what": "Spikes start at 2p so the prime itself stays at 0."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime11.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime11_spike_superposition_metrics.py",
+   "what": "Spike superposition with precision / recall."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime12.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime12_spike_superposition_metrics_v2.py",
+   "what": "Refined spike superposition with metrics (root copy)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime13.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime13_spike_superposition_v3.py",
+   "what": "Spike superposition, third variant."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime14.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime14_weighted_wave_context_50.py",
+   "what": "Waves weighted by 1/sqrt(p) using only primes <= 50, tested up to 10,000."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime15.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime15_weighted_wave_function.py",
+   "what": "Weighted prime wave function with threshold detection."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime16.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime16_weighted_wave_function_copy.py",
+   "what": "Identical copy of prime15 (same size and code)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime17.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime17_ultimate_multilevel_detector.py",
+   "what": "Multi-level interference detector (same code as ultimate_prime_wave.py)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime20.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime20_spike_superposition_v4.py",
+   "what": "Spike superposition, fourth variant."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime22.py",
+   "to": "research/01-prime-wave-sieve/numbered-series/prime22_mobius_von_mangoldt_indicator.py",
+   "what": "Exact prime indicator built from the Mobius and von Mangoldt functions."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime_wave_detector.py",
+   "to": "research/01-prime-wave-sieve/detectors/prime_wave_detector.py",
+   "what": "W(n) = sum over context primes p | n of 1/sqrt(p); prime iff W(n) = 0. Exact only up to P^2."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "simple_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/simple_prime_wave.py",
+   "what": "Minimal function version of the wave detector."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "minimal_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/minimal_prime_wave.py",
+   "what": "Shortest generator of n primes using the wave formula."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "simple_prime_generator.py",
+   "to": "research/01-prime-wave-sieve/detectors/simple_prime_generator.py",
+   "what": "Class-based generator of the first n primes via the wave test."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "enhanced_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/enhanced_prime_wave.py",
+   "what": "Adds a cancellation wave to remove false positives."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "perfect_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/perfect_prime_wave.py",
+   "what": "Primary wave plus cancellation wave; equivalent to trial division up to sqrt(n)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "simplified_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/simplified_prime_wave.py",
+   "what": "Simplified multi-level detector."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "ultimate_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/ultimate_prime_wave.py",
+   "what": "Four-level cascading detector tested to 5,000,000."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "ultra_fast_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/ultra_fast_prime_wave.py",
+   "what": "Fast detector with a 50,000-prime context, stress-tested toward 10^10. Imported by correctness_check.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "correctness_check.py",
+   "to": "research/01-prime-wave-sieve/detectors/correctness_check.py",
+   "what": "Correctness tests for ultra_fast_prime_wave (small primes, large primes, composites, SymPy)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "ultra_simple_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/ultra_simple_wave_grapher.py",
+   "what": "Graphs the wave function over a range and marks detections."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "graphical_prime_wave.py",
+   "to": "research/01-prime-wave-sieve/detectors/graphical_prime_wave.py",
+   "what": "Graphical analysis of W(n) and prime/composite classification."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v1.py",
+   "what": "First complete Prime Wave Theory implementation with interference and prime-encoding waves."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/2prime.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v2_crt.py",
+   "what": "Adds Chinese-Remainder-Theorem false-positive suppression."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/3prime.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v3_simplified.py",
+   "what": "Simplified predictor with CRT suppression wave."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime_wave_theory_complete.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_complete.py",
+   "what": "Class-based complete implementation."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/unified_prime_wave_theory.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/unified_prime_wave_theory.py",
+   "what": "Unified implementation (imported by prime_wave_usage_demo.py)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/main_unified_prime_wave_theory.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/main_unified_prime_wave_theory.py",
+   "what": "Copy of the unified implementation with a main demo."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/predictor.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/simple_prime_wave_predictor.py",
+   "what": "Simplified predictor that identifies and removes false positives."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/false_positive_analysis.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/false_positive_analysis.py",
+   "what": "Analyses false positives (products of primes above the context) as a CRT pattern."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/crt_summary.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/crt_summary.py",
+   "what": "Prints a summary of the CRT suppression pattern."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime_wave_encoding.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_encoding.py",
+   "what": "Prime-encoding waves: unit spikes, Gaussian peaks, harmonics."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime_wave_function.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_function.py",
+   "what": "PrimeWaveFunction class (imported by prime_formula_demo.py)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime_formula_demo.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_formula_demo.py",
+   "what": "Demonstrates the PrimeWaveFunction formula."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime_wave_usage_demo.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_usage_demo.py",
+   "what": "Usage examples for the unified theory."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/accuracy_checker.py",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/accuracy_checker.py",
+   "what": "Scores predicted_primes.txt against a sieve (writes accuracy_report.txt)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/predicted_primes.txt",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/predicted_primes.txt",
+   "what": "Predicted primes read by accuracy_checker.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/accuracy_report.txt",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/accuracy_report.txt",
+   "what": "Accuracy report: 78,498 / 78,498 primes below 10^6."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/PROJECT_SUMMARY.md",
+   "to": "research/01-prime-wave-sieve/unified-theory-crt/PROJECT_SUMMARY.md",
+   "what": "Original project summary written on 3 Aug 2025."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/requirements.txt",
+   "to": "research/requirements.txt",
+   "what": "Python packages used by the research notebooks."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/ThePrimeWaveTheorm.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/the_prime_wave_theorem.ipynb",
+   "what": "The founding notes: waves of 2, 3, 5, 7 superimposed, primes at the nodes."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/primewave.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/prime_wave_theorem_notes.ipynb",
+   "what": "Longer write-up of the theorem idea."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/primewave copy.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/prime_wave_theorem_experiments.ipynb",
+   "what": "Experiments: wave theory class, advanced superposition, millionth-prime search."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/restart.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/restart_individual_prime_waves.ipynb",
+   "what": "Rebuilds each prime wave individually; the zeta(2) = pi^2/6 cosine wave."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/learing.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/learning_notes_riemann_zeta_waves.ipynb",
+   "what": "Short notes: Riemann hypothesis, sieves, zeta zeros, inverse Fourier, wavelets."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime18.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/prime18_absolute_wave_function_proof_attempt.ipynb",
+   "what": "Attempted proof of an O(1) context-free prime test (its own validation prints 58% accuracy)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime19.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/prime19_absolute_wave_100000th_prime.ipynb",
+   "what": "Uses W_abs to find the 100,000th prime; also wrongly flags 1,299,707 = 23 x 56,509."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime21.ipynb",
+   "to": "research/01-prime-wave-sieve/notebooks/prime21_o1_prime_wave_inversion.ipynb",
+   "what": "Prime wave \"inversion\" functions and accuracy tests."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime_wave_function_pattern.png",
+   "to": "research/01-prime-wave-sieve/figures/prime_wave_function_pattern.png",
+   "what": "Output of prime14.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime_wave_interference.png",
+   "to": "research/01-prime-wave-sieve/figures/prime_wave_interference_root.png",
+   "what": "Spike-superposition output (root copy)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_wave_interference.png",
+   "to": "research/01-prime-wave-sieve/figures/prime_wave_interference_learn.png",
+   "what": "Spike-superposition output (learn copy)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_predictions_vs_reality.png",
+   "to": "research/01-prime-wave-sieve/figures/prime_predictions_vs_reality.png",
+   "what": "Predictions vs actual primes."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_wave_correction_analysis.png",
+   "to": "research/01-prime-wave-sieve/figures/prime_wave_correction_analysis.png",
+   "what": "Correction-wave analysis."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_chaos_attractor.py",
+   "to": "research/02-physics-inspired-wave-models/prime_chaos_attractor.py",
+   "what": "Lorenz system forced by prime frequencies; Poincare sections and box-counting dimension."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/chaos_prime_attractor.png",
+   "to": "research/02-physics-inspired-wave-models/prime_chaos_attractor.png",
+   "what": "Output of prime_chaos_attractor.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_resonance_predictor.py",
+   "to": "research/02-physics-inspired-wave-models/prime_resonance_predictor.py",
+   "what": "Complex standing waves with harmonics; nodes as prime candidates."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/quantum_prime_resonance.png",
+   "to": "research/02-physics-inspired-wave-models/prime_resonance_predictor.png",
+   "what": "Output of prime_resonance_predictor.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/radial_prime_predictor.py",
+   "to": "research/02-physics-inspired-wave-models/radial_prime_predictor.py",
+   "what": "Radial standing waves on a spiral; minima as prime candidates."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/radial_prime_wave.png",
+   "to": "research/02-physics-inspired-wave-models/radial_prime_predictor.png",
+   "what": "Output of radial_prime_predictor.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_wave_predictor.py",
+   "to": "research/02-physics-inspired-wave-models/prime_wave_predictor.py",
+   "what": "Wave predictor with correction analysis."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_wave_predictor.png",
+   "to": "research/02-physics-inspired-wave-models/prime_wave_predictor.png",
+   "what": "Output of prime_wave_predictor.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/ultra_simple_prime_wave.py",
+   "to": "research/02-physics-inspired-wave-models/ultra_simple_prime_wave.py",
+   "what": "Ultra-simple continuous prime wave model."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/ultra_simple_prime_wave.png",
+   "to": "research/02-physics-inspired-wave-models/ultra_simple_prime_wave.png",
+   "what": "Output of ultra_simple_prime_wave.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/anothertry.ipynb",
+   "to": "research/03-complex-plane/complex_plane_spirals_and_gpu_hunts.ipynb",
+   "what": "Main complex-number notebook: Z(n) on the unit circle, spiral trajectories, convergence, wobbling and galactic spirals, plus GPU sieves."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/03-complex-plane/gpu-mega-prime-hunt/anothertry.ipynb",
+   "to": "research/03-complex-plane/gpu-mega-prime-hunt/gpu_mega_prime_hunt_2pow300000.ipynb",
+   "what": "GPU sieve benchmarks, Miller-Rabin, attempt to find a prime above 2^300000."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/oneMoreTry.ipynb",
+   "to": "research/03-complex-plane/self_correcting_quantum_wave.ipynb",
+   "what": "Self-correcting wave, wavelets, quantum-style psi, Phi_p constant, perfection systems."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/oneMoreTry copy.ipynb",
+   "to": "research/03-complex-plane/self_correcting_quantum_wave_copy.ipynb",
+   "what": "Earlier copy of self_correcting_quantum_wave.ipynb with extra GPU cells."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime_vector_pairs.py",
+   "to": "research/04-bit-pair-sequences/prime_vector_pairs.py",
+   "what": "Pairs [is_prime(10k+1), is_prime(10k+3)] for k = 1..n. Ground truth for the comparisons."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "gptpairs.py",
+   "to": "research/04-bit-pair-sequences/gpt_pairs_berlekamp_massey.py",
+   "what": "GPT-suggested generator: Berlekamp-Massey over GF(2) fit to the first 100 pairs."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "gptpairs2.py",
+   "to": "research/04-bit-pair-sequences/gpt_pairs_context_model.py",
+   "what": "GPT-suggested generator: smallest deterministic k-context model with back-off."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "geminiPrimes.py",
+   "to": "research/04-bit-pair-sequences/gemini_pairs_2adic_kick.py",
+   "what": "Gemini-suggested generator: Fibonacci mod 2 with a 2-adic \"kick\"."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "compare_gptpairs_primevectorpairs.py",
+   "to": "research/04-bit-pair-sequences/compare_gpt_pairs_with_prime_pairs.py",
+   "what": "Compares both GPT generators with the true pairs."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "compare_gemini_prime_vectors.py",
+   "to": "research/04-bit-pair-sequences/compare_gemini_pairs_with_prime_pairs.py",
+   "what": "Compares the Gemini generator with the true pairs."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "custom_prime_vector_pairs.py",
+   "to": "research/04-bit-pair-sequences/custom_pairs_v1_5wide_blocks.py",
+   "what": "Odd pairs from 5-wide blocks starting at 11."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "custom_prime_vector_pairs copy.py",
+   "to": "research/04-bit-pair-sequences/custom_pairs_v2_bitstream.py",
+   "what": "Adds bitstream and binary-fraction conversion."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "custom_prime_vector_pairs copy 2.py",
+   "to": "research/04-bit-pair-sequences/custom_pairs_v3_bitstream.py",
+   "what": "Bitstream version with higher precision."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "custom_prime_vector_pairs_graph.py",
+   "to": "research/04-bit-pair-sequences/custom_pairs_v4_bitstream_graph.py",
+   "what": "Plots the binary-fraction value for n = 1..N."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "pair_checker.py",
+   "to": "research/04-bit-pair-sequences/pair_checker_seed_decoder.py",
+   "what": "Decodes a decimal seed back into pairs and scores it against the truth."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime27.py",
+   "to": "research/04-bit-pair-sequences/prime27_6k_plus_minus_1_pairs.py",
+   "what": "Pairs [is_prime(6k-1), is_prime(6k+1)]."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "newPrime1.py",
+   "to": "research/04-bit-pair-sequences/new_prime1_6k_pairs_bitstream.py",
+   "what": "6k+-1 pairs from (23, 25) turned into a high-precision binary fraction."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "newPrimes2.py",
+   "to": "research/04-bit-pair-sequences/new_primes2_ternary_signature.py",
+   "what": "Ternary signature of odd numbers: 0 composite, 1 = 6k-1 prime, 2 = 6k+1 prime."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "kolonoski.py",
+   "to": "research/04-bit-pair-sequences/kolakoski_subword_complexity.py",
+   "what": "Kolakoski sequence and its subword complexity P(n)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/primes24.py",
+   "to": "research/05-hex-sequence-puzzle/primes24_hex_sequence_analyzer.py",
+   "what": "Hex-sequence analyser: groupings, sliding windows, statistics."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime23.py",
+   "to": "research/05-hex-sequence-puzzle/prime23_prime_hex_encoding.py",
+   "what": "Encodes primes from 11 upward as hex by last-digit pattern and checks periods."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime25.py",
+   "to": "research/05-hex-sequence-puzzle/prime25_middle_square_generator.py",
+   "what": "Middle-square generator from seed FA57A5BA (matches the puzzle string for 9 characters only)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/enhanced_pattern_finder.py",
+   "to": "research/05-hex-sequence-puzzle/enhanced_pattern_finder.py",
+   "what": "Searches the hex string for repeated patterns."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pattern_discovery_analyzer.py",
+   "to": "research/05-hex-sequence-puzzle/pattern_discovery_analyzer.py",
+   "what": "Analyses the 71C3 pattern and predicts continuations."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/hex_sequence_extender.py",
+   "to": "research/05-hex-sequence-puzzle/hex_sequence_extender.py",
+   "what": "Extends the hex string with discovered patterns."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/group_modulo_transform.py",
+   "to": "research/05-hex-sequence-puzzle/group_modulo_transform.py",
+   "what": "Group-and-modulo transform of the hex string."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/group_operations_tester.py",
+   "to": "research/05-hex-sequence-puzzle/group_operations_tester.py",
+   "what": "Tests arithmetic and XOR operations between hex groups."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/test_hex_generator.py",
+   "to": "research/05-hex-sequence-puzzle/test_hex_generator.py",
+   "what": "Compares an external hex generator (Downloads/hex_sequence_generator.py) with the string."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/1.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/01_hex_group_multiplier_check.py",
+   "what": "Checks 6-digit hex groups: g * 0x1010101 mod 2^24 == 0xBC614E (matches 0 of 130)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/2.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/02_hex_group_check_decimal.py",
+   "what": "The same check done in decimal arithmetic."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/3.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/03_hex_to_48x48_grid.py",
+   "what": "Turns the hex string into a 48 x 48 binary grid."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/4.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/04_game_of_life_from_hex.py",
+   "what": "Conway's Game of Life on a torus seeded from the hex grid."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/5.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/05_seed_decimal_comparison.py",
+   "what": "Two long decimal seeds stored for comparison."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/6.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/06_decimal_seed_to_pairs.py",
+   "what": "Decodes a decimal seed into a bitstream of prime pairs."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/7.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/07_kolakoski_sequence.py",
+   "what": "Kolakoski sequence and subword counts (same as kolakoski_subword_complexity.py)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/8.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/08_additive_construction_graph.py",
+   "what": "Integer partitions as an additive construction graph with Dijkstra paths."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/compare_strings.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/09_compare_two_strings.py",
+   "what": "Finds where two long strings start to differ."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/test_complex_path.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/10_additive_shortest_paths.py",
+   "what": "Shortest additive construction paths with alternatives."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/test_dijkstra.py",
+   "to": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/11_additive_shortest_paths_small.py",
+   "what": "The same Dijkstra test on smaller numbers."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_music_sensible.py",
+   "to": "research/06-prime-music/prime_music_sensible.py",
+   "what": "Five MIDI encodings: gap intervals, digit rhythms, factor chords, golden spiral, interference."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_music_advanced.py",
+   "to": "research/06-prime-music/prime_music_advanced.py",
+   "what": "Hex-encoded prime symphony and chord progressions."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/primemusic1.py",
+   "to": "research/06-prime-music/prime_music_hex_v1.py",
+   "what": "First MIDI encoding of the hex string."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/primemusic2.py",
+   "to": "research/06-prime-music/prime_music_nexus_decoder.py",
+   "what": "Multi-track \"Nexus decoder\" MIDI from the ghost hex sequence."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_intervals.mid",
+   "to": "research/06-prime-music/midi/prime_intervals.mid",
+   "what": "Gaps as melodic intervals."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_rhythms.mid",
+   "to": "research/06-prime-music/midi/prime_rhythms.mid",
+   "what": "Digits as drum rhythms."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_harmony.mid",
+   "to": "research/06-prime-music/midi/prime_harmony.mid",
+   "what": "Primes as notes, composites as chords."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_golden_spiral.mid",
+   "to": "research/06-prime-music/midi/prime_golden_spiral.mid",
+   "what": "Golden-ratio pitch spiral with Fibonacci rhythm."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_wave_interference.mid",
+   "to": "research/06-prime-music/midi/prime_wave_interference.mid",
+   "what": "Interference of consecutive prime frequencies."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_hex_symphony.mid",
+   "to": "research/06-prime-music/midi/prime_hex_symphony.mid",
+   "what": "Hex symphony."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/prime_chords.mid",
+   "to": "research/06-prime-music/midi/prime_chords.mid",
+   "what": "Chord progression."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/ghost_in_the_machine.mid",
+   "to": "research/06-prime-music/midi/ghost_in_the_machine.mid",
+   "what": "Ghost sequence rendered as music."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/nexus_decoded_music.mid",
+   "to": "research/06-prime-music/midi/nexus_decoded_music.mid",
+   "what": "Nexus decoder output."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime_gap_sequence.py",
+   "to": "research/07-gaps-walks-spirals/prime_gap_sequence.py",
+   "what": "First n prime gaps, their frequencies and a bar chart."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime_gap_counts.png",
+   "to": "research/07-gaps-walks-spirals/prime_gap_counts.png",
+   "what": "Gap frequencies for the first 5,000 gaps."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "newPrimes3.py",
+   "to": "research/07-gaps-walks-spirals/new_primes3_gap_sequence_stub.py",
+   "what": "Unfinished stub for a gap sequence function."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/prime31.py",
+   "to": "research/07-gaps-walks-spirals/factorization-graph/prime31_factorization_relational_graph.py",
+   "what": "Builds an interactive pyvis graph of prime factorisations (writes relational_model_graph.html)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/relational_model_graph.html",
+   "to": "research/07-gaps-walks-spirals/factorization-graph/relational_model_graph.html",
+   "what": "Interactive factorisation graph (needs the lib folder beside it)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/primes32.py",
+   "to": "research/07-gaps-walks-spirals/primes32_additive_basis_graph.py",
+   "what": "Additive basis graph: independent (red) vs built (green) numbers."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g1.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g1_print_modulo_function_list.py",
+   "what": "Prints the list of \"x % i\" functions used for the radial plots."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g2.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g2_frames_to_animation.py",
+   "what": "Turns numbered PNG frames into an animation (GIF/MP4)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g3.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g3_frames_to_consistent_video.py",
+   "what": "Resizes frames to one size and writes a video."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g5.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g5_images_to_animation.py",
+   "what": "Animates the generated_images folder."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v1.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v01_function_on_prime_plane.py",
+   "what": "Plots y = f(x) with the x-axis made of primes (2, 3, 5, 7, ...)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v2.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v02_function_on_prime_plane_v2.py",
+   "what": "Second version of the prime-plane plot."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v3.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v03_prime_plane_batch_plots.py",
+   "what": "Batch prime-plane plots saved to prime_plane_graphs/."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v4.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v04_prime_vs_integer_inputs.py",
+   "what": "Compares f on prime inputs with f on integer inputs."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v5.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v05_3d_function_plots.py",
+   "what": "3D versions of the function plots (prime_3d_graphs/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v6.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v06_palindromic_prime_interactive.py",
+   "what": "Interactive plots over palindromic primes and other sequences."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v7.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v07_composite_squeeze_interactive.py",
+   "what": "Interactive \"composite squeeze\" plots."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v8.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v08_composite_squeeze_comparison.py",
+   "what": "Squeeze plot vs standard plot."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v9.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v09_radial_function_spiral.py",
+   "what": "Radial function spirals (radial_plots/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v10.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v10_continuous_squeeze_comparison.py",
+   "what": "Continuous squeeze comparison."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v11.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v11_final_squeeze_comparison.py",
+   "what": "Final squeeze comparison."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v13.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v13_radial_angle_by_smallest_factor.py",
+   "what": "Radial plot with angle set by the smallest prime factor."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v17.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v17_prime_landmark_spiral.py",
+   "what": "Spiral with angles warped toward prime landmarks."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v19.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v19_prime_factor_signature.py",
+   "what": "Prime-factor signature plots (signature_plots/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v23.html",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v23_prime_waterfall_simulation.html",
+   "what": "Browser \"prime waterfall\" simulation."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v29.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v29_prime_direction_walk.py",
+   "what": "Walk whose direction is set by primes."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v31.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v31_prime_composite_walk.py",
+   "what": "Walk driven by primes and composites."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v37.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v37_prime_composite_walk_copy.py",
+   "what": "Identical copy of v31."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v41.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v41_gap_turn_walk.py",
+   "what": "Composites step forward, primes turn."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v43.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v43_gap_turn_walk_by_last_digit.py",
+   "what": "Turn by gap, direction set by the last digit (prime_walk_plots/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v51.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v51_3d_rotation_walk.py",
+   "what": "3D walk: rotate by (gap - 1) about y or z depending on last digit."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v53.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v53_3d_rotation_walk_interactive.py",
+   "what": "Interactive Plotly version of the 3D walk."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v59.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v59_3d_rotation_walk_interactive_copy.py",
+   "what": "Identical copy of v53."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v61.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v61_prime_river.py",
+   "what": "The \"prime river\" path."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v67.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v67_prime_push_walk.py",
+   "what": "\"Prime push\" walk (prime_push_plots/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v71.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v71_radial_spiral_sonified_midi.py",
+   "what": "Radial spiral frames plus a MIDI sonification."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v73.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v73_spiral_animation_with_sound.py",
+   "what": "Spiral animation with sound, one prime per frame."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v79.py",
+   "to": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v79_accelerating_spiral_animation_with_sound.py",
+   "what": "Accelerating spiral animation with smoothed audio (sonified_videos/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/1.py",
+   "to": "research/08-machine-learning/01_prime_transformer_first_try.py",
+   "what": "First transformer on prime sequences (30 Jul)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/3.ipynb",
+   "to": "research/08-machine-learning/03_prime_gap_transformer_colab.ipynb",
+   "what": "Colab transformer predicting gaps."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/4.py",
+   "to": "research/08-machine-learning/04_prime_transformer_gap_and_classifier.py",
+   "what": "Gap predictor plus primality classifier."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/simple_prime_transformer.py",
+   "to": "research/08-machine-learning/simple_prime_transformer.py",
+   "what": "Small transformer over the wave function."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/simple_prime_transformer.png",
+   "to": "research/08-machine-learning/simple_prime_transformer.png",
+   "what": "Output of simple_prime_transformer.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/advanced_prime_neural_network.png",
+   "to": "research/08-machine-learning/advanced_prime_neural_network.png",
+   "what": "Neural network training and prediction panels."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/gpu test.py",
+   "to": "research/08-machine-learning/gpu_prime_acceleration_test.py",
+   "what": "RTX 4060 GPU prime sieve and batch test."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "23.py",
+   "to": "research/08-machine-learning/rtx4060_optimized_cpu_system.py",
+   "what": "Sets CPU worker counts to \"match\" an RTX 4060 (no GPU code runs)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/7.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/07_nth_prime_linear_regression.py",
+   "what": "Linear regression for the nth prime (loaded by 08 and plot_primes.py)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/8.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/08_wave_guided_nth_prime.py",
+   "what": "Cipolla estimate + Legendre count + wave score to find p_n."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/11.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/11_plot_function.py",
+   "what": "Plots y = f(x) from the command line."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/13.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/13_build_prime_dataset.py",
+   "what": "Builds prime_dataset/ train, validation and test CSVs."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/17.ipynb",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/17_nth_prime_model_comparison.ipynb",
+   "what": "RandomForest, polynomial, MLP and linear models for n -> p_n."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/19.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/19_shifted_prime_sequences.py",
+   "what": "Sequences of primes shifted by +m (prime_sequences/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/23.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/23_chaotic_function_model_training.py",
+   "what": "Trains and saves chaotic_function_model.joblib."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/29.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/29_gplearn_symbolic_regression.py",
+   "what": "gplearn symbolic regression for p_n."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/37.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/37_evaluate_nth_prime_expression.py",
+   "what": "Evaluates an evolved expression (-1.14% at n = 10^5)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/gen1.py",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/gen1_plot_gp_functions.py",
+   "what": "Parses and plots the functions in functions.txt (plots/)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/1.html",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/viz1_prime_vs_fibonacci_grapher.html",
+   "what": "Browser visualiser: primes vs Fibonacci heatmap."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/2.html",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/viz2_prime_probability_field.html",
+   "what": "Browser visualiser: prime probability field."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/3.html",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/viz3_prime_probability_field_v2.html",
+   "what": "Second version of the probability field."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/4.html",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/viz4_internal_prime_visualization.html",
+   "what": "Browser visualiser: internal prime structure."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/5.html",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/viz5_prime_decomposition.html",
+   "what": "Browser visualiser: prime decomposition."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/6.html",
+   "to": "research/08-machine-learning/day19-nth-prime-formulas-and-models/viz6_prime_decomposition_v2.html",
+   "what": "Second version of the decomposition view."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day23-formula-f1-check/1.py",
+   "to": "research/08-machine-learning/day23-formula-f1-check/score_formula_on_test_csv.py",
+   "what": "Scores a formula on data/test.csv with F1."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part2.py",
+   "to": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part2_prime_matrix_eigen.py",
+   "what": "Builds the N x N prime matrix and saves eigenvalues and eigenvectors."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part4.py",
+   "to": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part4_even_odd_matrix_model.py",
+   "what": "Toy matrix model of the even/odd N difference."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part5.py",
+   "to": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part5_plot_eigenvalues.py",
+   "what": "Plots the N = 501 eigenvalues in the complex plane."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/chat1.py",
+   "to": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/chat1_two_llms_discuss_primes.py",
+   "what": "Two local Ollama models discuss \"what is the pattern in primes?\"."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "factorial_continuous.py",
+   "to": "research/10-factorials-and-gamma/factorial_continuous.py",
+   "what": "Gamma-function factorial and weighted factorial variants."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "factorial_visualizer.py",
+   "to": "research/10-factorials-and-gamma/factorial_visualizer_custom_definition.py",
+   "what": "Custom factorial via Gamma for positive and negative x."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "factorial_discrete_visualization.png",
+   "to": "research/10-factorials-and-gamma/factorial_discrete_visualization.png",
+   "what": "Discrete factorial plot."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "factorial_visualizer copy.html",
+   "to": "research/10-factorials-and-gamma/factorial_visualizer.html",
+   "what": "Browser version of the custom factorial visualiser."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/10-factorials-and-gamma/day37-factorial-visualizer/factorial_visualizer.py",
+   "to": "research/10-factorials-and-gamma/day37-factorial-visualizer/factorial_values_plot.py",
+   "what": "Plots n! for n = 1..max_n."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime26.py",
+   "to": "archive/empty-placeholders/root__prime26.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "newgen1.py",
+   "to": "archive/empty-placeholders/root__newgen1.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime18.ipnyb",
+   "to": "archive/empty-placeholders/root__prime18.ipnyb",
+   "what": "Empty file with a misspelled extension."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "prime19.ipnyb",
+   "to": "archive/empty-placeholders/root__prime19.ipnyb",
+   "what": "Empty file with a misspelled extension."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "man.svg",
+   "to": "other-projects/manim-scene-test/man.svg",
+   "what": "Empty SVG used by gen_scene.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/mathematical_proof.py",
+   "to": "archive/empty-placeholders/check__mathematical_proof.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/prime_accuracy_checker.py",
+   "to": "archive/empty-placeholders/check__prime_accuracy_checker.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/check/simple_prime_predictor.py",
+   "to": "archive/empty-placeholders/check__simple_prime_predictor.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/31.py",
+   "to": "archive/empty-placeholders/day19__31.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/08-machine-learning/day19-nth-prime-formulas-and-models/nth_prime_io.py",
+   "to": "archive/empty-placeholders/day19__nth_prime_io.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "research/10-factorials-and-gamma/day37-factorial-visualizer/1negfact.py",
+   "to": "archive/empty-placeholders/day37__1negfact.py",
+   "what": "Empty file (0 bytes)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/2.ipynb",
+   "to": "archive/empty-placeholders/learn__2.ipynb",
+   "what": "Notebook with one empty cell."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/pime/prime31.py.tmp",
+   "to": "archive/temp-files/prime31.py.tmp",
+   "what": "Editor temp copy of prime31.py."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "Kandy.zip",
+   "to": "archive/kandy-backup-2025-08-02.zip",
+   "what": "Zip of the Kandy backup folder."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/rev.zip",
+   "to": "archive/rev-older-copies-of-prime9-and-prime12.zip",
+   "what": "Zip of the rev folder."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "gen_scene.py",
+   "to": "other-projects/manim-scene-test/gen_scene.py",
+   "what": "Manim test scene (a man moving over water)."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "app.html",
+   "to": "other-projects/web-snippets/location_picker_send.html",
+   "what": "Map location picker that sends by email."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/check1.html",
+   "to": "other-projects/web-snippets/ramayana_anime_sandbox.html",
+   "what": "Canvas prototype: Ramayana anime sandbox."
+  },
+  {
+   "op": "move",
+   "kind": "file",
+   "from": "learn/test.html",
+   "to": "other-projects/web-snippets/admin_login_page.html",
+   "what": "Admin login page mock-up."
+  },
+  {
+   "op": "patch",
+   "file": "research/04-bit-pair-sequences/compare_gpt_pairs_with_prime_pairs.py",
+   "old": "\"d:/code/fun/prime_vector_pairs.py\"",
+   "new": "os.path.join(os.path.dirname(os.path.abspath(__file__)), \"prime_vector_pairs.py\")"
+  },
+  {
+   "op": "patch",
+   "file": "research/04-bit-pair-sequences/compare_gpt_pairs_with_prime_pairs.py",
+   "old": "\"d:/code/fun/gptpairs.py\"",
+   "new": "os.path.join(os.path.dirname(os.path.abspath(__file__)), \"gpt_pairs_berlekamp_massey.py\")"
+  },
+  {
+   "op": "patch",
+   "file": "research/04-bit-pair-sequences/compare_gpt_pairs_with_prime_pairs.py",
+   "old": "\"d:/code/fun/gptpairs2.py\"",
+   "new": "os.path.join(os.path.dirname(os.path.abspath(__file__)), \"gpt_pairs_context_model.py\")"
+  },
+  {
+   "op": "patch",
+   "file": "research/04-bit-pair-sequences/compare_gemini_pairs_with_prime_pairs.py",
+   "old": "\"d:/code/fun/prime_vector_pairs.py\"",
+   "new": "os.path.join(os.path.dirname(os.path.abspath(__file__)), \"prime_vector_pairs.py\")"
+  },
+  {
+   "op": "patch",
+   "file": "research/04-bit-pair-sequences/compare_gemini_pairs_with_prime_pairs.py",
+   "old": "\"d:/code/fun/geminiPrimes.py\"",
+   "new": "os.path.join(os.path.dirname(os.path.abspath(__file__)), \"gemini_pairs_2adic_kick.py\")"
+  },
+  {
+   "op": "patch",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/08_wave_guided_nth_prime.py",
+   "old": "/ '7.py'",
+   "new": "/ '07_nth_prime_linear_regression.py'"
+  },
+  {
+   "op": "patch",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/plot_primes.py",
+   "old": "/ \"7.py\"",
+   "new": "/ \"07_nth_prime_linear_regression.py\""
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime01_sine_product_zero_crossings.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime02_product_of_sines_sieve.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime03_small_factor_count_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime04_small_factor_count_wave_report.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime05_raised_cosine_interference.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime06_raised_cosine_prediction.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime07_individual_and_composite_waves.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime08_marking_waves_quiet_zones.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime09_spike_superposition.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime10_spike_superposition_excluding_self.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime11_spike_superposition_metrics.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime12_spike_superposition_metrics_v2.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime13_spike_superposition_v3.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime14_weighted_wave_context_50.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime15_weighted_wave_function.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime16_weighted_wave_function_copy.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime17_ultimate_multilevel_detector.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime20_spike_superposition_v4.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/numbered-series/prime22_mobius_von_mangoldt_indicator.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/prime_wave_detector.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/simple_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/minimal_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/simple_prime_generator.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/enhanced_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/perfect_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/simplified_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/ultimate_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/ultra_fast_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/correctness_check.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/ultra_simple_wave_grapher.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/detectors/graphical_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v1.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v2_crt.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v3_simplified.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_complete.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/unified_prime_wave_theory.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/main_unified_prime_wave_theory.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/simple_prime_wave_predictor.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/false_positive_analysis.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/crt_summary.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_encoding.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_function.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_formula_demo.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/prime_wave_usage_demo.py"
+  },
+  {
+   "op": "header",
+   "file": "research/01-prime-wave-sieve/unified-theory-crt/accuracy_checker.py"
+  },
+  {
+   "op": "header",
+   "file": "research/02-physics-inspired-wave-models/prime_chaos_attractor.py"
+  },
+  {
+   "op": "header",
+   "file": "research/02-physics-inspired-wave-models/prime_resonance_predictor.py"
+  },
+  {
+   "op": "header",
+   "file": "research/02-physics-inspired-wave-models/radial_prime_predictor.py"
+  },
+  {
+   "op": "header",
+   "file": "research/02-physics-inspired-wave-models/prime_wave_predictor.py"
+  },
+  {
+   "op": "header",
+   "file": "research/02-physics-inspired-wave-models/ultra_simple_prime_wave.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/prime_vector_pairs.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/gpt_pairs_berlekamp_massey.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/gpt_pairs_context_model.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/gemini_pairs_2adic_kick.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/compare_gpt_pairs_with_prime_pairs.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/compare_gemini_pairs_with_prime_pairs.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/custom_pairs_v1_5wide_blocks.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/custom_pairs_v2_bitstream.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/custom_pairs_v3_bitstream.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/custom_pairs_v4_bitstream_graph.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/pair_checker_seed_decoder.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/prime27_6k_plus_minus_1_pairs.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/new_prime1_6k_pairs_bitstream.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/new_primes2_ternary_signature.py"
+  },
+  {
+   "op": "header",
+   "file": "research/04-bit-pair-sequences/kolakoski_subword_complexity.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/primes24_hex_sequence_analyzer.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/prime23_prime_hex_encoding.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/prime25_middle_square_generator.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/enhanced_pattern_finder.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/pattern_discovery_analyzer.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/hex_sequence_extender.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/group_modulo_transform.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/group_operations_tester.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/test_hex_generator.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/01_hex_group_multiplier_check.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/02_hex_group_check_decimal.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/03_hex_to_48x48_grid.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/04_game_of_life_from_hex.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/05_seed_decimal_comparison.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/06_decimal_seed_to_pairs.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/07_kolakoski_sequence.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/08_additive_construction_graph.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/09_compare_two_strings.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/10_additive_shortest_paths.py"
+  },
+  {
+   "op": "header",
+   "file": "research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/11_additive_shortest_paths_small.py"
+  },
+  {
+   "op": "header",
+   "file": "research/06-prime-music/prime_music_sensible.py"
+  },
+  {
+   "op": "header",
+   "file": "research/06-prime-music/prime_music_advanced.py"
+  },
+  {
+   "op": "header",
+   "file": "research/06-prime-music/prime_music_hex_v1.py"
+  },
+  {
+   "op": "header",
+   "file": "research/06-prime-music/prime_music_nexus_decoder.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/prime_gap_sequence.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/new_primes3_gap_sequence_stub.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/factorization-graph/prime31_factorization_relational_graph.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/primes32_additive_basis_graph.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g1_print_modulo_function_list.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g2_frames_to_animation.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g3_frames_to_consistent_video.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g5_images_to_animation.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v01_function_on_prime_plane.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v02_function_on_prime_plane_v2.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v03_prime_plane_batch_plots.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v04_prime_vs_integer_inputs.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v05_3d_function_plots.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v06_palindromic_prime_interactive.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v07_composite_squeeze_interactive.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v08_composite_squeeze_comparison.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v09_radial_function_spiral.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v10_continuous_squeeze_comparison.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v11_final_squeeze_comparison.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v13_radial_angle_by_smallest_factor.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v17_prime_landmark_spiral.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v19_prime_factor_signature.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v29_prime_direction_walk.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v31_prime_composite_walk.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v37_prime_composite_walk_copy.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v41_gap_turn_walk.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v43_gap_turn_walk_by_last_digit.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v51_3d_rotation_walk.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v53_3d_rotation_walk_interactive.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v59_3d_rotation_walk_interactive_copy.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v61_prime_river.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v67_prime_push_walk.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v71_radial_spiral_sonified_midi.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v73_spiral_animation_with_sound.py"
+  },
+  {
+   "op": "header",
+   "file": "research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v79_accelerating_spiral_animation_with_sound.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/01_prime_transformer_first_try.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/04_prime_transformer_gap_and_classifier.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/simple_prime_transformer.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/gpu_prime_acceleration_test.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/rtx4060_optimized_cpu_system.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/07_nth_prime_linear_regression.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/08_wave_guided_nth_prime.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/11_plot_function.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/13_build_prime_dataset.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/19_shifted_prime_sequences.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/23_chaotic_function_model_training.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/29_gplearn_symbolic_regression.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/37_evaluate_nth_prime_expression.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day19-nth-prime-formulas-and-models/gen1_plot_gp_functions.py"
+  },
+  {
+   "op": "header",
+   "file": "research/08-machine-learning/day23-formula-f1-check/score_formula_on_test_csv.py"
+  },
+  {
+   "op": "header",
+   "file": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part2_prime_matrix_eigen.py"
+  },
+  {
+   "op": "header",
+   "file": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part4_even_odd_matrix_model.py"
+  },
+  {
+   "op": "header",
+   "file": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/part5_plot_eigenvalues.py"
+  },
+  {
+   "op": "header",
+   "file": "research/09-prime-matrix/day17-prime-matrix-eigenvalues/chat1_two_llms_discuss_primes.py"
+  },
+  {
+   "op": "header",
+   "file": "research/10-factorials-and-gamma/factorial_continuous.py"
+  },
+  {
+   "op": "header",
+   "file": "research/10-factorials-and-gamma/factorial_visualizer_custom_definition.py"
+  },
+  {
+   "op": "header",
+   "file": "research/10-factorials-and-gamma/day37-factorial-visualizer/factorial_values_plot.py"
+  },
+  {
+   "op": "rmdir-empty",
+   "dir": "learn/pime/check"
+  },
+  {
+   "op": "rmdir-empty",
+   "dir": "learn/pime"
+  },
+  {
+   "op": "rmdir-empty",
+   "dir": "learn"
+  }
+ ]
+}

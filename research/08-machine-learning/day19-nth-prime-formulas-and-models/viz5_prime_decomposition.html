@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Decomposition Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+        }
+        .cell {
+            width: 45px; /* Adjusted for more columns */
+            height: 40px;
+            position: relative;
+            border-radius: 4px;
+            transition: transform 0.2s ease-out;
+        }
+        .cell-content {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .cell:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+        .is-decomposed {
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 0 0 8px #fff, 0 0 12px #c084fc, 0 0 16px #c084fc; /* Purple glow */
+            animation: pulse-purple 2.5s infinite;
+        }
+        @keyframes pulse-purple {
+            0% { text-shadow: 0 0 4px #c084fc, 0 0 8px #c084fc; }
+            50% { text-shadow: 0 0 16px #c084fc, 0 0 24px #c084fc; }
+            100% { text-shadow: 0 0 4px #c084fc, 0 0 8px #c084fc; }
+        }
+        .tooltip {
+            visibility: hidden;
+            width: max-content;
+            max-width: 300px;
+            background-color: #1f2937;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 20;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: normal;
+        }
+        .cell:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <div class="w-full max-w-7xl mx-auto p-6 md:p-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-violet-400">Prime Decomposition Visualization</h1>
+            <p class="text-gray-400 mt-2">Repeatedly subtracting the largest internal prime from each number to find its reduced form.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 p-4 bg-gray-900/50 rounded-xl">
+            <label for="n-input" class="text-lg font-medium">Visualize up to:</label>
+            <input type="number" id="n-input" value="200" min="1" max="1000" class="w-full sm:w-40 bg-gray-800 border border-gray-700 rounded-lg p-3 text-center text-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition duration-200">
+            <button id="generate-btn" class="w-full sm:w-auto bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-violet-500/50 transform hover:-translate-y-0.5 transition-all duration-200 ease-in-out">
+                Generate Field
+            </button>
+        </div>
+
+        <!-- New Graph Container -->
+        <div id="graph-container" class="mb-8 p-4 bg-black rounded-xl shadow-2xl">
+            <h2 class="text-xl font-semibold text-center text-gray-300 mb-4">Decomposition Results</h2>
+            <div class="max-w-xs mx-auto">
+                <canvas id="decomposition-chart"></canvas>
+            </div>
+        </div>
+
+        <div id="field-container" class="p-4 bg-black rounded-xl shadow-2xl">
+            <div id="field-grid" class="flex justify-around gap-2">
+                <!-- Columns will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const nInput = document.getElementById('n-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const fieldGrid = document.getElementById('field-grid');
+        let decompositionChart = null;
+
+        // --- Core Logic ---
+        const primeCache = new Map();
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (primeCache.has(num)) return primeCache.get(num);
+            if (num % 2 === 0 || num % 3 === 0) {
+                primeCache.set(num, false);
+                return false;
+            }
+            for (let i = 5; i * i <= num; i = i + 6) {
+                if (num % i === 0 || num % (i + 2) === 0) {
+                    primeCache.set(num, false);
+                    return false;
+                }
+            }
+            primeCache.set(num, true);
+            return true;
+        }
+
+        function findLargestPrimeSubstring(num) {
+            const s = String(num);
+            let largestPrime = 0;
+            for (let i = 0; i < s.length; i++) {
+                for (let j = i; j < s.length; j++) {
+                    const subStr = s.substring(i, j + 1);
+                    const subNum = parseInt(subStr, 10);
+                    if (isPrime(subNum)) {
+                        if (subNum > largestPrime) {
+                            largestPrime = subNum;
+                        }
+                    }
+                }
+            }
+            return largestPrime;
+        }
+
+        function reduceNumber(num) {
+            let currentNum = num;
+            const history = [currentNum];
+            const maxIterations = 100;
+            for (let iter = 0; iter < maxIterations; iter++) {
+                const largestPrime = findLargestPrimeSubstring(currentNum);
+                if (largestPrime === 0) break;
+                currentNum -= largestPrime;
+                history.push(currentNum);
+                if (currentNum <= 0) break;
+            }
+            return { finalValue: currentNum, history: history };
+        }
+
+        /**
+         * New function to plot the decomposition graph.
+         * @param {number} decomposedCount Count of numbers that reduced to 0.
+         * @param {number} nonDecomposedCount Count of numbers that did not.
+         */
+        function plotDecompositionGraph(decomposedCount, nonDecomposedCount) {
+            const ctx = document.getElementById('decomposition-chart').getContext('2d');
+            if (decompositionChart) {
+                decompositionChart.destroy();
+            }
+            decompositionChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Fully Decomposed (to 0)', 'Not Decomposed'],
+                    datasets: [{
+                        data: [decomposedCount, nonDecomposedCount],
+                        backgroundColor: ['rgba(192, 132, 252, 0.8)', 'rgba(55, 65, 81, 0.8)'],
+                        borderColor: ['#c084fc', '#4b5563'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#d1d5db',
+                                font: { size: 14 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateField() {
+            const n = parseInt(nInput.value, 10);
+            if (isNaN(n) || n < 1) {
+                console.error("Please enter a number greater than or equal to 1.");
+                return;
+            }
+
+            fieldGrid.innerHTML = '';
+            // Include all last digits from 0 to 9
+            const lastDigits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            const columns = {};
+            lastDigits.forEach(digit => {
+                const colWrapper = document.createElement('div');
+                colWrapper.className = 'flex flex-col items-center gap-2';
+                const header = document.createElement('h3');
+                header.className = 'text-lg font-semibold text-gray-400 mb-2';
+                header.textContent = `...${digit}`;
+                colWrapper.appendChild(header);
+                const colDiv = document.createElement('div');
+                colDiv.className = 'flex flex-col gap-1';
+                colWrapper.appendChild(colDiv);
+                fieldGrid.appendChild(colWrapper);
+                columns[digit] = colDiv;
+            });
+
+            let decomposedCount = 0;
+            let nonDecomposedCount = 0;
+
+            // Start the loop from 1
+            for (let i = 1; i <= n; i++) {
+                // No more filtering
+                const lastDigit = i % 10;
+                const targetColumn = columns[lastDigit];
+
+                if (targetColumn) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    const content = document.createElement('div');
+                    content.className = 'cell-content';
+
+                    const reduction = reduceNumber(i);
+                    const finalValue = reduction.finalValue;
+                    const history = reduction.history;
+
+                    content.textContent = finalValue;
+
+                    if (finalValue === 0) {
+                        content.classList.add('is-decomposed');
+                        decomposedCount++;
+                    } else {
+                        nonDecomposedCount++;
+                        const lightness = 10 + Math.min((finalValue / n) * 30, 30);
+                        cell.style.backgroundColor = `hsl(210, 50%, ${lightness}%)`;
+                    }
+
+                    const tooltip = document.createElement('span');
+                    tooltip.className = 'tooltip';
+                    tooltip.innerHTML = `Path: ${history.join(' &rarr; ')}`;
+                    content.appendChild(tooltip);
+                    
+                    cell.appendChild(content);
+                    targetColumn.appendChild(cell);
+                }
+            }
+            // After the loop, plot the graph
+            plotDecompositionGraph(decomposedCount, nonDecomposedCount);
+        }
+
+        generateBtn.addEventListener('click', generateField);
+        nInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') generateField();
+        });
+
+        window.onload = generateField;
+    </script>
+</body>
+</html>

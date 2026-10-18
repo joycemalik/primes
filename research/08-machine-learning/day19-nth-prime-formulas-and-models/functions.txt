@@ -1,0 +1,1 @@
+mul(abs(log(div(-0.981, sqrt(div(sqrt(0.382), abs(abs(add(div(sqrt(0.382), abs(0.120)), mul(log(log(n)), add(0.281, n)))))))))), abs(add(n, n)))

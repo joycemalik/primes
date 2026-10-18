@@ -1,0 +1,254 @@
+# Reorganisation record
+
+Done on 2026-10-18. Nothing was deleted: every file was moved or renamed, and the totals were checked before and after (95,511 files outside `.venv`, all present afterwards).
+
+What changed:
+
+* Files and folders were grouped by idea under `research/`, unrelated projects went to `other-projects/`, backups, empty placeholders and caches went to `archive/`.
+* Unclear names were replaced with descriptive ones. Original numbers were kept as prefixes (prime01 …, v01 …, 07_ …) so the order is preserved.
+* Each moved research script got a 5-line header comment (new path, original path, last-edited date, what it does). File modification dates were kept.
+* Seven references were updated so scripts still find each other: two comparison scripts now load their neighbours relative to their own folder, and two day-19 scripts load `07_nth_prime_linear_regression.py` instead of `7.py`.
+* Folders that the moves left empty (`learn/pime/check`, `learn/pime`, `learn`) were removed; the undo script recreates them.
+
+To reverse everything: `python archive/reorganization/undo_reorganization.py` (add `--dry` to preview).
+
+**Pending:** `simu1` → `other-projects/simu1-fusionflow-and-3d-viewer`, `simu2` → `other-projects/simu2-workflow-server-and-web`. Windows refused these moves because files inside were open. Close them and run `python archive/reorganization/finish_pending_moves.py`.
+
+| Before | After |
+|---|---|
+| `learn/pime/check/day11/` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/` |
+| `learn/pime/check/day17/` | `research/09-prime-matrix/day17-prime-matrix-eigenvalues/` |
+| `learn/pime/check/day18/` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/` |
+| `learn/pime/check/day19/` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/` |
+| `learn/pime/check/day23/` | `research/08-machine-learning/day23-formula-f1-check/` |
+| `learn/pime/check/day37/` | `research/10-factorials-and-gamma/day37-factorial-visualizer/` |
+| `learn/pime/check/checkers/` | `research/03-complex-plane/gpu-mega-prime-hunt/` |
+| `learn/pime/check/.venv/` | `research/.venv-notebooks/` |
+| `learn/pime/check/__pycache__/` | `archive/pycache/learn-pime-check/` |
+| `learn/pime/lib/` | `research/07-gaps-walks-spirals/factorization-graph/lib/` |
+| `learn/rev/` | `archive/rev-older-copies-of-prime9-and-prime12/` |
+| `learn/ub/` | `other-projects/ub-urban-transport-plots/` |
+| `learn/react1/` | `other-projects/react1-learning-app/` |
+| `Kandy/` | `archive/kandy-backup-2025-08-02/` |
+| `New folder/` | `archive/empty-folder-New-folder/` |
+| `__pycache__/` | `archive/pycache/root/` |
+| `media/` | `other-projects/manim-scene-test/media/` |
+| `simu3/` | `other-projects/simu3-ai-workflow-app/` |
+| `simu4/` | `other-projects/simu4-test/` |
+| `tvj2/` | `other-projects/tvj2-lyman-alpha-spectra/` |
+| `ski/` | `other-projects/ski/` |
+| `learn/prime1.py` | `research/01-prime-wave-sieve/numbered-series/prime01_sine_product_zero_crossings.py` |
+| `learn/prime2.py` | `research/01-prime-wave-sieve/numbered-series/prime02_product_of_sines_sieve.py` |
+| `learn/prime3.py` | `research/01-prime-wave-sieve/numbered-series/prime03_small_factor_count_wave.py` |
+| `learn/prime4.py` | `research/01-prime-wave-sieve/numbered-series/prime04_small_factor_count_wave_report.py` |
+| `learn/prime5.py` | `research/01-prime-wave-sieve/numbered-series/prime05_raised_cosine_interference.py` |
+| `learn/prime6.py` | `research/01-prime-wave-sieve/numbered-series/prime06_raised_cosine_prediction.py` |
+| `learn/prime7.py` | `research/01-prime-wave-sieve/numbered-series/prime07_individual_and_composite_waves.py` |
+| `learn/prime8.py` | `research/01-prime-wave-sieve/numbered-series/prime08_marking_waves_quiet_zones.py` |
+| `learn/prime9.py` | `research/01-prime-wave-sieve/numbered-series/prime09_spike_superposition.py` |
+| `learn/prime10.py` | `research/01-prime-wave-sieve/numbered-series/prime10_spike_superposition_excluding_self.py` |
+| `learn/prime11.py` | `research/01-prime-wave-sieve/numbered-series/prime11_spike_superposition_metrics.py` |
+| `prime12.py` | `research/01-prime-wave-sieve/numbered-series/prime12_spike_superposition_metrics_v2.py` |
+| `learn/prime13.py` | `research/01-prime-wave-sieve/numbered-series/prime13_spike_superposition_v3.py` |
+| `prime14.py` | `research/01-prime-wave-sieve/numbered-series/prime14_weighted_wave_context_50.py` |
+| `prime15.py` | `research/01-prime-wave-sieve/numbered-series/prime15_weighted_wave_function.py` |
+| `prime16.py` | `research/01-prime-wave-sieve/numbered-series/prime16_weighted_wave_function_copy.py` |
+| `prime17.py` | `research/01-prime-wave-sieve/numbered-series/prime17_ultimate_multilevel_detector.py` |
+| `learn/prime20.py` | `research/01-prime-wave-sieve/numbered-series/prime20_spike_superposition_v4.py` |
+| `learn/prime22.py` | `research/01-prime-wave-sieve/numbered-series/prime22_mobius_von_mangoldt_indicator.py` |
+| `prime_wave_detector.py` | `research/01-prime-wave-sieve/detectors/prime_wave_detector.py` |
+| `simple_prime_wave.py` | `research/01-prime-wave-sieve/detectors/simple_prime_wave.py` |
+| `minimal_prime_wave.py` | `research/01-prime-wave-sieve/detectors/minimal_prime_wave.py` |
+| `simple_prime_generator.py` | `research/01-prime-wave-sieve/detectors/simple_prime_generator.py` |
+| `enhanced_prime_wave.py` | `research/01-prime-wave-sieve/detectors/enhanced_prime_wave.py` |
+| `perfect_prime_wave.py` | `research/01-prime-wave-sieve/detectors/perfect_prime_wave.py` |
+| `simplified_prime_wave.py` | `research/01-prime-wave-sieve/detectors/simplified_prime_wave.py` |
+| `ultimate_prime_wave.py` | `research/01-prime-wave-sieve/detectors/ultimate_prime_wave.py` |
+| `ultra_fast_prime_wave.py` | `research/01-prime-wave-sieve/detectors/ultra_fast_prime_wave.py` |
+| `correctness_check.py` | `research/01-prime-wave-sieve/detectors/correctness_check.py` |
+| `ultra_simple_wave.py` | `research/01-prime-wave-sieve/detectors/ultra_simple_wave_grapher.py` |
+| `graphical_prime_wave.py` | `research/01-prime-wave-sieve/detectors/graphical_prime_wave.py` |
+| `learn/pime/check/prime.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v1.py` |
+| `learn/pime/check/2prime.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v2_crt.py` |
+| `learn/pime/check/3prime.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_v3_simplified.py` |
+| `learn/pime/check/prime_wave_theory_complete.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_theory_complete.py` |
+| `learn/pime/check/unified_prime_wave_theory.py` | `research/01-prime-wave-sieve/unified-theory-crt/unified_prime_wave_theory.py` |
+| `learn/pime/check/main_unified_prime_wave_theory.py` | `research/01-prime-wave-sieve/unified-theory-crt/main_unified_prime_wave_theory.py` |
+| `learn/pime/check/predictor.py` | `research/01-prime-wave-sieve/unified-theory-crt/simple_prime_wave_predictor.py` |
+| `learn/pime/check/false_positive_analysis.py` | `research/01-prime-wave-sieve/unified-theory-crt/false_positive_analysis.py` |
+| `learn/pime/check/crt_summary.py` | `research/01-prime-wave-sieve/unified-theory-crt/crt_summary.py` |
+| `learn/pime/check/prime_wave_encoding.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_encoding.py` |
+| `learn/pime/check/prime_wave_function.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_function.py` |
+| `learn/pime/check/prime_formula_demo.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_formula_demo.py` |
+| `learn/pime/check/prime_wave_usage_demo.py` | `research/01-prime-wave-sieve/unified-theory-crt/prime_wave_usage_demo.py` |
+| `learn/pime/check/accuracy_checker.py` | `research/01-prime-wave-sieve/unified-theory-crt/accuracy_checker.py` |
+| `learn/pime/check/predicted_primes.txt` | `research/01-prime-wave-sieve/unified-theory-crt/predicted_primes.txt` |
+| `learn/pime/check/accuracy_report.txt` | `research/01-prime-wave-sieve/unified-theory-crt/accuracy_report.txt` |
+| `learn/pime/check/PROJECT_SUMMARY.md` | `research/01-prime-wave-sieve/unified-theory-crt/PROJECT_SUMMARY.md` |
+| `learn/pime/check/requirements.txt` | `research/requirements.txt` |
+| `learn/pime/ThePrimeWaveTheorm.ipynb` | `research/01-prime-wave-sieve/notebooks/the_prime_wave_theorem.ipynb` |
+| `learn/pime/primewave.ipynb` | `research/01-prime-wave-sieve/notebooks/prime_wave_theorem_notes.ipynb` |
+| `learn/pime/primewave copy.ipynb` | `research/01-prime-wave-sieve/notebooks/prime_wave_theorem_experiments.ipynb` |
+| `learn/pime/check/restart.ipynb` | `research/01-prime-wave-sieve/notebooks/restart_individual_prime_waves.ipynb` |
+| `learn/pime/check/learing.ipynb` | `research/01-prime-wave-sieve/notebooks/learning_notes_riemann_zeta_waves.ipynb` |
+| `prime18.ipynb` | `research/01-prime-wave-sieve/notebooks/prime18_absolute_wave_function_proof_attempt.ipynb` |
+| `prime19.ipynb` | `research/01-prime-wave-sieve/notebooks/prime19_absolute_wave_100000th_prime.ipynb` |
+| `learn/prime21.ipynb` | `research/01-prime-wave-sieve/notebooks/prime21_o1_prime_wave_inversion.ipynb` |
+| `prime_wave_function_pattern.png` | `research/01-prime-wave-sieve/figures/prime_wave_function_pattern.png` |
+| `prime_wave_interference.png` | `research/01-prime-wave-sieve/figures/prime_wave_interference_root.png` |
+| `learn/prime_wave_interference.png` | `research/01-prime-wave-sieve/figures/prime_wave_interference_learn.png` |
+| `learn/prime_predictions_vs_reality.png` | `research/01-prime-wave-sieve/figures/prime_predictions_vs_reality.png` |
+| `learn/prime_wave_correction_analysis.png` | `research/01-prime-wave-sieve/figures/prime_wave_correction_analysis.png` |
+| `learn/prime_chaos_attractor.py` | `research/02-physics-inspired-wave-models/prime_chaos_attractor.py` |
+| `learn/chaos_prime_attractor.png` | `research/02-physics-inspired-wave-models/prime_chaos_attractor.png` |
+| `learn/prime_resonance_predictor.py` | `research/02-physics-inspired-wave-models/prime_resonance_predictor.py` |
+| `learn/quantum_prime_resonance.png` | `research/02-physics-inspired-wave-models/prime_resonance_predictor.png` |
+| `learn/radial_prime_predictor.py` | `research/02-physics-inspired-wave-models/radial_prime_predictor.py` |
+| `learn/radial_prime_wave.png` | `research/02-physics-inspired-wave-models/radial_prime_predictor.png` |
+| `learn/prime_wave_predictor.py` | `research/02-physics-inspired-wave-models/prime_wave_predictor.py` |
+| `learn/prime_wave_predictor.png` | `research/02-physics-inspired-wave-models/prime_wave_predictor.png` |
+| `learn/ultra_simple_prime_wave.py` | `research/02-physics-inspired-wave-models/ultra_simple_prime_wave.py` |
+| `learn/ultra_simple_prime_wave.png` | `research/02-physics-inspired-wave-models/ultra_simple_prime_wave.png` |
+| `learn/anothertry.ipynb` | `research/03-complex-plane/complex_plane_spirals_and_gpu_hunts.ipynb` |
+| `research/03-complex-plane/gpu-mega-prime-hunt/anothertry.ipynb` | `research/03-complex-plane/gpu-mega-prime-hunt/gpu_mega_prime_hunt_2pow300000.ipynb` |
+| `learn/pime/check/oneMoreTry.ipynb` | `research/03-complex-plane/self_correcting_quantum_wave.ipynb` |
+| `learn/pime/check/oneMoreTry copy.ipynb` | `research/03-complex-plane/self_correcting_quantum_wave_copy.ipynb` |
+| `prime_vector_pairs.py` | `research/04-bit-pair-sequences/prime_vector_pairs.py` |
+| `gptpairs.py` | `research/04-bit-pair-sequences/gpt_pairs_berlekamp_massey.py` |
+| `gptpairs2.py` | `research/04-bit-pair-sequences/gpt_pairs_context_model.py` |
+| `geminiPrimes.py` | `research/04-bit-pair-sequences/gemini_pairs_2adic_kick.py` |
+| `compare_gptpairs_primevectorpairs.py` | `research/04-bit-pair-sequences/compare_gpt_pairs_with_prime_pairs.py` |
+| `compare_gemini_prime_vectors.py` | `research/04-bit-pair-sequences/compare_gemini_pairs_with_prime_pairs.py` |
+| `custom_prime_vector_pairs.py` | `research/04-bit-pair-sequences/custom_pairs_v1_5wide_blocks.py` |
+| `custom_prime_vector_pairs copy.py` | `research/04-bit-pair-sequences/custom_pairs_v2_bitstream.py` |
+| `custom_prime_vector_pairs copy 2.py` | `research/04-bit-pair-sequences/custom_pairs_v3_bitstream.py` |
+| `custom_prime_vector_pairs_graph.py` | `research/04-bit-pair-sequences/custom_pairs_v4_bitstream_graph.py` |
+| `pair_checker.py` | `research/04-bit-pair-sequences/pair_checker_seed_decoder.py` |
+| `prime27.py` | `research/04-bit-pair-sequences/prime27_6k_plus_minus_1_pairs.py` |
+| `newPrime1.py` | `research/04-bit-pair-sequences/new_prime1_6k_pairs_bitstream.py` |
+| `newPrimes2.py` | `research/04-bit-pair-sequences/new_primes2_ternary_signature.py` |
+| `kolonoski.py` | `research/04-bit-pair-sequences/kolakoski_subword_complexity.py` |
+| `learn/primes24.py` | `research/05-hex-sequence-puzzle/primes24_hex_sequence_analyzer.py` |
+| `learn/prime23.py` | `research/05-hex-sequence-puzzle/prime23_prime_hex_encoding.py` |
+| `prime25.py` | `research/05-hex-sequence-puzzle/prime25_middle_square_generator.py` |
+| `learn/enhanced_pattern_finder.py` | `research/05-hex-sequence-puzzle/enhanced_pattern_finder.py` |
+| `learn/pattern_discovery_analyzer.py` | `research/05-hex-sequence-puzzle/pattern_discovery_analyzer.py` |
+| `learn/hex_sequence_extender.py` | `research/05-hex-sequence-puzzle/hex_sequence_extender.py` |
+| `learn/group_modulo_transform.py` | `research/05-hex-sequence-puzzle/group_modulo_transform.py` |
+| `learn/group_operations_tester.py` | `research/05-hex-sequence-puzzle/group_operations_tester.py` |
+| `learn/test_hex_generator.py` | `research/05-hex-sequence-puzzle/test_hex_generator.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/1.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/01_hex_group_multiplier_check.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/2.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/02_hex_group_check_decimal.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/3.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/03_hex_to_48x48_grid.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/4.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/04_game_of_life_from_hex.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/5.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/05_seed_decimal_comparison.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/6.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/06_decimal_seed_to_pairs.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/7.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/07_kolakoski_sequence.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/8.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/08_additive_construction_graph.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/compare_strings.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/09_compare_two_strings.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/test_complex_path.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/10_additive_shortest_paths.py` |
+| `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/test_dijkstra.py` | `research/05-hex-sequence-puzzle/day11-hex-grid-life-and-additive-graphs/11_additive_shortest_paths_small.py` |
+| `learn/prime_music_sensible.py` | `research/06-prime-music/prime_music_sensible.py` |
+| `learn/prime_music_advanced.py` | `research/06-prime-music/prime_music_advanced.py` |
+| `learn/primemusic1.py` | `research/06-prime-music/prime_music_hex_v1.py` |
+| `learn/primemusic2.py` | `research/06-prime-music/prime_music_nexus_decoder.py` |
+| `learn/prime_intervals.mid` | `research/06-prime-music/midi/prime_intervals.mid` |
+| `learn/prime_rhythms.mid` | `research/06-prime-music/midi/prime_rhythms.mid` |
+| `learn/prime_harmony.mid` | `research/06-prime-music/midi/prime_harmony.mid` |
+| `learn/prime_golden_spiral.mid` | `research/06-prime-music/midi/prime_golden_spiral.mid` |
+| `learn/prime_wave_interference.mid` | `research/06-prime-music/midi/prime_wave_interference.mid` |
+| `learn/prime_hex_symphony.mid` | `research/06-prime-music/midi/prime_hex_symphony.mid` |
+| `learn/prime_chords.mid` | `research/06-prime-music/midi/prime_chords.mid` |
+| `learn/ghost_in_the_machine.mid` | `research/06-prime-music/midi/ghost_in_the_machine.mid` |
+| `learn/nexus_decoded_music.mid` | `research/06-prime-music/midi/nexus_decoded_music.mid` |
+| `prime_gap_sequence.py` | `research/07-gaps-walks-spirals/prime_gap_sequence.py` |
+| `prime_gap_counts.png` | `research/07-gaps-walks-spirals/prime_gap_counts.png` |
+| `newPrimes3.py` | `research/07-gaps-walks-spirals/new_primes3_gap_sequence_stub.py` |
+| `learn/pime/prime31.py` | `research/07-gaps-walks-spirals/factorization-graph/prime31_factorization_relational_graph.py` |
+| `learn/pime/relational_model_graph.html` | `research/07-gaps-walks-spirals/factorization-graph/relational_model_graph.html` |
+| `learn/pime/primes32.py` | `research/07-gaps-walks-spirals/primes32_additive_basis_graph.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g1.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g1_print_modulo_function_list.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g2.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g2_frames_to_animation.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g3.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g3_frames_to_consistent_video.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g5.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/g5_images_to_animation.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v1.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v01_function_on_prime_plane.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v2.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v02_function_on_prime_plane_v2.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v3.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v03_prime_plane_batch_plots.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v4.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v04_prime_vs_integer_inputs.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v5.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v05_3d_function_plots.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v6.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v06_palindromic_prime_interactive.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v7.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v07_composite_squeeze_interactive.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v8.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v08_composite_squeeze_comparison.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v9.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v09_radial_function_spiral.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v10.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v10_continuous_squeeze_comparison.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v11.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v11_final_squeeze_comparison.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v13.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v13_radial_angle_by_smallest_factor.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v17.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v17_prime_landmark_spiral.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v19.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v19_prime_factor_signature.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v23.html` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v23_prime_waterfall_simulation.html` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v29.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v29_prime_direction_walk.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v31.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v31_prime_composite_walk.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v37.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v37_prime_composite_walk_copy.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v41.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v41_gap_turn_walk.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v43.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v43_gap_turn_walk_by_last_digit.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v51.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v51_3d_rotation_walk.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v53.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v53_3d_rotation_walk_interactive.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v59.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v59_3d_rotation_walk_interactive_copy.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v61.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v61_prime_river.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v67.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v67_prime_push_walk.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v71.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v71_radial_spiral_sonified_midi.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v73.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v73_spiral_animation_with_sound.py` |
+| `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v79.py` | `research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/v79_accelerating_spiral_animation_with_sound.py` |
+| `learn/1.py` | `research/08-machine-learning/01_prime_transformer_first_try.py` |
+| `learn/3.ipynb` | `research/08-machine-learning/03_prime_gap_transformer_colab.ipynb` |
+| `learn/4.py` | `research/08-machine-learning/04_prime_transformer_gap_and_classifier.py` |
+| `learn/simple_prime_transformer.py` | `research/08-machine-learning/simple_prime_transformer.py` |
+| `learn/simple_prime_transformer.png` | `research/08-machine-learning/simple_prime_transformer.png` |
+| `learn/advanced_prime_neural_network.png` | `research/08-machine-learning/advanced_prime_neural_network.png` |
+| `learn/gpu test.py` | `research/08-machine-learning/gpu_prime_acceleration_test.py` |
+| `23.py` | `research/08-machine-learning/rtx4060_optimized_cpu_system.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/7.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/07_nth_prime_linear_regression.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/8.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/08_wave_guided_nth_prime.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/11.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/11_plot_function.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/13.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/13_build_prime_dataset.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/17.ipynb` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/17_nth_prime_model_comparison.ipynb` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/19.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/19_shifted_prime_sequences.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/23.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/23_chaotic_function_model_training.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/29.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/29_gplearn_symbolic_regression.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/37.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/37_evaluate_nth_prime_expression.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/gen1.py` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/gen1_plot_gp_functions.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/1.html` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/viz1_prime_vs_fibonacci_grapher.html` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/2.html` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/viz2_prime_probability_field.html` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/3.html` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/viz3_prime_probability_field_v2.html` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/4.html` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/viz4_internal_prime_visualization.html` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/5.html` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/viz5_prime_decomposition.html` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/6.html` | `research/08-machine-learning/day19-nth-prime-formulas-and-models/viz6_prime_decomposition_v2.html` |
+| `research/08-machine-learning/day23-formula-f1-check/1.py` | `research/08-machine-learning/day23-formula-f1-check/score_formula_on_test_csv.py` |
+| `research/09-prime-matrix/day17-prime-matrix-eigenvalues/part2.py` | `research/09-prime-matrix/day17-prime-matrix-eigenvalues/part2_prime_matrix_eigen.py` |
+| `research/09-prime-matrix/day17-prime-matrix-eigenvalues/part4.py` | `research/09-prime-matrix/day17-prime-matrix-eigenvalues/part4_even_odd_matrix_model.py` |
+| `research/09-prime-matrix/day17-prime-matrix-eigenvalues/part5.py` | `research/09-prime-matrix/day17-prime-matrix-eigenvalues/part5_plot_eigenvalues.py` |
+| `research/09-prime-matrix/day17-prime-matrix-eigenvalues/chat1.py` | `research/09-prime-matrix/day17-prime-matrix-eigenvalues/chat1_two_llms_discuss_primes.py` |
+| `factorial_continuous.py` | `research/10-factorials-and-gamma/factorial_continuous.py` |
+| `factorial_visualizer.py` | `research/10-factorials-and-gamma/factorial_visualizer_custom_definition.py` |
+| `factorial_discrete_visualization.png` | `research/10-factorials-and-gamma/factorial_discrete_visualization.png` |
+| `factorial_visualizer copy.html` | `research/10-factorials-and-gamma/factorial_visualizer.html` |
+| `research/10-factorials-and-gamma/day37-factorial-visualizer/factorial_visualizer.py` | `research/10-factorials-and-gamma/day37-factorial-visualizer/factorial_values_plot.py` |
+| `prime26.py` | `archive/empty-placeholders/root__prime26.py` |
+| `newgen1.py` | `archive/empty-placeholders/root__newgen1.py` |
+| `prime18.ipnyb` | `archive/empty-placeholders/root__prime18.ipnyb` |
+| `prime19.ipnyb` | `archive/empty-placeholders/root__prime19.ipnyb` |
+| `man.svg` | `other-projects/manim-scene-test/man.svg` |
+| `learn/pime/check/mathematical_proof.py` | `archive/empty-placeholders/check__mathematical_proof.py` |
+| `learn/pime/check/prime_accuracy_checker.py` | `archive/empty-placeholders/check__prime_accuracy_checker.py` |
+| `learn/pime/check/simple_prime_predictor.py` | `archive/empty-placeholders/check__simple_prime_predictor.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/31.py` | `archive/empty-placeholders/day19__31.py` |
+| `research/08-machine-learning/day19-nth-prime-formulas-and-models/nth_prime_io.py` | `archive/empty-placeholders/day19__nth_prime_io.py` |
+| `research/10-factorials-and-gamma/day37-factorial-visualizer/1negfact.py` | `archive/empty-placeholders/day37__1negfact.py` |
+| `learn/2.ipynb` | `archive/empty-placeholders/learn__2.ipynb` |
+| `learn/pime/prime31.py.tmp` | `archive/temp-files/prime31.py.tmp` |
+| `Kandy.zip` | `archive/kandy-backup-2025-08-02.zip` |
+| `learn/rev.zip` | `archive/rev-older-copies-of-prime9-and-prime12.zip` |
+| `gen_scene.py` | `other-projects/manim-scene-test/gen_scene.py` |
+| `app.html` | `other-projects/web-snippets/location_picker_send.html` |
+| `learn/check1.html` | `other-projects/web-snippets/ramayana_anime_sandbox.html` |
+| `learn/test.html` | `other-projects/web-snippets/admin_login_page.html` |

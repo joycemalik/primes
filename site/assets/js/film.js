@@ -49,7 +49,7 @@ SCENES.count = {
   tempo: 80,
   draw(ctx, w, h, p) {
     const X = Math.round(100 * Math.pow(1000, smooth(p / .9)));
-    const L = w * .08, R = w * .92, T = h * .30, B = h * .82;
+    const L = w * .08, R = w * .92, T = h * .24, B = h * .68;
     const li = (x) => { if (x < 2) return 0; const lx = Math.log(x); let s = 0.5772156649 + Math.log(lx), term = 1; for (let k = 1; k < 60; k++) { term *= lx / k; s += term / k; } return s; };
     const ymax = PI[X] * 1.12;
     const xs = (x) => L + (x / X) * (R - L), ys = (y) => B - (y / ymax) * (B - T);
@@ -81,7 +81,7 @@ SCENES.sieve = {
   draw(ctx, w, h, p) {
     const idx = Math.round(smooth(p / .78) * 14), P = SMALL[idx], ctxP = SMALL.slice(0, idx + 1);
     const N = Math.round(150 + 250 * smooth(p / .9));
-    const L = w * .05, R = w * .95, T = h * .30, B = h * .74, bw = (R - L) / N;
+    const L = w * .05, R = w * .95, T = h * .26, B = h * .64, bw = (R - L) / N;
     const W = new Float64Array(N + 1); let mx = 1;
     for (let n = 2; n <= N; n++) { let s = 0; for (const q of ctxP) if (n % q === 0 && n !== q) s += 1 / Math.sqrt(q); W[n] = s; if (s > mx) mx = s; }
     const sy = (B - T) / mx;
@@ -104,7 +104,7 @@ SCENES.sieve = {
     const tk = N > 300 ? 50 : 25; for (let n = tk; n <= N; n += tk) ctx.fillText(n, L + (n - .5) * bw, B + 46);
     if (P * P <= N) {
       const x = L + P * P * bw; ctx.strokeStyle = K.ochre; ctx.setLineDash([4, 6]); ctx.beginPath(); ctx.moveTo(x, T - 30); ctx.lineTo(x, B + 30); ctx.stroke(); ctx.setLineDash([]);
-      ctx.font = HAND(Math.max(18, w / 60)); ctx.fillStyle = K.ochre; ctx.textAlign = 'left'; ctx.fillText(`P² = ${P * P}`, Math.min(x + 8, w - 120), T - 14);
+      ctx.font = HAND(Math.max(18, w / 60)); ctx.fillStyle = K.ochre; ctx.textAlign = 'left'; ctx.fillText(`P² = ${P * P}`, Math.max(12, x - 110), B - 12);
     }
     const st = DATA.sieveStats.reduce((a, b) => Math.abs(b.ctx - P) < Math.abs(a.ctx - P) ? b : a);
     live('live-sieve', `waves from  {${ctxP.length > 6 ? ctxP.slice(0, 5).join(', ') + ', … ' + P : ctxP.join(', ')}}\nnodes       ${nodes}\nprimes      <b>${nodes - fp}</b>\nslipped     ${fp}${first ? '   first ' + first : ''}\n\nup to 100,000 with P ≈ ${st.ctx}:\n${fmt(st.fp)} composites slip through`);
@@ -118,7 +118,7 @@ SCENES.smooth = {
   tempo: 96,
   draw(ctx, w, h, p, T) {
     const idx = Math.round(smooth(p / .5) * 8), ps = SMALL.slice(0, idx + 1), mode = smooth((p - .5) / .15);
-    const M = 72, L = w * .05, R = w * .95, top = h * .32, base = h * .74;
+    const M = 72, L = w * .05, R = w * .95, top = h * .26, base = h * .64;
     const prod = (x) => Math.pow(ps.reduce((a, q) => a * Math.abs(Math.sin(Math.PI * x / q)), 1), 1 / ps.length);
     const cos = (x) => ps.reduce((a, q) => a + (1 + Math.cos(2 * Math.PI * x / q)) / 2, 0) / ps.length;
     const f = (x) => (1 - mode) * prod(x) + mode * cos(x);
@@ -149,7 +149,7 @@ SCENES.zn = {
   tempo: 104,
   draw(ctx, w, h, p, T) {
     const N = Math.round(30 + 2970 * smooth(p / .55)), reveal = smooth((p - .58) / .12);
-    const cx = w * .5, cy = h * .5, sc = Math.min(w * .42, h * .42) / 3;
+    const cx = w * .5, cy = h * .44, sc = Math.min(w * .4, h * .38) / 3;
     ctx.strokeStyle = rgba(K.ink, .1); ctx.lineWidth = 1; for (const r of [2, 3]) { ctx.beginPath(); ctx.arc(cx, cy, r * sc, 0, 7); ctx.stroke(); }
     ctx.beginPath(); ctx.moveTo(cx - 3.3 * sc, cy); ctx.lineTo(cx + 3.3 * sc, cy); ctx.moveTo(cx, cy - 3.3 * sc); ctx.lineTo(cx, cy + 3.3 * sc); ctx.stroke();
     ctx.shadowColor = K.prime; ctx.shadowBlur = 18; ctx.strokeStyle = rgba(K.prime, .7); ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(cx, cy, sc, 0, 7); ctx.stroke(); ctx.shadowBlur = 0;
@@ -193,7 +193,7 @@ SCENES.spiral = {
     else if (p < .84) { A = SP.gold; B = SP.ulam; m = smooth((p - .68) / .16); label = 'golden angle → Ulam square'; }
     else { A = B = SP.ulam; label = 'Ulam spiral, 1963'; }
     const spin = (A === SP.ulam && B === SP.ulam) ? 0 : T * .015 * (1 - (B === SP.ulam ? m : 0));
-    const cx = w * .5, cy = h * .5, R = Math.min(w, h) * .47, cs = Math.cos(spin), sn = Math.sin(spin);
+    const cx = w * .5, cy = h * .45, R = Math.min(w * .48, h * .44), cs = Math.cos(spin), sn = Math.sin(spin);
     const eul = p > .12 && p < .4 ? smooth((p - .12) / .08) * (1 - smooth((p - .34) / .06)) : 0;
     const dot = Math.max(1.3, R / Math.sqrt(SP.N) * 1.05);
     ctx.globalCompositeOperation = 'lighter';
@@ -233,7 +233,7 @@ SCENES.bits = {
   draw(ctx, w, h, p) {
     const fill = smooth(p / .3), bars = smooth((p - .32) / .18) * (1 - smooth((p - .78) / .08)), nth = smooth((p - .82) / .08);
     // barcode
-    const cols = 60, rows = 20, gw = Math.min(w * .9, h * 1.5), gh = gw / 3, x0 = (w - gw) / 2, y0 = h * .3, cw = gw / cols, rh = gh / rows;
+    const cols = 60, rows = 20, gw = Math.min(w * .9, h * 1.35), gh = gw / 3, x0 = (w - gw) / 2, y0 = h * .24, cw = gw / cols, rh = gh / rows;
     const shown = Math.round(1200 * fill), fade = 1 - .78 * smooth((p - .3) / .1);
     ctx.globalAlpha = fade;
     for (let k = 1; k <= shown; k++) {
@@ -244,11 +244,11 @@ SCENES.bits = {
     }
     ctx.globalAlpha = 1;
     if (bars > 0) {
-      ctx.globalAlpha = bars; const bx = w * .14, bW = w * .62, by = h * .32;
+      ctx.globalAlpha = bars; const bx = w * .1, bW = w * .62, by = h * .2;
       ctx.font = FONT(13); ctx.textAlign = 'left';
       ctx.fillStyle = K.dim; ctx.fillText('first 100 pairs, fitted', bx, by - 10); ctx.fillStyle = K.prime; ctx.fillText('next 900 pairs, unseen', bx + 260, by - 10);
       BITS.forEach((r, i) => {
-        const y = by + 20 + i * h * .12; ctx.fillStyle = K.ink; ctx.font = HAND(Math.max(20, w / 50)); ctx.fillText(r[0], bx, y + 6);
+        const y = by + 20 + i * h * .13; ctx.fillStyle = K.ink; ctx.font = HAND(Math.max(20, w / 50)); ctx.fillText(r[0], bx, y + 6);
         [[r[1], rgba(K.ink, .55)], [r[2], K.prime]].forEach(([v, c], j) => { const yy = y + 18 + j * 16; ctx.fillStyle = rgba(K.ink, .08); ctx.fillRect(bx, yy, bW, 11); ctx.fillStyle = c; ctx.fillRect(bx, yy, bW * v * smooth((p - .32) / .2 + .2), 11); ctx.fillStyle = K.ink; ctx.font = FONT(13); ctx.fillText(Math.round(v * 100) + '%', bx + bW + 12, yy + 10); });
       });
       ctx.globalAlpha = 1;
@@ -256,7 +256,7 @@ SCENES.bits = {
     if (nth > 0) {
       ctx.globalAlpha = nth; const n = 1e5, act = 1299709, Ln = Math.log(n), LL = Math.log(Ln);
       const rows2 = [['my evolved formula', (1284917.04 - act) / act, K.prime], ['n (ln n + ln ln n − 1)', (n * (Ln + LL - 1) - act) / act, K.wave], ['Cipolla, 1902', (n * (Ln + LL - 1 + (LL - 2) / Ln) - act) / act, K.green]];
-      const bx = w * .14, bW = w * .6, by = h * .36;
+      const bx = w * .1, bW = w * .6, by = h * .26;
       ctx.font = FONT(13); ctx.fillStyle = K.dim; ctx.textAlign = 'left'; ctx.fillText('error in the 100,000th prime (1,299,709)', bx, by - 14);
       rows2.forEach((r, i) => { const y = by + 10 + i * h * .1; ctx.font = HAND(Math.max(20, w / 50)); ctx.fillStyle = K.ink; ctx.fillText(r[0], bx, y + 4); ctx.fillStyle = r[2]; ctx.fillRect(bx, y + 16, Math.max(3, bW * Math.abs(r[1]) / .012), 12); ctx.font = FONT(13); ctx.fillStyle = K.ink; ctx.fillText((r[1] * 100).toFixed(3) + '%', bx + Math.max(3, bW * Math.abs(r[1]) / .012) + 12, y + 27); });
       ctx.globalAlpha = 1;
@@ -278,7 +278,7 @@ SCENES.life = {
   tempo: 124,
   draw(ctx, w, h, p) {
     const gen = Math.round(p * 420), g = LIFE.get(gen), S = LIFE.S;
-    const side = Math.min(w * .6, h * .74), cs = side / S, x0 = (w - side) / 2, y0 = (h - side) / 2 + h * .02;
+    const side = Math.min(w * .6, h * .64), cs = side / S, x0 = (w - side) / 2, y0 = h * .08;
     ctx.strokeStyle = rgba(K.ink, .08); ctx.strokeRect(x0 - 1, y0 - 1, side + 2, side + 2);
     ctx.shadowColor = K.prime; ctx.shadowBlur = 8; ctx.fillStyle = K.prime; let pop = 0;
     for (let i = 0; i < S; i++) for (let j = 0; j < S; j++) if (g[i * S + j]) { pop++; ctx.fillRect(x0 + j * cs + 1, y0 + i * cs + 1, cs - 2, cs - 2); }
@@ -304,8 +304,8 @@ SCENES.walk = {
   draw(ctx, w, h, p, T) {
     const n = Math.max(2, Math.round(WALK.P3.length * smooth(p / .82)));
     const yaw = .5 + p * 4.2 + T * .03, pitch = .35 + .15 * Math.sin(p * 3);
-    const cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), sc = Math.min(w, h) * .44 / WALK.r, [ox, oy, oz] = WALK.c;
-    const proj = (q) => { const x = q[0] - ox, y = q[1] - oy, z = q[2] - oz; const x1 = cyw * x + syw * z, z1 = -syw * x + cyw * z; const y1 = cp * y - sp * z1, z2 = sp * y + cp * z1; const f = 1 / (1 + z2 / (WALK.r * 4)); return [w / 2 + x1 * sc * f, h / 2 - y1 * sc * f]; };
+    const cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), sc = Math.min(w * .7, h * .62) / WALK.r, [ox, oy, oz] = WALK.c;
+    const proj = (q) => { const x = q[0] - ox, y = q[1] - oy, z = q[2] - oz; const x1 = cyw * x + syw * z, z1 = -syw * x + cyw * z; const y1 = cp * y - sp * z1, z2 = sp * y + cp * z1; const f = 1 / (1 + z2 / (WALK.r * 4)); return [w / 2 + x1 * sc * f, h * .44 - y1 * sc * f]; };
     ctx.globalCompositeOperation = 'lighter'; ctx.lineWidth = 1.2;
     const seg = 48, per = Math.ceil(n / seg);
     for (let s = 0; s < seg; s++) { const i0 = s * per, i1 = Math.min(n - 1, (s + 1) * per); if (i0 >= i1) break; ctx.strokeStyle = rgba(s / seg < .5 ? K.violet : K.prime, .5); ctx.strokeStyle = mix(K.violet, K.prime, s / seg); ctx.globalAlpha = .7; ctx.beginPath(); for (let i = i0; i <= i1; i++) { const [x, y] = proj(WALK.P3[i]); i === i0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); } ctx.stroke(); }
@@ -331,12 +331,12 @@ SCENES.zeta = {
       pts.push([re - (ar * or + ai * oi) / od - .5 * m * Math.cos(-t * ln), im - (ai * or - ar * oi) / od - .5 * m * Math.sin(-t * ln)]);
     }
     const [zr, zi] = zetaC(s, t);
-    let mx = Math.hypot(zr, zi) + .3; for (const q of raw.slice(0, 300)) mx = Math.max(mx, Math.hypot(q[0] - zr, q[1] - zi));
-    const target = Math.min(w, h) * .44 / Math.min(mx, 4); this.scale += (target - this.scale) * .08; const sc = this.scale;
-    const cx = w / 2 - zr * sc * .5, cy = h / 2 + zi * sc * .5;
+    let mx = Math.hypot(zr, zi) + .25; for (const q of raw.slice(0, 120)) mx = Math.max(mx, Math.hypot(q[0] - zr, q[1] - zi));
+    const target = Math.min(w * .46, h * .4) / Math.min(mx, 4); this.scale += (target - this.scale) * .08; const sc = this.scale;
+    const cx = w / 2 - zr * sc * .5, cy = h * .44 + zi * sc * .5;
     const X = (q) => cx + q[0] * sc, Y = (q) => cy - q[1] * sc;
     ctx.strokeStyle = rgba(K.ink, .08); ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
-    ctx.strokeStyle = rgba(K.ink, .22); ctx.lineWidth = 1; ctx.beginPath(); raw.slice(0, 300).forEach((q, i) => i ? ctx.lineTo(X(q), Y(q)) : ctx.moveTo(X(q), Y(q))); ctx.stroke();
+    ctx.strokeStyle = rgba(K.ink, .22); ctx.lineWidth = 1; ctx.beginPath(); raw.slice(0, 160).forEach((q, i) => i ? ctx.lineTo(X(q), Y(q)) : ctx.moveTo(X(q), Y(q))); ctx.stroke();
     ctx.globalCompositeOperation = 'lighter'; ctx.lineWidth = 1.7;
     for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = mix(K.wave, K.violet, Math.min(1, Math.log(i + 1) / Math.log(NMAX))); ctx.beginPath(); ctx.moveTo(X(pts[i - 1]), Y(pts[i - 1])); ctx.lineTo(X(pts[i]), Y(pts[i])); ctx.stroke(); }
     ctx.globalCompositeOperation = 'source-over';
@@ -380,7 +380,7 @@ SCENES.domain = {
   near() { if (!DOMAIN.done) DOMAIN.work(10); },
   draw(ctx, w, h, p) {
     if (!DOMAIN.done) DOMAIN.work(14);
-    const band = h * .62, y0 = (h - band) / 2 - h * .02, unit = band / (DOMAIN.S1 - DOMAIN.S0), span = w / unit;
+    const band = h * .58, y0 = h * .1, unit = band / (DOMAIN.S1 - DOMAIN.S0), span = w / unit;
     const tStart = (DOMAIN.T1 - span) * smooth(p), sx = (tStart - DOMAIN.T0) / (DOMAIN.T1 - DOMAIN.T0) * DOMAIN.W, sw = span / (DOMAIN.T1 - DOMAIN.T0) * DOMAIN.W;
     ctx.imageSmoothingEnabled = true; ctx.drawImage(DOMAIN.cv, sx, 0, sw, DOMAIN.H, 0, y0, w, band);
     const Y = (sg) => y0 + (DOMAIN.S1 - sg) / (DOMAIN.S1 - DOMAIN.S0) * band, X = (t) => (t - tStart) * unit;
@@ -403,7 +403,7 @@ SCENES.explicit = {
   tempo: 90, cache: {},
   draw(ctx, w, h, p) {
     const K0 = p < .08 ? 0 : Math.min(1000, Math.round(Math.pow(10, 3 * smooth((p - .08) / .78))));
-    const XM = 60, L = w * .07, R = w * .95, T = h * .28, B = h * .78, x0 = 2, top = XM * 1.1;
+    const XM = 60, L = w * .07, R = w * .95, T = h * .24, B = h * .66, x0 = 2, top = XM * 1.1;
     const X = (x) => L + (x - x0) / (XM - x0) * (R - L), Y = (v) => B - v / top * (B - T);
     ctx.strokeStyle = rgba(K.ink, .15); ctx.beginPath(); ctx.moveTo(L, B); ctx.lineTo(R, B); ctx.moveTo(L, T - 10); ctx.lineTo(L, B); ctx.stroke();
     ctx.setLineDash([4, 6]); ctx.strokeStyle = rgba(K.ink, .35); ctx.beginPath(); ctx.moveTo(X(x0), Y(x0)); ctx.lineTo(X(XM), Y(XM)); ctx.stroke(); ctx.setLineDash([]);
@@ -419,7 +419,7 @@ SCENES.explicit = {
     ctx.shadowColor = K.wave; ctx.shadowBlur = 10; ctx.strokeStyle = K.wave; ctx.lineWidth = 1.8; ctx.beginPath();
     for (let i = 0; i <= steps; i++) { const x = x0 + i / steps * (XM - x0), y = clamp(Y(arr[i]), T - 40, B + 40); i ? ctx.lineTo(X(x), y) : ctx.moveTo(X(x), y); } ctx.stroke(); ctx.shadowBlur = 0;
     ctx.font = FONT(12); ctx.fillStyle = K.dim; ctx.textAlign = 'center'; for (let x = 10; x <= XM; x += 10) ctx.fillText(x, X(x), B + 24);
-    ctx.font = HAND(Math.max(20, w / 50)); ctx.textAlign = 'left'; ctx.fillStyle = K.prime; ctx.fillText('the primes, ψ(x)', X(46), Y(psi[46]) - 22); ctx.fillStyle = K.wave; ctx.fillText(K0 ? `${K0} zero${K0 > 1 ? 's' : ''} of ζ` : 'x alone', X(8), Y(30));
+    ctx.font = HAND(Math.max(20, w / 50)); ctx.textAlign = 'left'; ctx.fillStyle = K.prime; ctx.fillText('the primes, ψ(x)', X(46), Y(psi[46]) - 22); ctx.fillStyle = K.wave; ctx.fillText(K0 ? `${K0} zero${K0 > 1 ? 's' : ''} of ζ` : 'x alone', X(6), Y(40));
     live('live-explicit', `zeros used   <b>${K0}</b>${K0 ? `\nhighest γ    ${ZEROS[K0 - 1].toFixed(2)}` : ''}\nψ(60)        ${psi[60].toFixed(2)}\nwaves give   ${arr[steps].toFixed(2)}`);
     this._K = K0;
   },
@@ -435,8 +435,8 @@ SCENES.critical = {
     const SIG = [.2, .3, .4, .5, .6, .7, .8], i0 = clamp(Math.floor((sig - .2) / .1), 0, 5), fr = clamp((sig - SIG[i0]) / .1);
     const A = DATA.zetaCurves.curves[String(SIG[i0])], B = DATA.zetaCurves.curves[String(SIG[i0 + 1])];
     const gueOn = smooth((p - .45) / .12), half = w * (1 - .45 * gueOn);
-    const cx = half * .42, cy = h * .52, sc = Math.min(half, h) * .2;
-    ctx.strokeStyle = rgba(K.ink, .1); ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(half, cy); ctx.moveTo(cx, h * .22); ctx.lineTo(cx, h * .85); ctx.stroke();
+    const cx = half * .42, cy = h * .42, sc = Math.min(half, h) * .17;
+    ctx.strokeStyle = rgba(K.ink, .1); ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(half, cy); ctx.moveTo(cx, h * .1); ctx.lineTo(cx, h * .72); ctx.stroke();
     ctx.globalCompositeOperation = 'lighter'; ctx.lineWidth = 1.6; let mn = 1e9;
     for (let i = 1; i < A.length; i++) {
       const a0 = A[i - 1][0] + (B[i - 1][0] - A[i - 1][0]) * fr, b0 = A[i - 1][1] + (B[i - 1][1] - A[i - 1][1]) * fr, a1 = A[i][0] + (B[i][0] - A[i][0]) * fr, b1 = A[i][1] + (B[i][1] - A[i][1]) * fr;
@@ -447,9 +447,9 @@ SCENES.critical = {
     ctx.globalCompositeOperation = 'source-over';
     const atHalf = Math.abs(sig - .5) < .02;
     ctx.shadowColor = K.prime; ctx.shadowBlur = atHalf ? 26 : 0; ctx.fillStyle = atHalf ? K.prime : K.ink; ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
-    ctx.font = HAND(Math.max(22, w / 44)); ctx.fillStyle = K.ink; ctx.textAlign = 'left'; ctx.fillText(`σ = ${sig.toFixed(2)}`, cx - sc * 1.6, h * .27);
+    ctx.font = HAND(Math.max(22, w / 44)); ctx.fillStyle = K.ink; ctx.textAlign = 'left'; ctx.fillText(`σ = ${sig.toFixed(2)}`, Math.max(16, cx - sc * 2.2), h * .12);
     if (gueOn > 0) {
-      ctx.globalAlpha = gueOn; const gx = half + w * .03, gw = w - gx - w * .05, gy = h * .3, gh = h * .46, mxS = 3, my = 1.1;
+      ctx.globalAlpha = gueOn; const gx = half + w * .03, gw = w - gx - w * .05, gy = h * .26, gh = h * .4, mxS = 3, my = 1.1;
       const X = (s) => gx + s / mxS * gw, Y = (v) => gy + gh - v / my * gh;
       GUE.forEach((d, i) => { ctx.fillStyle = rgba(K.wave, .55); ctx.fillRect(X(i * mxS / 30) + 1, Y(d * gueOn), gw / 30 - 2, Y(0) - Y(d * gueOn)); });
       const curve = (f, c, lw) => { ctx.strokeStyle = c; ctx.lineWidth = lw; ctx.beginPath(); for (let i = 0; i <= 200; i++) { const s = i / 200 * mxS; i ? ctx.lineTo(X(s), Y(f(s))) : ctx.moveTo(X(s), Y(f(s))); } ctx.stroke(); };
@@ -464,30 +464,35 @@ SCENES.critical = {
   audio() { const d = Math.abs((this._sig || .5) - .5); Sound.setDrone(ZEROS.slice(0, 6).map((z, k) => ({ f: 110 * z / ZEROS[0] * (1 + d * .06 * (k % 2 ? 1 : -1)), g: .05 / Math.sqrt(k + 1) })), .6); },
 };
 
-/* Act VI: Robin's inequality */
+/* Act VI: Robin's inequality. For every range of n, the largest value of σ(n) / (n ln ln n). */
 const ROBIN = (() => {
-  const N = 1000000, EG = Math.exp(0.5772156649015329); let rec = null, worst = 0, worstN = 0;
-  function build() { const sig = new Float64Array(N + 1); for (let d = 1; d <= N; d++) for (let m = d; m <= N; m += d) sig[m] += d; rec = []; let best = 0; for (let n = 17; n <= N; n++) { const r = sig[n] / (n * Math.log(Math.log(n))); if (r > best) { best = r; rec.push([n, r]); } if (n > 5040 && r > worst) { worst = r; worstN = n; } } }
-  return { N, EG, get rec() { if (!rec) build(); return rec; }, get worst() { if (!rec) build(); return [worstN, worst]; } };
+  const N = 1000000, EG = Math.exp(0.5772156649015329), NB = 360, LO = Math.log10(20), HI = 6; let bins = null;
+  function build() {
+    const sig = new Float64Array(N + 1); for (let d = 1; d <= N; d++) for (let m = d; m <= N; m += d) sig[m] += d;
+    bins = []; for (let b = 0; b < NB; b++) bins.push({ n: 0, r: 0 });
+    for (let n = 20; n <= N; n++) { const r = sig[n] / (n * Math.log(Math.log(n))), b = Math.min(NB - 1, Math.floor((Math.log10(n) - LO) / (HI - LO) * NB)); if (r > bins[b].r) { bins[b].r = r; bins[b].n = n; } }
+  }
+  return { EG, LO, HI, get bins() { if (!bins) build(); return bins; } };
 })();
 SCENES.robin = {
   tempo: 128,
-  near() { if (!this._built) { this._built = true; setTimeout(() => ROBIN.rec, 50); } },
+  near() { if (!this._built) { this._built = true; setTimeout(() => ROBIN.bins, 50); } },
   draw(ctx, w, h, p) {
-    const lim = Math.pow(10, 1.3 + 4.7 * smooth(p / .85)), rec = ROBIN.rec.filter(r => r[0] <= lim);
-    const L = w * .08, R = w * .94, T = h * .28, B = h * .8, lo = 1.2, hi = 2.1;
-    const X = (n) => L + (Math.log10(n) - 1) / 5 * (R - L), Y = (v) => B - (v - lo) / (hi - lo) * (B - T);
+    const lim = Math.pow(10, ROBIN.LO + (ROBIN.HI - ROBIN.LO) * smooth(p / .85)), pts = ROBIN.bins.filter(b => b.n && b.n <= lim);
+    const L = w * .08, R = w * .94, T = h * .22, B = h * .66, lo = 1.35, hi = 2.35;
+    const X = (n) => L + (Math.log10(n) - ROBIN.LO) / (ROBIN.HI - ROBIN.LO) * (R - L), Y = (v) => B - (clamp(v, lo, hi) - lo) / (hi - lo) * (B - T);
     ctx.strokeStyle = rgba(K.ink, .14); ctx.beginPath(); ctx.moveTo(L, B); ctx.lineTo(R, B); ctx.stroke();
-    ctx.fillStyle = rgba(K.prime, .07); ctx.fillRect(L, T - 20, R - L, Y(ROBIN.EG) - T + 20);
+    ctx.fillStyle = rgba(K.prime, .07); ctx.fillRect(L, T - 10, R - L, Y(ROBIN.EG) - T + 10);
     ctx.shadowColor = K.prime; ctx.shadowBlur = 18; ctx.strokeStyle = K.prime; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(L, Y(ROBIN.EG)); ctx.lineTo(R, Y(ROBIN.EG)); ctx.stroke(); ctx.shadowBlur = 0;
-    ctx.strokeStyle = rgba(K.ink, .3); ctx.setLineDash([3, 6]); ctx.beginPath(); ctx.moveTo(X(5040), T - 20); ctx.lineTo(X(5040), B); ctx.stroke(); ctx.setLineDash([]);
-    ctx.strokeStyle = rgba(K.wave, .8); ctx.lineWidth = 1.4; ctx.beginPath(); rec.forEach(([n, r], i) => i ? ctx.lineTo(X(n), Y(Math.min(r, hi))) : ctx.moveTo(X(n), Y(Math.min(r, hi)))); ctx.stroke();
-    rec.forEach(([n, r], i) => { const last = i === rec.length - 1; ctx.fillStyle = r >= ROBIN.EG ? K.ochre : K.ink; if (last) { ctx.shadowColor = K.ink; ctx.shadowBlur = 16; } ctx.beginPath(); ctx.arc(X(n), Y(Math.min(r, hi)), last ? 5 : 2.6, 0, 7); ctx.fill(); ctx.shadowBlur = 0; });
-    ctx.font = FONT(12); ctx.fillStyle = K.dim; ctx.textAlign = 'center'; ['10', '100', '1,000', '10,000', '100,000', '1,000,000'].forEach((t, i) => ctx.fillText(t, X(10 ** (i + 1)), B + 24));
-    ctx.font = HAND(Math.max(20, w / 50)); ctx.textAlign = 'left'; ctx.fillStyle = K.prime; ctx.fillText('cross this line after 5040 and the hypothesis is false', L + 10, Y(ROBIN.EG) - 14);
+    ctx.strokeStyle = rgba(K.ink, .3); ctx.setLineDash([3, 6]); ctx.beginPath(); ctx.moveTo(X(5040), T - 10); ctx.lineTo(X(5040), B); ctx.stroke(); ctx.setLineDash([]);
+    ctx.globalCompositeOperation = 'lighter';
+    pts.forEach((b, i) => { const above = b.r >= ROBIN.EG, last = i === pts.length - 1; ctx.fillStyle = above ? K.ochre : (b.n > 5040 ? K.ink : rgba(K.ink, .55)); if (last) { ctx.shadowColor = K.ink; ctx.shadowBlur = 18; } ctx.beginPath(); ctx.arc(X(b.n), Y(b.r), last ? 5 : 2.4, 0, 7); ctx.fill(); ctx.shadowBlur = 0; });
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.font = FONT(12); ctx.fillStyle = K.dim; ctx.textAlign = 'center'; ['100', '1,000', '10,000', '100,000', '1,000,000'].forEach((t, i) => ctx.fillText(t, X(10 ** (i + 2)), B + 24));
+    ctx.font = HAND(Math.max(20, w / 52)); ctx.textAlign = 'left'; ctx.fillStyle = K.prime; ctx.fillText('cross this line after 5040 and the hypothesis is false', L + 10, Y(ROBIN.EG) - 14);
     ctx.fillStyle = K.dim; ctx.fillText('5040', X(5040) + 8, B - 10);
-    const lastR = rec[rec.length - 1] || [17, 0], after = rec.filter(r => r[0] > 5040);
-    live('live-robin', `checked up to   ${fmt(lim)}\nlatest record   n = ${fmt(lastR[0])}\nratio           ${lastR[1].toFixed(5)}\nline e^γ        ${ROBIN.EG.toFixed(5)}${after.length ? `\ngap after 5040  <b>${(ROBIN.EG - Math.max(...after.map(r => r[1]))).toFixed(5)}</b>` : ''}`);
+    const after = pts.filter(b => b.n > 5040), best = after.reduce((a, b) => b.r > a.r ? b : a, { n: 0, r: 0 });
+    live('live-robin', `checked up to       ${fmt(lim)}\nlargest above 5040  ${best.n ? 'n = ' + fmt(best.n) : '…'}\nits ratio           ${best.n ? best.r.toFixed(5) : ''}\nthe line e^γ        ${ROBIN.EG.toFixed(5)}${best.n ? `\nclosest gap         <b>${(ROBIN.EG - best.r).toFixed(5)}</b>` : ''}`);
     this._p = p;
   },
   audio() { const p = this._p || 0; Sound.setRiser(smooth(p / .85), 200 + 2600 * smooth(p / .85)); Sound.setDrone([{ f: 55, g: .05 }, { f: 55 * Math.pow(2, 11.5 / 12) * (1 - .02 * (1 - p)), g: .03 * p }]); },
@@ -524,6 +529,7 @@ const OPEN = (() => {
 const sceneEls = [...document.querySelectorAll('.scene')].map(el => ({ el, def: SCENES[el.dataset.scene], cv: el.querySelector('canvas'), lines: [...el.querySelectorAll('.line')].map((l, i, a) => ({ l, at: +l.dataset.at, to: i + 1 < a.length ? +a[i + 1].dataset.at : 1.01 })) }));
 const whereEls = [...document.querySelectorAll('[data-where]')];
 const actEls = [...document.querySelectorAll('.act')];
+const SOLO = (() => { const q = new URLSearchParams(location.search); if (!q.get('solo')) return null; const [id, pp] = q.get('solo').split(':'); const s = document.getElementById(id); if (!s) return null; document.body.classList.add('solo'); s.classList.add('solo-on'); return { id, p: clamp(+pp || 0) }; })();
 let film = false, tempo = 76, lastTs = performance.now(), nextBeat = 0, active = null, lastAct = null, T = 0;
 const btnFilm = $('#film'), btnSound = $('#sound'), countEl = $('#count');
 
@@ -553,7 +559,8 @@ function frame(ts) {
   const vh = innerHeight;
   // which scene owns the screen
   active = null; let best = 0;
-  for (const s of sceneEls) { const r = s.el.getBoundingClientRect(); const vis = Math.min(vh, r.bottom) - Math.max(0, r.top); if (vis > best) { best = vis; active = s; } }
+  if (SOLO) { active = sceneEls.find(s => s.el.id === SOLO.id); best = vh; }
+  else for (const s of sceneEls) { const r = s.el.getBoundingClientRect(); const vis = Math.min(vh, r.bottom) - Math.max(0, r.top); if (vis > best) { best = vis; active = s; } }
   if (active && best < vh * .5) active = null;
   // tempo and the pulse
   const target = active ? active.def.tempo : 72; tempo += (target - tempo) * Math.min(1, dt * 1.2);
@@ -572,7 +579,7 @@ function frame(ts) {
     const r = s.el.getBoundingClientRect();
     if (s.def.near && r.top < vh * 3 && r.bottom > -vh) s.def.near();
     if (s !== active) continue;
-    const p = clamp(-r.top / (r.height - vh));
+    const p = SOLO ? SOLO.p : clamp(-r.top / (r.height - vh));
     const { ctx, w, h } = fit(s.cv);
     try { s.def.draw(ctx, w, h, p, T); } catch (e) { console.error(e); }
     for (const L of s.lines) L.l.classList.toggle('on', p >= L.at && p < L.to);

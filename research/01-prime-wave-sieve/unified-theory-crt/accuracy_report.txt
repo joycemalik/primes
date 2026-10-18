@@ -1,0 +1,37 @@
+PRIME WAVE THEORY - ACCURACY REPORT
+==================================================
+Generated: August 3, 2025
+Analysis Range: 1 to 999983
+Total Numbers Analyzed: 999,982
+
+SUMMARY:
+--------------------
+True Primes (Ground Truth):    78,498
+Predicted Primes:              78,498
+Correctly Predicted:           78,498
+False Positives:                    0
+False Negatives:                    0
+
+CONFUSION MATRIX:
+--------------------
+True Positives (TP):           78,498
+False Positives (FP):               0
+False Negatives (FN):               0
+True Negatives (TN):           921,484
+
+PERFORMANCE METRICS:
+--------------------
+Precision:     1.000000 (100.0000%)
+Recall:        1.000000 (100.0000%)
+F1-Score:      1.000000 (100.0000%)
+Accuracy:      1.000000 (100.0000%)
+Specificity:   1.000000 (100.0000%)
+
+ERROR ANALYSIS:
+--------------------
+INTERPRETATION:
+--------------------
+🎉 EXCELLENT: Near-perfect prime prediction!
+
+The Prime Wave Theory achieved an F1-Score of 1.000000,
+indicating excellent performance in prime number prediction.

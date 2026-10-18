@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Waterfall Simulation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .info-card {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        /* Custom styling for range slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            background: #4A5568;
+            height: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -4px;
+            background-color: #38B2AC;
+            height: 1.25rem;
+            width: 1.25rem;
+            border-radius: 50%;
+            border: 2px solid #E6FFFA;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-7xl mx-auto flex flex-col items-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">Prime Waterfall Simulation</h1>
+        <p class="text-gray-400 mb-6 text-center">Visualizing water flow down a staircase defined by the gaps between prime numbers.</p>
+
+        <!-- Controls -->
+        <div class="w-full max-w-2xl bg-gray-800 p-4 rounded-xl shadow-lg mb-4 border border-gray-700">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                <div>
+                    <label for="friction" class="block text-sm font-medium text-gray-300 mb-1">Friction Coefficient (μ)</label>
+                    <input type="number" id="friction" value="0.02" min="0.001" max="1" step="0.001" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
+                </div>
+                <div>
+                    <label for="dropHeight" class="block text-sm font-medium text-gray-300 mb-1">Drop Height (h)</label>
+                    <input type="number" id="dropHeight" value="1" min="0.1" max="100" step="0.1" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="speed" class="block text-sm font-medium text-gray-300 mb-1">Simulation Speed: <span id="speedValue" class="font-bold text-cyan-400">1</span>x</label>
+                <input type="range" id="speed" value="1" min="1" max="5000" step="1" class="w-full">
+            </div>
+            <div class="flex space-x-4 mt-4">
+                <button id="startButton" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">Start Simulation</button>
+                <button id="resetButton" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">Reset</button>
+            </div>
+        </div>
+
+        <!-- Simulation Canvas -->
+        <div class="w-full h-[300px] md:h-[400px] bg-gray-800 rounded-t-xl shadow-lg border-x border-t border-gray-700 relative overflow-hidden">
+            <canvas id="simulationCanvas" class="absolute top-0 left-0"></canvas>
+            <div id="infoOverlay" class="absolute top-4 left-4 bg-gray-900 bg-opacity-70 info-card p-4 rounded-lg border border-gray-700 text-sm md:text-base hidden">
+                <h3 class="font-bold text-lg text-cyan-400 mb-2">Simulation Data</h3>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+                    <span class="font-semibold text-gray-300">Status:</span> <span id="status" class="text-yellow-400">Idle</span>
+                    <span class="font-semibold text-gray-300">Step #:</span> <span id="stepNumber" class="text-white">0</span>
+                    <span class="font-semibold text-gray-300">Prime:</span> <span id="primeNumber" class="text-white">2</span>
+                    <span class="font-semibold text-gray-300">Step Length:</span> <span id="stepLength" class="text-white">1</span>
+                    <span class="font-semibold text-gray-300">Velocity (H):</span> <span id="hVelocity" class="text-white">0.00 m/s</span>
+                </div>
+            </div>
+             <div id="welcomeMessage" class="absolute inset-0 flex items-center justify-center">
+                <p class="text-gray-500 text-2xl font-medium">Click 'Start Simulation' to begin</p>
+            </div>
+        </div>
+        
+        <!-- Graph Canvas -->
+        <div class="w-full h-[200px] md:h-[250px] bg-gray-800 rounded-b-xl shadow-lg border-x border-b border-gray-700 relative p-4 pt-8">
+             <p class="absolute top-2 left-4 text-sm text-gray-400 font-semibold">Horizontal Velocity vs. Time</p>
+            <canvas id="graphCanvas" class="w-full h-full"></canvas>
+        </div>
+
+        <!-- Simulation Summary -->
+        <div id="summaryReport" class="w-full max-w-2xl bg-gray-800 p-4 rounded-xl shadow-lg mt-4 border border-gray-700 hidden">
+            <h3 class="text-xl font-bold text-cyan-400 mb-3 text-center">Simulation Summary</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div>
+                    <p class="text-sm text-gray-400">Peak Velocity</p>
+                    <p id="peakVelocity" class="text-2xl font-semibold text-white">0.00 m/s</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Occurred at Step #</p>
+                    <p id="peakStep" class="text-2xl font-semibold text-white">0</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Total Duration</p>
+                    <p id="totalDuration" class="text-2xl font-semibold text-white">0.00 s</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const simCanvas = document.getElementById('simulationCanvas');
+        const simCtx = simCanvas.getContext('2d');
+        const graphCanvas = document.getElementById('graphCanvas');
+        const graphCtx = graphCanvas.getContext('2d');
+
+        // UI Elements
+        const startButton = document.getElementById('startButton');
+        const resetButton = document.getElementById('resetButton');
+        const frictionInput = document.getElementById('friction');
+        const dropHeightInput = document.getElementById('dropHeight');
+        const speedSlider = document.getElementById('speed');
+        const speedValueDisplay = document.getElementById('speedValue');
+        const infoOverlay = document.getElementById('infoOverlay');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const summaryReport = document.getElementById('summaryReport');
+        
+        // Summary Displays
+        const peakVelocityDisplay = document.getElementById('peakVelocity');
+        const peakStepDisplay = document.getElementById('peakStep');
+        const totalDurationDisplay = document.getElementById('totalDuration');
+        
+        // Info Displays
+        const statusDisplay = document.getElementById('status');
+        const stepNumberDisplay = document.getElementById('stepNumber');
+        const primeNumberDisplay = document.getElementById('primeNumber');
+        const stepLengthDisplay = document.getElementById('stepLength');
+        const hVelocityDisplay = document.getElementById('hVelocity');
+
+        function resizeCanvases() {
+            let simParent = simCanvas.parentElement;
+            simCanvas.width = simParent.clientWidth;
+            simCanvas.height = simParent.clientHeight;
+            
+            let graphParent = graphCanvas.parentElement;
+            graphCanvas.width = graphParent.clientWidth;
+            graphCanvas.height = graphParent.clientHeight;
+        }
+        window.addEventListener('resize', resizeCanvases);
+
+        // --- Simulation State ---
+        let simState = {};
+        let animationFrameId;
+
+        // --- Prime Number Generation ---
+        const primes = [2, 3, 5, 7];
+        function isPrime(num) {
+            if (num <= 1) return false; if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            for (let i = 5; i * i <= num; i = i + 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+            return true;
+        }
+        function findNextPrime(n) {
+            let next = n + 1;
+            while (true) { if (isPrime(next)) return next; next++; }
+        }
+        function getPrime(index) {
+            while (index >= primes.length) {
+                primes.push(findNextPrime(primes[primes.length - 1]));
+            }
+            return primes[index];
+        }
+
+        function resetSimulation() {
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            
+            simState = {
+                friction: parseFloat(frictionInput.value),
+                dropHeight: parseFloat(dropHeightInput.value),
+                g: 9.81,
+                scale: 50,
+                stepIndex: 0,
+                water: { x: 0, y: simCanvas.height / 2, vx: 0, radius: 8 },
+                cameraX: 0,
+                isFalling: true,
+                isStopped: false,
+                totalTime: 0,
+                velocityHistory: [{time: 0, vx: 0, step: 0}],
+            };
+            
+            updateInfo('Idle', 0, 2, 1, 0);
+            infoOverlay.classList.add('hidden');
+            summaryReport.classList.add('hidden');
+            welcomeMessage.style.display = 'flex';
+            startButton.disabled = false;
+            speedValueDisplay.textContent = speedSlider.value;
+            draw();
+            drawGraph();
+        }
+
+        function startSimulation() {
+            resetSimulation();
+            simState.isStopped = false;
+            infoOverlay.classList.remove('hidden');
+            summaryReport.classList.add('hidden');
+            welcomeMessage.style.display = 'none';
+            startButton.disabled = true;
+            statusDisplay.textContent = 'Running';
+            statusDisplay.className = 'text-green-400';
+            
+            let lastTime = 0;
+            function gameLoop(timestamp) {
+                if (simState.isStopped) return;
+                if (!lastTime) lastTime = timestamp;
+                
+                const speedMultiplier = parseFloat(speedSlider.value);
+                const deltaTime = ((timestamp - lastTime) / 1000) * speedMultiplier;
+
+                lastTime = timestamp;
+                update(deltaTime);
+                draw();
+                drawGraph();
+                animationFrameId = requestAnimationFrame(gameLoop);
+            }
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+
+        function update(dt) {
+            if (dt > 0.1) dt = 0.1;
+            simState.totalTime += dt;
+
+            const currentPrime = getPrime(simState.stepIndex);
+            const nextPrime = getPrime(simState.stepIndex + 1);
+            const stepLengthMeters = nextPrime - currentPrime;
+
+            if (simState.isFalling) {
+                const potentialEnergy = simState.g * simState.dropHeight;
+                const kineticEnergy = 0.5 * simState.water.vx * simState.water.vx + potentialEnergy;
+                simState.water.vx = Math.sqrt(2 * kineticEnergy);
+                simState.water.x = 0;
+                simState.isFalling = false;
+            } else {
+                const deceleration = simState.friction * simState.g;
+                simState.water.vx -= deceleration * dt;
+
+                if (simState.water.vx <= 0) {
+                    simState.water.vx = 0;
+                    simState.isStopped = true;
+                    statusDisplay.textContent = 'Stopped';
+                    statusDisplay.className = 'text-red-400';
+                    startButton.disabled = false;
+                    analyzeAndShowSummary();
+                } else {
+                    simState.water.x += simState.water.vx * dt;
+                    if (simState.water.x >= stepLengthMeters) {
+                        simState.stepIndex++;
+                        simState.isFalling = true;
+                    }
+                }
+            }
+            
+            const targetCameraX = simState.water.x * simState.scale - simCanvas.width * 0.2;
+            simState.cameraX += (targetCameraX - simState.cameraX) * 0.1;
+            
+            if (simState.velocityHistory.length === 0 || simState.totalTime - simState.velocityHistory[simState.velocityHistory.length - 1].time > 0.05) {
+                simState.velocityHistory.push({ time: simState.totalTime, vx: simState.water.vx, step: simState.stepIndex });
+            }
+
+            updateInfo('Running', simState.stepIndex, currentPrime, stepLengthMeters, simState.water.vx);
+        }
+
+        function analyzeAndShowSummary() {
+            let peakVelocity = 0;
+            let peakStep = 0;
+            for (const point of simState.velocityHistory) {
+                if (point.vx > peakVelocity) {
+                    peakVelocity = point.vx;
+                    peakStep = point.step;
+                }
+            }
+            peakVelocityDisplay.textContent = peakVelocity.toFixed(2) + ' m/s';
+            peakStepDisplay.textContent = peakStep;
+            totalDurationDisplay.textContent = simState.totalTime.toFixed(2) + ' s';
+            summaryReport.classList.remove('hidden');
+        }
+
+        function draw() {
+            simCtx.clearRect(0, 0, simCanvas.width, simCanvas.height);
+            simCtx.save();
+            simCtx.translate(-simState.cameraX, 0);
+
+            const { scale, water, stepIndex } = simState;
+            const stepY = simCanvas.height / 2;
+
+            simCtx.strokeStyle = '#4A5568';
+            simCtx.lineWidth = 2;
+            let currentStepX = 0;
+            for (let i = 0; i < 15; i++) {
+                const p1 = getPrime(stepIndex + i);
+                const p2 = getPrime(stepIndex + i + 1);
+                const len = (p2 - p1) * scale;
+                const yPos = stepY + i * simState.dropHeight * scale;
+                simCtx.beginPath();
+                simCtx.moveTo(currentStepX, yPos);
+                simCtx.lineTo(currentStepX + len, yPos);
+                simCtx.stroke();
+                simCtx.beginPath();
+                simCtx.moveTo(currentStepX + len, yPos);
+                simCtx.lineTo(currentStepX + len, yPos + simState.dropHeight * scale);
+                simCtx.stroke();
+                currentStepX += len;
+            }
+            
+            const waterDrawX = water.x * scale;
+            const waterDrawY = stepY - water.radius;
+            simCtx.beginPath();
+            simCtx.arc(waterDrawX, waterDrawY, water.radius, 0, Math.PI * 2);
+            simCtx.fillStyle = '#4299E1';
+            simCtx.fill();
+            simCtx.beginPath();
+            simCtx.arc(waterDrawX - 2, waterDrawY - 2, water.radius / 3, 0, Math.PI * 2);
+            simCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            simCtx.fill();
+
+            simCtx.restore();
+        }
+        
+        function drawGraph() {
+            graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+            const history = simState.velocityHistory;
+            if (history.length < 2) return;
+
+            const padding = { top: 10, bottom: 20, left: 30, right: 10 };
+            const viewWidth = graphCanvas.width - padding.left - padding.right;
+            const viewHeight = graphCanvas.height - padding.top - padding.bottom;
+
+            const maxVx = Math.max(...history.map(p => p.vx), 1);
+            const maxTime = history[history.length - 1].time;
+            
+            // Draw axes
+            graphCtx.strokeStyle = '#4A5568';
+            graphCtx.lineWidth = 1;
+            graphCtx.beginPath();
+            graphCtx.moveTo(padding.left, padding.top);
+            graphCtx.lineTo(padding.left, padding.top + viewHeight);
+            graphCtx.lineTo(padding.left + viewWidth, padding.top + viewHeight);
+            graphCtx.stroke();
+
+            // Draw labels
+            graphCtx.fillStyle = '#A0AEC0';
+            graphCtx.font = '10px Inter';
+            graphCtx.textAlign = 'right';
+            graphCtx.textBaseline = 'middle';
+            graphCtx.fillText(maxVx.toFixed(1), padding.left - 4, padding.top);
+            graphCtx.fillText('0', padding.left - 4, padding.top + viewHeight);
+            graphCtx.textAlign = 'center';
+            graphCtx.textBaseline = 'top';
+            graphCtx.fillText(maxTime > 0 ? maxTime.toFixed(1) + 's' : '0s', padding.left + viewWidth, padding.top + viewHeight + 4);
+
+            // Draw line
+            graphCtx.strokeStyle = '#38B2AC';
+            graphCtx.lineWidth = 2;
+            graphCtx.beginPath();
+            
+            for (let i = 0; i < history.length; i++) {
+                const point = history[i];
+                const x = padding.left + (maxTime > 0 ? (point.time / maxTime) * viewWidth : 0);
+                const y = padding.top + viewHeight - (point.vx / maxVx) * viewHeight;
+                if (i === 0) {
+                    graphCtx.moveTo(x, y);
+                } else {
+                    graphCtx.lineTo(x, y);
+                }
+            }
+            graphCtx.stroke();
+        }
+
+        function updateInfo(status, step, prime, len, vx) {
+            if (status !== 'Idle') statusDisplay.textContent = status;
+            stepNumberDisplay.textContent = step;
+            primeNumberDisplay.textContent = prime;
+            stepLengthDisplay.textContent = len.toFixed(2) + ' m';
+            hVelocityDisplay.textContent = vx.toFixed(2) + ' m/s';
+        }
+
+        // --- Event Listeners ---
+        startButton.addEventListener('click', startSimulation);
+        resetButton.addEventListener('click', resetSimulation);
+        speedSlider.addEventListener('input', () => {
+            speedValueDisplay.textContent = speedSlider.value;
+        });
+
+        // Initial setup
+        resizeCanvases();
+        resetSimulation();
+    </script>
+</body>
+</html>

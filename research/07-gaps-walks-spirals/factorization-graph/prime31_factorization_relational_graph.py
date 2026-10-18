@@ -1,0 +1,106 @@
+# ----------------------------------------------------------------------------
+# Prime research archive :: research/07-gaps-walks-spirals/factorization-graph/prime31_factorization_relational_graph.py
+# Original location      :: learn/pime/prime31.py   (last edited 2025-08-18)
+# What this script does  :: Builds an interactive pyvis graph of prime factorisations (writes relational_model_graph.html).
+# ----------------------------------------------------------------------------
+# Clean implementation: prefer write_html, fallback to PNG.
+
+import math
+import os
+import webbrowser
+
+import networkx as nx
+from pyvis.network import Network
+
+
+def get_prime_factorization(num):
+  factors = set()
+  d = 2
+  temp = num
+  while d * d <= temp:
+    if temp % d == 0:
+      factors.add(d)
+      temp //= d
+    else:
+      d += 1
+  if temp > 1:
+    factors.add(temp)
+  return list(factors)
+
+
+def generate_relational_graph(max_number=50):
+  print(f"Generating graph for numbers up to {max_number}...")
+
+  net = Network(height="800px", width="100%", bgcolor="#1a1a1a", font_color="white", directed=True, notebook=False)
+
+  # Sieve for primes
+  is_prime = [True] * (max_number + 1)
+  if max_number >= 0:
+    is_prime[0] = False
+  if max_number >= 1:
+    is_prime[1] = False
+  for p in range(2, int(math.sqrt(max_number)) + 1):
+    if is_prime[p]:
+      for i in range(p * p, max_number + 1, p):
+        is_prime[i] = False
+
+  primes = [p for p in range(2, max_number + 1) if is_prime[p]]
+
+  for p in primes:
+    net.add_node(p, label=str(p), color="#ff8c00", size=20, title=f"Prime: {p}")
+
+  for num in range(4, max_number + 1):
+    if not is_prime[num]:
+      factors = get_prime_factorization(num)
+      net.add_node(num, label=str(num), color="#4682b4", size=15, title=f"Composite: {num} | factors: {' * '.join(map(str, sorted(factors)))}")
+      for f in factors:
+        if f in primes:
+          net.add_edge(num, f)
+
+  net.set_options("""
+  var options = {"layout":{"hierarchical":{"enabled":true,"direction":"DU","levelSeparation":120}},"physics":{"stabilization":{"iterations":100}}}
+  """)
+
+  file_name = "relational_model_graph.html"
+
+  # Prefer write_html to avoid Jinja rendering issues in some environments
+  try:
+    net.write_html(file_name)
+    print(f"Wrote interactive HTML to {file_name}")
+    webbrowser.open("file://" + os.path.realpath(file_name))
+    return
+  except Exception as e:
+    print(f"write_html failed: {e}")
+
+  # Fallback: static PNG
+  try:
+    import matplotlib.pyplot as plt
+
+    G = nx.DiGraph()
+    for p in primes:
+      G.add_node(p)
+    for num in range(4, max_number + 1):
+      if not is_prime[num]:
+        factors = get_prime_factorization(num)
+        G.add_node(num)
+        for f in factors:
+          if f in primes:
+            G.add_edge(num, f)
+
+    plt.figure(figsize=(12, 8))
+    pos = nx.spring_layout(G, seed=42)
+    node_colors = ["#ff8c00" if n in primes else "#4682b4" for n in G.nodes()]
+    node_sizes = [300 if n in primes else 120 for n in G.nodes()]
+    nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=node_sizes, font_color="white")
+
+    image_file = file_name.replace('.html', '.png')
+    plt.savefig(image_file, bbox_inches='tight', facecolor='#1a1a1a')
+    plt.close()
+    print(f"Saved static image to {image_file}")
+    webbrowser.open("file://" + os.path.realpath(image_file))
+  except Exception as e2:
+    print(f"Static image fallback failed: {e2}")
+
+
+if __name__ == "__main__":
+  generate_relational_graph(50)

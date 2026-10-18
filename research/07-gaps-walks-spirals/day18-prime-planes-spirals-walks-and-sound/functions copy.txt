@@ -1,0 +1,30 @@
+[
+  # Basic Algebraic Functions
+  "x",
+  "x**2",
+  "x**2 / (x+1)",
+  "x**0.5",
+  "x**(1/3)",
+
+  # Logarithmic and Exponential
+  "log(x)",
+  "log(x+1)",
+  "exp(x) - 1",
+
+  # Trigonometric Functions (use generic names, not np.)
+  "sin(x)",
+  "cos(x/5)",
+  "tan(x/10)",
+  "sin(x) * cos(x/10)",
+  "sin(x) / x",
+
+  # Hyperbolic and Inverse Trig
+  "asinh(x)",
+  "atanh(x)",
+
+  # Special Functions (that have symbolic meaning)
+  "diff(sin(x)*x)",
+  "diff(x**3, x, 2)",
+  "Abs(x % 11 - 5)",
+  "floor(x**0.5)"
+]

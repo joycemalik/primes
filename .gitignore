@@ -1,0 +1,33 @@
+# ---- Not part of the prime research (kept locally) ----
+/other-projects/
+/simu1/
+/simu2/
+
+# ---- Python environments and caches (recreate from research/requirements.txt) ----
+/.venv/
+/research/.venv-notebooks/
+/archive/pycache/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ---- Large generated media kept locally (GitHub rejects files over 100 MB) ----
+# 212 MB trained model; regenerate with 23_chaotic_function_model_training.py / 17_nth_prime_model_comparison.ipynb
+/research/08-machine-learning/day19-nth-prime-formulas-and-models/blackbox_artifacts/best_model.joblib
+# 52 MB plot; regenerate with 19_shifted_prime_sequences.py
+/research/08-machine-learning/day19-nth-prime-formulas-and-models/prime_sequences_n10000_m6.png
+# animations (121 MB, 100 MB, 53 MB) and their 800 source frames; regenerate with g2/g3_*.py from radial_plots/
+/research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/radial_plots_animation.gif
+/research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/radial_plots_animation2.gif
+/research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/radial_plots_animation3.mp4
+/research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/radial_plots_generator/
+/research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/radial_plot_gen2/
+# 57 MB Plotly page; regenerate with v53_3d_rotation_walk_interactive.py
+/research/07-gaps-walks-spirals/day18-prime-planes-spirals-walks-and-sound/interactive_3d_walks/Interactive_3D_PrimeWalk_1000000.html
+
+# ---- Editor / OS / Vercel ----
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+.vercel
