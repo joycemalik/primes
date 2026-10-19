@@ -152,3 +152,30 @@ body.solo .scene.solo-on { height: 100vh; }
 .contact button:hover { border-color: var(--prime); color: var(--prime); }
 .contact .copied { font-size: .78rem; color: var(--green); }
 .contact .links { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: .84rem; letter-spacing: .06em; }
+
+/* depth: the fractal space behind everything (depth.js) */
+.depth { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; image-rendering: auto; filter: blur(.4px) saturate(1.15); }
+.opening, main { position: relative; z-index: 1; }
+.epilogue { background: linear-gradient(rgba(7, 8, 11, 0), rgba(14, 16, 22, .86) 22%, rgba(14, 16, 22, .94)); backdrop-filter: blur(2px); }
+
+/* each stage is a window in 3D: it rises out of the fractal as it arrives, sinks back as it leaves,
+   and tilts toward the pointer so the figure, the notes and the narration sit at different depths */
+.stage { perspective: 1400px; perspective-origin: 50% 45%; --depth: 0; }
+.stage canvas { transform-origin: 50% 50%; will-change: transform; transition: transform .25s linear;
+  transform: translateZ(calc(var(--depth) * -300px)) translate(var(--cx, 0), var(--cy, 0)) rotate(var(--cr, 0)) rotateX(calc(var(--py, 0) * -1.2deg)) rotateY(calc(var(--px, 0) * 1.5deg)) scale(calc(var(--cs, 1) * 1.04));
+  opacity: calc(1 - var(--depth) * .8); }
+.note { transform: translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px), 60px) rotateY(calc(var(--px, 0) * -3deg)); transition: box-shadow .3s; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .8), inset 0 0 0 1px rgba(237, 230, 214, .08); }
+.lines { transform: translate3d(calc(-50% + var(--px, 0) * -22px), calc(var(--py, 0) * -8px), 0); }
+.line { filter: blur(0); }
+.line:not(.on) { filter: blur(6px); transform: translateY(14px) scale(.96); }
+
+/* act cards: the title falls toward the viewer through the fractal, stretched by scroll speed */
+.act { --ap: 0; perspective: 900px; overflow: hidden; }
+.act > * { transform: translateZ(calc(var(--ap) * 260px)) translate(calc(var(--px, 0) * var(--ap) * -30px), calc(var(--py, 0) * var(--ap) * -20px)); opacity: calc(1 - abs(var(--ap)) * .9); filter: blur(calc(abs(var(--ap)) * 5px)); }
+.act h2 { transform: translateZ(calc(var(--ap) * 380px)) skewY(calc(var(--vel, 0) * 4deg)) scaleY(calc(1 + abs(var(--vel, 0)) * .25)); text-shadow: calc(var(--vel, 0) * 8px) 0 0 rgba(255, 106, 61, .55), calc(var(--vel, 0) * -8px) 0 0 rgba(111, 168, 255, .55); }
+.opening h1 { transform: perspective(900px) rotateY(calc(var(--px, 0) * 6deg)) rotateX(calc(var(--py, 0) * -5deg)); text-shadow: calc(var(--px, 0) * -10px) calc(var(--py, 0) * -8px) 0 rgba(255, 106, 61, .18), calc(var(--px, 0) * -20px) calc(var(--py, 0) * -16px) 0 rgba(111, 168, 255, .1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .stage canvas, .note, .act > *, .act h2, .opening h1 { transform: none !important; filter: none !important; }
+  .lines { transform: translateX(-50%); }
+}

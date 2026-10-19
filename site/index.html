@@ -81,8 +81,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 
 <main>
 
-<!-- PROLOGUE -->
-<section class="scene" id="s-count" data-scene="count" data-where="Prologue · Counting" style="--len:340">
+<!-- π(x) -->
+<section class="scene" id="s-count" data-scene="count" data-where="π(x) · Counting" style="--len:424">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Counting primes</div><div class="eq">\(\pi(x) \sim \dfrac{x}{\ln x}\)</div><div class="live" id="live-count"></div></div>
     <div class="lines">
@@ -96,9 +96,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </section>
 
 <!-- ACT I -->
-<section class="act" data-where="Act I · The waves"><div class="num">Act I</div><h2>The waves</h2><div class="when">30 July to 3 August 2025</div><div class="path">research/01-prime-wave-sieve</div></section>
+<section class="act" data-where="p₁ · The waves"><div class="num">p₁ = 2</div><h2>The waves</h2><div class="when">30 July to 3 August 2025</div><div class="path">research/01-prime-wave-sieve</div></section>
 
-<section class="scene" id="s-sieve" data-scene="sieve" data-where="Act I · The prime wave" style="--len:480">
+<section class="scene" id="s-sieve" data-scene="sieve" data-where="p₁ · The prime wave" style="--len:599">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">The prime wave</div><div class="eq">\(W(n)=\displaystyle\sum_{p\le P,\;p\mid n,\;p\ne n}\frac{1}{\sqrt p}\)</div><div class="live" id="live-sieve"></div><div class="src">detectors/prime_wave_detector.py · unified-theory-crt/accuracy_report.txt</div></div>
     <div class="lines">
@@ -111,7 +111,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<section class="scene" id="s-smooth" data-scene="smooth" data-where="Act I · Continuous waves" style="--len:340">
+<section class="scene" id="s-smooth" data-scene="smooth" data-where="p₁ · Continuous waves" style="--len:424">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Smooth waves</div><div class="eq">\(g(x)=\displaystyle\prod_{p\le P}\Big|\sin\frac{\pi x}{p}\Big|\)</div><div class="eq">\(W(x)=\dfrac{\pi^2}{6}+\displaystyle\sum_{n\ge2}\frac{\cos(2\pi x/n)}{n^2}\)</div><div class="live" id="live-smooth"></div><div class="src">numbered-series/prime01, prime02, prime05 · notebooks/restart_individual_prime_waves.ipynb</div></div>
     <div class="lines">
@@ -123,9 +123,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </section>
 
 <!-- ACT II -->
-<section class="act" data-where="Act II · The complex plane"><div class="num">Act II</div><h2>The complex plane</h2><div class="when">4 to 11 August 2025</div><div class="path">research/03-complex-plane</div></section>
+<section class="act" data-where="p₂ · The complex plane"><div class="num">p₂ = 3</div><h2>The complex plane</h2><div class="when">4 to 11 August 2025</div><div class="path">research/03-complex-plane</div></section>
 
-<section class="scene" id="s-zn" data-scene="zn" data-where="Act II · Primes on a circle" style="--len:400">
+<section class="scene" id="s-zn" data-scene="zn" data-where="p₂ · Primes on a circle" style="--len:499">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">One arrow per prime factor</div><div class="eq">\(Z(n)=\displaystyle\sum_{p\mid n} e^{\,i\,p\ln n}\)</div><div class="live" id="live-zn"></div><div class="src">complex_plane_spirals_and_gpu_hunts.ipynb · cells 21 to 38</div></div>
     <div class="lines">
@@ -136,7 +136,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<section class="scene" id="s-spiral" data-scene="spiral" data-where="Act II · Spirals" style="--len:520">
+<section class="scene" id="s-spiral" data-scene="spiral" data-where="p₂ · Spirals" style="--len:649">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label" id="spiral-label">Sacks spiral</div><div class="live" id="live-spiral"></div><div class="src">complex_plane_spirals_and_gpu_hunts.ipynb · cells 52 to 57 · day18 radial plots</div></div>
     <div class="lines">
@@ -149,9 +149,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </section>
 
 <!-- ACT III -->
-<section class="act" data-where="Act III · Machines and codes"><div class="num">Act III</div><h2>Machines and codes</h2><div class="when">8 to 27 August 2025</div><div class="path">research/04-bit-pair-sequences · 05-hex-sequence-puzzle · 08-machine-learning</div></section>
+<section class="act" data-where="p₃ · Machines and codes"><div class="num">p₃ = 5</div><h2>Machines and codes</h2><div class="when">8 to 27 August 2025</div><div class="path">research/04-bit-pair-sequences · 05-hex-sequence-puzzle · 08-machine-learning</div></section>
 
-<section class="scene" id="s-bits" data-scene="bits" data-where="Act III · Binary fingerprints" style="--len:460">
+<section class="scene" id="s-bits" data-scene="bits" data-where="p₃ · Binary fingerprints" style="--len:574">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Two bits per k</div><div class="eq">\(\big([\,6k-1\text{ prime}\,],\;[\,6k+1\text{ prime}\,]\big)\)</div><div class="live" id="live-bits"></div><div class="src">gpt_pairs_berlekamp_massey.py · gemini_pairs_2adic_kick.py · day19 nth-prime models</div></div>
     <div class="lines">
@@ -164,7 +164,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<section class="scene" id="s-life" data-scene="life" data-where="Act III · The hex puzzle" style="--len:360">
+<section class="scene" id="s-life" data-scene="life" data-where="p₃ · The hex puzzle" style="--len:449">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">A hex string on a torus</div><div class="live" id="live-life"></div><div class="src">day11-hex-grid-life-and-additive-graphs/04_game_of_life_from_hex.py</div></div>
     <div class="lines">
@@ -176,9 +176,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </section>
 
 <!-- ACT IV -->
-<section class="act" data-where="Act IV · Walks and sound"><div class="num">Act IV</div><h2>Walks and sound</h2><div class="when">18 to 24 August 2025</div><div class="path">research/07-gaps-walks-spirals · 06-prime-music</div></section>
+<section class="act" data-where="p₄ · Walks and sound"><div class="num">p₄ = 7</div><h2>Walks and sound</h2><div class="when">18 to 24 August 2025</div><div class="path">research/07-gaps-walks-spirals · 06-prime-music</div></section>
 
-<section class="scene" id="s-walk" data-scene="walk" data-where="Act IV · The prime walk" style="--len:480">
+<section class="scene" id="s-walk" data-scene="walk" data-where="p₄ · The prime walk" style="--len:599">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Walk and turn</div><div class="live" id="live-walk"></div><div class="src">day18/v51_3d_rotation_walk.py · prime_music_sensible.py</div></div>
     <div class="lines">
@@ -191,9 +191,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </section>
 
 <!-- ACT V -->
-<section class="act" data-where="Act V · Toward Riemann"><div class="num">Act V</div><h2>Toward Riemann</h2><div class="when">Where all of it was pointing</div><div class="path">the zeta function, its zeros, and the explicit formula</div></section>
+<section class="act" data-where="p₅ · Toward Riemann"><div class="num">p₅ = 11</div><h2>Toward Riemann</h2><div class="when">Where all of it was pointing</div><div class="path">the zeta function, its zeros, and the explicit formula</div></section>
 
-<section class="scene" id="s-zeta" data-scene="zeta" data-where="Act V · The zeta spiral" style="--len:480">
+<section class="scene" id="s-zeta" data-scene="zeta" data-where="p₅ · The zeta spiral" style="--len:599">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Partial sums of ζ(s)</div><div class="eq">\(\zeta(s)=\displaystyle\lim_{N\to\infty}\Big(\sum_{n\le N}n^{-s}-\frac{N^{1-s}}{1-s}\Big)\)</div><div class="live" id="live-zeta"></div></div>
     <div class="lines">
@@ -205,7 +205,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<section class="scene" id="s-domain" data-scene="domain" data-where="Act V · Colouring ζ" style="--len:380">
+<section class="scene" id="s-domain" data-scene="domain" data-where="p₅ · Colouring ζ" style="--len:474">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">The colours of ζ(σ + it)</div><div class="live" id="live-domain"></div></div>
     <div class="lines">
@@ -215,7 +215,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<section class="scene" id="s-explicit" data-scene="explicit" data-where="Act V · The true prime wave" style="--len:520">
+<section class="scene" id="s-explicit" data-scene="explicit" data-where="p₅ · The true prime wave" style="--len:649">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Riemann's explicit formula, 1859</div><div class="eq">\(\psi(x)=x-\displaystyle\sum_{\rho}\frac{x^{\rho}}{\rho}-\ln 2\pi-\tfrac12\ln\!\big(1-x^{-2}\big)\)</div><div class="live" id="live-explicit"></div></div>
     <div class="lines">
@@ -227,7 +227,7 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<section class="scene" id="s-critical" data-scene="critical" data-where="Act V · The critical line" style="--len:440">
+<section class="scene" id="s-critical" data-scene="critical" data-where="p₅ · The critical line" style="--len:549">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">ζ(σ + it), 0 ≤ t ≤ 50</div><div class="live" id="live-critical"></div></div>
     <div class="lines">
@@ -239,9 +239,9 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 </section>
 
 <!-- ACT VI -->
-<section class="act" data-where="Act VI · Trying to break it"><div class="num">Act VI</div><h2>Trying to break it</h2><div class="when">One inequality, one million numbers</div><div class="path">Robin's criterion, 1984</div></section>
+<section class="act" data-where="p₆ · Trying to break it"><div class="num">p₆ = 13</div><h2>Trying to break it</h2><div class="when">One inequality, one million numbers</div><div class="path">Robin's criterion, 1984</div></section>
 
-<section class="scene" id="s-robin" data-scene="robin" data-where="Act VI · Robin's inequality" style="--len:440">
+<section class="scene" id="s-robin" data-scene="robin" data-where="p₆ · Robin's inequality" style="--len:549">
   <div class="stage"><canvas></canvas>
     <div class="note"><div class="label">Robin's criterion</div><div class="eq">\(\sigma(n) < e^{\gamma}\, n \ln\ln n \quad (n>5040)\)</div><div class="live" id="live-robin"></div></div>
     <div class="lines">
@@ -253,8 +253,8 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
   </div>
 </section>
 
-<!-- EPILOGUE -->
-<section class="epilogue" id="epilogue" data-where="Epilogue">
+<!-- ∎ -->
+<section class="epilogue" id="epilogue" data-where="∎ · What I learned">
   <div class="letter">
     <h2>What I learned</h2>
     <p>I set out to break the Riemann hypothesis or to prove it. I did neither, and nobody will do either with a computer alone. But I rebuilt real mathematics from nothing on the way: the sieve as interference, the prime number theorem as a trend, the zeta function as a spiral, and Riemann's formula as music.</p>
@@ -345,5 +345,6 @@ window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\
 <script src="assets/js/zeta.js"></script>
 <script src="assets/js/sound.js"></script>
 <script src="assets/js/film.js"></script>
+<script src="assets/js/depth.js"></script>
 </body>
 </html>

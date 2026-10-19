@@ -39,6 +39,7 @@ const live = (id, text) => { const el = document.getElementById(id); if (el && e
 
 /* ---------------- the pulse ---------------- */
 const pulse = { n: 1, flash: 0, lastPrime: 2 };
+let prevPrime = 2, mel = 4;
 const PENTA = [57, 60, 62, 64, 67, 69, 72, 74, 76, 79, 81];
 
 /* ================= scenes ================= */
@@ -526,11 +527,11 @@ const OPEN = (() => {
 })();
 
 /* ================= engine ================= */
-const sceneEls = [...document.querySelectorAll('.scene')].map(el => ({ el, def: SCENES[el.dataset.scene], cv: el.querySelector('canvas'), lines: [...el.querySelectorAll('.line')].map((l, i, a) => ({ l, at: +l.dataset.at, to: i + 1 < a.length ? +a[i + 1].dataset.at : 1.01 })) }));
+const sceneEls = [...document.querySelectorAll('.scene')].map(el => ({ el, def: SCENES[el.dataset.scene], cv: el.querySelector('canvas'), words: [...el.querySelectorAll('.line')].reduce((a, l) => a + l.textContent.split(/\s+/).length, 0), lines: [...el.querySelectorAll('.line')].map((l, i, a) => ({ l, at: +l.dataset.at, to: i + 1 < a.length ? +a[i + 1].dataset.at : 1.01 })) }));
 const whereEls = [...document.querySelectorAll('[data-where]')];
 const actEls = [...document.querySelectorAll('.act')];
 const SOLO = (() => { const q = new URLSearchParams(location.search); if (!q.get('solo')) return null; const [id, pp] = q.get('solo').split(':'); const s = document.getElementById(id); if (!s) return null; document.body.classList.add('solo'); s.classList.add('solo-on'); return { id, p: clamp(+pp || 0) }; })();
-let film = false, tempo = 76, lastTs = performance.now(), nextBeat = 0, active = null, lastAct = null, T = 0;
+let filmCarry = 0, film = false, tempo = 76, lastTs = performance.now(), nextBeat = 0, active = null, lastAct = null, T = 0;
 const btnFilm = $('#film'), btnSound = $('#sound'), countEl = $('#count');
 
 function setFilm(v) { film = v && !reduce; btnFilm.setAttribute('aria-pressed', String(film)); btnFilm.textContent = film ? 'Pause' : 'Play'; }
@@ -548,10 +549,15 @@ function beat() {
   const n = pulse.n, prime = !!isP[n], def = active && active.def;
   countEl.textContent = `n = ${fmt(n)}`; countEl.classList.toggle('hit', prime);
   if (prime) {
-    pulse.flash = 1; pulse.lastPrime = n; OPEN.ripple(n);
-    const midi = def && def.pitch ? def.pitch(n) : PENTA[PI[n] % PENTA.length];
-    Sound.mallet(midi, def && def.pitch ? .9 : .7);
-  } else if (!(def && def.restOnComposite)) Sound.tick(.8);
+    pulse.flash = 1; pulse.lastPrime = n; OPEN.ripple(n); dispatchEvent(new CustomEvent('prime', { detail: n }));
+    const gap = n - prevPrime; prevPrime = n;
+    if (!(def && def.pitch)) { const d = n % 10; mel += (d === 1 || d === 7 ? 1 : -1) * Math.max(1, Math.round(gap / 2)); if (mel > 9 || mel < 0) mel = mel > 9 ? 18 - mel : -mel; }
+    const midi = def && def.pitch ? def.pitch(n) : PENTA[mel];
+    Sound.mallet(midi, def && def.pitch ? .8 : .65, n % 10);
+    if (gap === 2) Sound.mallet(midi + 4, .35, n % 10);
+    // the harmony moves every eight primes, its root chosen by the next prime in line
+    if (PI[n] % 8 === 0) Sound.setChord(PR[PI[n] >> 3] % 6);
+  } else if (!(def && def.restOnComposite) && n % 6 === 0) Sound.tick(.5);
 }
 
 function frame(ts) {
@@ -570,7 +576,10 @@ function frame(ts) {
   // the film plays itself
   if (film) {
     const max = document.documentElement.scrollHeight - vh;
-    if (scrollY >= max - 2) setFilm(false); else window.scrollBy(0, vh * .14 * (tempo / 90) * dt * (active ? 1 : 1.8));
+    // pace by reading: each scene lasts as long as its narration takes at about 200 words a minute, plus a breath per line
+    let speed = vh / 3.2;
+    if (active) { const r = active.el.getBoundingClientRect(); speed = (r.height - vh) / (active.words / 3.3 + active.lines.length * 2.2 + 3); }
+    if (scrollY >= max - 2) setFilm(false); else { filmCarry += speed * dt; const step = Math.floor(filmCarry); if (step) { window.scrollBy(0, step); filmCarry -= step; } }
   }
   // opening
   const or = OPEN.cv.getBoundingClientRect(); if (or.bottom > 0) OPEN.draw(T);
