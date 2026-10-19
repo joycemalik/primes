@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Book of the Quiet Waves · primes and the Riemann hypothesis from zero</title>
+<meta name="description" content="A friendly book that starts from counting and ends at the Riemann hypothesis: what primes are, why they thin out, Euler's product, complex numbers, the zeta function, its zeros, Riemann's explicit formula, and what three months of experiments taught me. Every step explained, with footnotes and live figures.">
+<meta name="author" content="joycemalik">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#F4EEE2">
+<link rel="canonical" href="https://primes.joycemalik.com/book">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="book">
+<meta property="og:title" content="The Book of the Quiet Waves">
+<meta property="og:description" content="Primes and the Riemann hypothesis from zero, explained for anyone, with footnotes and live figures.">
+<meta property="og:url" content="https://primes.joycemalik.com/book">
+<meta property="og:image" content="https://primes.joycemalik.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Courier+Prime&display=swap">
+<link rel="stylesheet" href="assets/css/book.css">
+<script>
+try { const t = localStorage.getItem('book-theme'), s = localStorage.getItem('book-size'); if (t) document.documentElement.dataset.theme = t; if (s) document.documentElement.style.setProperty('--fs', s + 'px'); } catch (e) {}
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' }, options: { enableMenu: false } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="top">
+  <button type="button" class="tocbtn" id="tocbtn" aria-expanded="false" aria-controls="toc">Contents</button>
+  <a class="home" href="/">Where the waves go quiet</a>
+  <span class="tools">
+    <button type="button" id="smaller" aria-label="Smaller text">A−</button>
+    <button type="button" id="bigger" aria-label="Larger text">A+</button>
+    <button type="button" id="theme" aria-label="Change reading colours">Paper</button>
+  </span>
+</header>
+
+<nav class="toc" id="toc" aria-label="Contents"><div class="tochead">Contents</div><ol id="toclist"></ol><div class="tocfoot"><a href="/">← back to the film</a></div></nav>
+
+<main class="book" id="book">
+
+<section class="cover">
+  <div class="kicker">A book for anyone who can count</div>
+  <h1>The Book of the<br><span>Quiet Waves</span></h1>
+  <p class="lede">From counting on your fingers to the most famous unsolved problem in mathematics, one small step at a time.</p>
+  <p class="byline">joycemalik · written alongside the film <a href="/">Where the Waves Go Quiet</a></p>
+  <p class="readtime" id="readtime"></p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="how-to-read" data-title="How to read this book">
+<div class="chnum">Before we begin</div>
+<h2>How to read this book</h2>
+<p>This book assumes you know how to count, add and multiply. That is all. Everything else, every symbol and every strange word, gets explained the first time it appears, and again later if it has been a while.</p>
+<p>The little numbers that float beside the text are footnotes.<span class="fn">Like this one. On a wide screen the notes sit in the margin next to the line they belong to. On a phone, tap the number and the note opens right where you are. You can skip every single note and still follow the book. They are there for the curious, and occasionally for a joke.</span> They hold extra detail, history, and the occasional warning about where a simple explanation cuts a corner.</p>
+<p>Some pages have a <b>figure you can play with</b>. Press the buttons, drag the sliders. Mathematicians understand things by poking at them, and so can you.</p>
+<p>Formulas look scary mostly because they are written in a compressed shorthand. Every time one appears, the sentence right after it says the same thing in plain words. If a formula ever stops you, read the sentence instead and carry on.</p>
+<div class="box"><div class="boxt">The whole book in one paragraph</div><p>Primes are the numbers that cannot be split into smaller factors. They look random, but how many there are below any point follows a smooth curve, and the wobbles around that curve are made of waves. Each wave comes from a special point, a <i>zero</i>, of one function called the Riemann zeta function. The Riemann hypothesis says all those points sit on one straight line. If it is true, the primes are as tidy as anything random can possibly be. Nobody has proved it since 1859.</p></div>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="numbers" data-title="1 · Building blocks">
+<div class="chnum">Chapter 1</div>
+<h2>Building blocks</h2>
+<p class="dropcap">Take twelve marbles. You can lay them out as a neat rectangle in several ways: two rows of six, three rows of four, four rows of three. Now take thirteen marbles and try again. You can make one long row of thirteen, and that is it. Any other attempt leaves marbles poking out.</p>
+<figure class="fig" data-fig="rect"><canvas aria-label="Marbles arranged in rectangles"></canvas><figcaption><span class="ctrl"><button type="button" data-n="-1">−</button><b class="val">12</b><button type="button" data-n="1">+</button></span> Change the number of marbles. When the only rectangle is a single row, the number is prime.</figcaption></figure>
+<p>That is the whole idea of a prime number. Twelve can be built by multiplying smaller whole numbers, \(12 = 3 \times 4\). Thirteen cannot. The only way to write it as a product is \(13 = 1 \times 13\), which is not really building it from anything smaller.</p>
+<div class="def"><b>Definition.</b> A <dfn>prime number</dfn> is a whole number bigger than 1 whose only divisors are 1 and itself. A whole number bigger than 1 that is not prime is called <dfn>composite</dfn>.</div>
+<p>A <dfn>divisor</dfn> of a number is any whole number that goes into it exactly, with nothing left over. The divisors of 12 are 1, 2, 3, 4, 6 and 12. The divisors of 13 are just 1 and 13.</p>
+<p>So the primes begin</p>
+<p class="center big">2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, …</p>
+<p>and the composites begin 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, … Notice that 2 is the only even prime, because every other even number has 2 as a divisor.<span class="fn">This makes 2 "the oddest prime", a joke mathematicians have been telling for at least a century.</span></p>
+
+<h3>Why is 1 not a prime?</h3>
+<p>It fits the words "divisible only by 1 and itself" perfectly well, so why leave it out? Because of the most important fact about primes, which we meet next. If 1 counted as prime, that fact would become false, or at least clumsy to state.<span class="fn">Until around 1900 some mathematicians did count 1 as a prime. The modern choice won because it makes nearly every theorem shorter. Definitions in mathematics are chosen to make true things easy to say.</span></p>
+
+<h3>Atoms of multiplication</h3>
+<p>Take any whole number bigger than 1 and keep breaking it into smaller factors until you cannot go any further. For 360:</p>
+<p class="center">\(360 = 36 \times 10 = (6 \times 6) \times (2 \times 5) = (2 \times 3)\times(2\times 3)\times 2\times 5 = 2^3 \times 3^2 \times 5.\)</p>
+<p>The small raised numbers are <dfn>exponents</dfn>. \(2^3\) means \(2\times2\times2\), three twos multiplied together. Every number you break down this way ends up as a product of primes, because primes are exactly the numbers you cannot break any further.</p>
+<p>Here is the remarkable part. It does not matter how you start breaking. Start with \(360 = 4\times 90\) or \(360 = 8 \times 45\) or anything else, and you always land on the same primes, the same number of times: three 2s, two 3s and one 5.</p>
+<div class="thm"><div class="tht">The Fundamental Theorem of Arithmetic</div><p>Every whole number bigger than 1 can be written as a product of primes in exactly one way, apart from the order of the factors.</p></div>
+<p>This is why primes are called the atoms of arithmetic. Water is always two hydrogens and one oxygen; 360 is always three 2s, two 3s and a 5. The "exactly one way" is where 1 would cause trouble. If 1 were prime, you could write \(360 = 1 \times 2^3\times3^2\times5\) or \(1\times1\times2^3\times3^2\times5\), and the uniqueness would be lost.<span class="fn">The theorem feels obvious, but it is not automatic. There are number systems where it fails. In numbers of the form \(a + b\sqrt{-5}\), the number 6 can be built as \(2\times3\) and also as \((1+\sqrt{-5})(1-\sqrt{-5})\), and none of those four pieces can be broken down further. Discovering this in the 1840s led to a whole new branch of algebra.</span></p>
+<figure class="fig" data-fig="tree"><canvas aria-label="A factor tree: keep splitting 360 until only primes (circled) are left. Any route down ends with the same leaves."></canvas><figcaption>A factor tree: keep splitting 360 until only primes (circled) are left. Any route down ends with the same leaves.</figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="infinite" data-title="2 · They never run out">
+<div class="chnum">Chapter 2</div>
+<h2>They never run out</h2>
+<p class="dropcap">If every number is built from primes, maybe a handful of primes is enough to build everything? Maybe after some huge number there are no new primes, and everything bigger is made from the old ones. About 2,300 years ago, Euclid of Alexandria showed that this never happens.<span class="fn">It is Proposition 20 in Book IX of Euclid's <i>Elements</i>, written around 300 BC. It is one of the oldest proofs still taught in exactly its original spirit.</span></p>
+<h3>Euclid's argument, in plain words</h3>
+<p>Suppose someone hands you a list of primes and claims it is complete. Say the list is 2, 3, 5 and 7. Multiply them all together and add one:</p>
+<p class="center">\(N = 2\times3\times5\times7 + 1 = 211.\)</p>
+<p>Now ask: which prime on the list divides \(N\)? Not 2, because \(2\times3\times5\times7\) is a multiple of 2, so \(N\) is one more than a multiple of 2 and leaves remainder 1. The same reasoning works for 3, for 5 and for 7. Every prime on the list leaves remainder 1.</p>
+<p>But \(N\) is bigger than 1, so it is built from <i>some</i> primes. None of them are on the list. So the list was not complete. Here 211 happens to be prime itself. With the list 2, 3, 5, 7, 11, 13 you get \(30031 = 59 \times 509\), which is not prime, but 59 and 509 are new primes that were missing from the list.<span class="fn">A common misunderstanding is that "the product plus one" is always prime. It is not, as 30031 shows. The argument only promises a prime that is missing from the list, either \(N\) itself or one of its factors.</span></p>
+<p>Whatever finite list anyone writes down, this trick finds a prime that is missing from it. So the list of primes can never be finished. <b>There are infinitely many primes.</b></p>
+<figure class="fig" data-fig="euclid"><canvas aria-label="Euclid's trick on the list 2, 3, 5, 7."></canvas><figcaption>Euclid's trick on the list 2, 3, 5, 7.</figcaption></figure>
+
+<div class="aside"><b>Why this kind of argument is so powerful.</b> Notice we never had to find all the primes, or even a big one. We showed that the idea "this list is complete" leads to a contradiction. This style is called <i>proof by contradiction</i>, and it lets you know things about infinitely many objects by reasoning about one imaginary list.</div>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="sieve" data-title="3 · The sieve">
+<div class="chnum">Chapter 3</div>
+<h2>Finding them: the sieve</h2>
+<p class="dropcap">How do you find all the primes up to 100? Testing each number one by one is slow. Eratosthenes, a librarian at Alexandria who also measured the size of the Earth,<span class="fn">Around 240 BC he compared the angle of the Sun's shadow at Syene and Alexandria on the same day and estimated the Earth's circumference to within a few percent of the true value, depending on which length of "stadion" he used.</span> found a better way. Instead of hunting for primes, cross out everything that is not one.</p>
+<ol class="steps">
+<li>Write down the numbers from 2 to 100.</li>
+<li>The first number not crossed out is 2. It is prime. Cross out every multiple of 2 after it: 4, 6, 8, …</li>
+<li>The next number not crossed out is 3. It is prime. Cross out 6, 9, 12, …</li>
+<li>Next is 5 (4 is already gone). Cross out its multiples. Then 7.</li>
+<li>Stop. Whatever is left is prime.</li>
+</ol>
+<figure class="fig" data-fig="sieve"><canvas aria-label="Sieve of Eratosthenes up to 100"></canvas><figcaption><span class="ctrl"><button type="button" data-act="step">Sieve the next prime</button><button type="button" data-act="reset">Start again</button></span> <span class="val">Nothing crossed out yet.</span></figcaption></figure>
+<h3>Why can we stop at 7?</h3>
+<p>Because \(11 \times 11 = 121\) is already bigger than 100. If a number up to 100 were composite, it would have to have a factor no bigger than its square root.<span class="fn">The <dfn>square root</dfn> of a number \(x\), written \(\sqrt{x}\), is the number that multiplied by itself gives \(x\). \(\sqrt{100} = 10\) because \(10\times10 = 100\). If \(n = a \times b\) and both \(a\) and \(b\) were bigger than \(\sqrt n\), their product would be bigger than \(n\). So one of them must be at most \(\sqrt n\).</span> So once you have sieved out the multiples of every prime up to \(\sqrt{100} = 10\), any survivors must be prime.</p>
+<p>This exact fact is what my "prime wave" in the film rediscovered by accident. Each prime \(p\) sends out a wave that rises at \(2p, 3p, 4p, \dots\) Laying all the waves on top of each other is the same as crossing out multiples. Where no wave arrives, the number is prime. With waves up to \(P\), the method is perfect up to \(P^2\) and then starts letting composites through, like 121 when you only use waves up to 7. It is the sieve, dressed up as physics.</p>
+<figure class="fig film" data-scene="s-sieve"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">The prime wave. Each prime sends a wave; where none arrives, the number is prime. Press play and watch it crack beyond P².</span><span class="tag">from the film</span></figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="thinning" data-title="4 · How the primes thin out">
+<div class="chnum">Chapter 4</div>
+<h2>How the primes thin out</h2>
+<p class="dropcap">Among the first ten numbers, four are prime: 2, 3, 5, 7. Among the first hundred, 25 are. Among the first thousand, 168. The primes get rarer as you go, but slowly, and never stop.</p>
+<p>Mathematicians give the counting a name. \(\pi(x)\), read "pi of x", means <i>the number of primes up to x</i>.<span class="fn">This \(\pi\) has nothing to do with 3.14159… It is just the Greek letter p, for "prime". Mathematicians reuse letters shamelessly.</span> So \(\pi(10) = 4\), \(\pi(100) = 25\), \(\pi(1000)=168\).</p>
+<table class="data"><thead><tr><th>x</th><th>primes up to x, π(x)</th><th>fraction that are prime</th><th>one prime in every…</th></tr></thead><tbody>
+<tr><td>10</td><td>4</td><td>40%</td><td>2.5</td></tr>
+<tr><td>100</td><td>25</td><td>25%</td><td>4</td></tr>
+<tr><td>1,000</td><td>168</td><td>16.8%</td><td>6.0</td></tr>
+<tr><td>10,000</td><td>1,229</td><td>12.3%</td><td>8.1</td></tr>
+<tr><td>100,000</td><td>9,592</td><td>9.6%</td><td>10.4</td></tr>
+<tr><td>1,000,000</td><td>78,498</td><td>7.8%</td><td>12.7</td></tr>
+<tr><td>1,000,000,000</td><td>50,847,534</td><td>5.1%</td><td>19.7</td></tr>
+</tbody></table>
+<p>Look at the last column. Each time \(x\) gets ten times bigger, the gap between primes grows by roughly the same amount, about 2.3. Something that goes up by a fixed step each time you multiply by ten has a name: a <dfn>logarithm</dfn>.</p>
+<h3>Logarithms in one minute</h3>
+<p>The logarithm answers the question "how many times do I multiply to get here?" Base-10 logarithms count factors of ten: \(\log_{10} 1000 = 3\) because \(10\times10\times10 = 1000\). It turns multiplying into adding, which is why it grows so slowly: going from a million to a billion only adds 3.</p>
+<p>The <dfn>natural logarithm</dfn>, written \(\ln x\), does the same with a special number \(e \approx 2.71828\) in place of 10.<span class="fn">\(e\) shows up whenever something grows in proportion to its own size, like compound interest added continuously. It is to growth what \(\pi\) is to circles. \(\ln x\) is just \(\log_{10} x\) times about 2.3026, which is exactly the "about 2.3" step we saw in the table.</span> And here is the punchline: the typical gap between primes near \(x\) is about \(\ln x\). Near a million, \(\ln(1{,}000{,}000) \approx 13.8\), and the table says one prime in every 12.7. Close, and it gets closer the further you go.</p>
+<figure class="fig" data-fig="logladder"><canvas aria-label="The logarithm ladder."></canvas><figcaption>The logarithm ladder.</figcaption></figure>
+
+<h3>Gauss's guess</h3>
+<p>Around 1792, a fifteen-year-old Carl Friedrich Gauss spent his free time counting primes in blocks of a thousand<span class="fn">He described this in a letter to Johann Encke in 1849, saying he had begun "very often spending an idle quarter of an hour to count another chiliad here and there". A chiliad is a block of a thousand numbers.</span> and noticed exactly this pattern. If one number in \(\ln x\) is prime near \(x\), then up to \(x\) there should be about</p>
+<p class="center">\(\pi(x) \approx \dfrac{x}{\ln x}.\)</p>
+<p>In words: the count of primes up to \(x\) is roughly \(x\) divided by its natural logarithm. Gauss later found an even better approximation, the <dfn>logarithmic integral</dfn> \(\mathrm{Li}(x)\), which adds up the chance \(1/\ln t\) of each number \(t\) being prime instead of using one average.<span class="fn">Written out, \(\mathrm{Li}(x) = \int_2^x \frac{dt}{\ln t}\). The long S is an integral sign, which here just means "add up continuously". It is the smooth version of \(\frac1{\ln 2}+\frac1{\ln 3}+\frac1{\ln 4}+\dots+\frac1{\ln x}\).</span> Up to a billion, \(\mathrm{Li}(x)\) is off by only 1,701 out of fifty million.</p>
+<div class="thm"><div class="tht">The Prime Number Theorem (1896)</div><p>As \(x\) grows, the ratio \(\pi(x) \div (x/\ln x)\) gets closer and closer to 1.</p></div>
+<p>Gauss could not prove it. Neither could anyone else for a hundred years. It was finally proved in 1896 by Jacques Hadamard and Charles de la Vallée Poussin, independently, in the same year. Both proofs used the zeta function, which is where this book is heading. But first, a question that matters more than it looks: <i>how wrong</i> is the guess?</p>
+<figure class="fig film" data-scene="s-count"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">Counting primes: π(x) against Gauss's x / ln x and Li(x), from 100 up to 100,000.</span><span class="tag">from the film</span></figcaption></figure>
+
+<p>The error \(\pi(x) - \mathrm{Li}(x)\) wobbles up and down in a way that looks random. The Riemann hypothesis is, at heart, a statement about how big those wobbles can get. Keep that in mind. It is the thread that ties the whole book together.</p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="patterns" data-title="5 · Patterns, real and imagined">
+<div class="chnum">Chapter 5</div>
+<h2>Patterns, real and imagined</h2>
+<p class="dropcap">Write the primes out and stare, and patterns seem to leap off the page. Some are real. Many are tricks of the eye. Learning to tell the two apart was the most valuable thing my three months taught me.</p>
+<h3>A real one: 6k ± 1</h3>
+<p>Every prime bigger than 3 is one more or one less than a multiple of 6: 5 and 7 surround 6, 11 and 13 surround 12, 17 and 19 surround 18. Why? Any whole number leaves a remainder of 0, 1, 2, 3, 4 or 5 when divided by 6. If the remainder is 0, 2 or 4, the number is even. If it is 3, the number is a multiple of 3. That leaves remainders 1 and 5, which is "one more than" or "one less than" a multiple of 6.<span class="fn">This is <dfn>modular arithmetic</dfn>, the arithmetic of remainders, sometimes called clock arithmetic. On a 6-hour clock, 13 o'clock is 1 o'clock. Mathematicians write \(13 \equiv 1 \pmod 6\).</span></p>
+<p>Be careful about the direction, though. Every prime above 3 is of the form \(6k\pm1\), but not every \(6k\pm1\) is prime: \(25 = 6\times4+1\) is not. The rule rules things <i>out</i>, it does not rule primes <i>in</i>. This one-way street fooled me more than once.</p>
+<figure class="fig" data-fig="gaps"><canvas aria-label="How often each gap between consecutive primes occurs."></canvas><figcaption>How often each gap between consecutive primes occurs.</figcaption></figure>
+
+<h3>Twins, cousins and gaps</h3>
+<p>Primes two apart, like 11 and 13 or 41 and 43, are called <dfn>twin primes</dfn>. Nobody knows whether there are infinitely many of them. In 2013 Yitang Zhang, then a little-known lecturer, proved that infinitely many pairs of primes are at most 70 million apart, and a worldwide online collaboration soon cut that to 246.<span class="fn">The collaboration was the Polymath8 project, organised by Terence Tao and others, working in public on a blog. Getting from 246 down to 2 would prove the twin prime conjecture, and current methods cannot do it.</span></p>
+<p>Gaps can also be enormous. The numbers \(n!+2, n!+3, \dots, n!+n\) are all composite,<span class="fn">\(n!\), "n factorial", means \(1\times2\times3\times\dots\times n\). Since \(n!\) is a multiple of every number from 2 to \(n\), the number \(n!+k\) is a multiple of \(k\) for each \(k\) from 2 to \(n\).</span> so there are runs of composites as long as you like.</p>
+<h3>Spirals</h3>
+<p>In 1963 Stanisław Ulam, doodling during a boring talk, wrote the numbers in a square spiral and circled the primes. They lined up along diagonals. In 1994 Robert Sacks did the same with a smooth spiral, putting \(n\) at distance \(\sqrt n\) from the centre, turning a full circle at every perfect square. Again the primes gather on curves.</p>
+<figure class="fig" data-fig="sacks"><canvas aria-label="Sacks spiral of primes"></canvas><figcaption>The Sacks spiral of the first 20,000 numbers. Primes are bright. Every bright curve is a quadratic like Euler's \(n^2+n+41\).</figcaption></figure>
+<p>These curves are real, but they are not a secret code. Each one is a formula like \(n^2 + n + 41\), which Euler noticed gives primes for \(n = 0, 1, \dots, 39\).<span class="fn">At \(n = 40\) it gives \(1681 = 41^2\). No polynomial with whole-number coefficients can produce only primes forever. If it gives a prime \(p\) at some point, it gives a multiple of \(p\) again \(p\) steps later.</span> Some formulas simply dodge small prime factors better than others, so they are rich in primes, and the spiral happens to draw those formulas as curves. The spiral is a window. The pattern belongs as much to the window as to the primes.</p>
+<figure class="fig film" data-scene="s-spiral"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">From the film: the Sacks spiral turns into the golden-angle spiral and then into Ulam's square spiral. Same primes, different windows.</span><span class="tag">from the film</span></figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="sums" data-title="6 · Adding forever">
+<div class="chnum">Chapter 6</div>
+<h2>Adding forever</h2>
+<p class="dropcap">To get from primes to the zeta function, we need one new idea: adding up infinitely many numbers. That sounds impossible, and sometimes it is. But sometimes the total settles down to a definite value.</p>
+<p>Walk halfway to a wall, then half the remaining distance, then half again. You take infinitely many steps, but you never pass the wall:</p>
+<p class="center">\(\tfrac12 + \tfrac14 + \tfrac18 + \tfrac1{16} + \dots = 1.\)</p>
+<p>We say the sum <dfn>converges</dfn> to 1: the more terms you add, the closer you get, as close as you like.<span class="fn">Strictly, an infinite sum means the limit of its partial sums. "The sum is 1" means: for any tiny tolerance you name, after enough terms the running total stays within that tolerance of 1.</span></p>
+<h3>The harmonic series breaks the rule</h3>
+<p>Now try</p>
+<p class="center">\(1 + \tfrac12 + \tfrac13 + \tfrac14 + \tfrac15 + \dots\)</p>
+<p>The terms shrink towards zero, so you might expect a finite total. But group them: \(\tfrac13+\tfrac14\) is more than \(\tfrac12\). \(\tfrac15+\tfrac16+\tfrac17+\tfrac18\) is more than \(\tfrac12\). The next eight terms are more than \(\tfrac12\) again. You can keep finding halves forever, so the total grows without limit. It <dfn>diverges</dfn>.<span class="fn">This argument is from Nicole Oresme, around 1350. The growth is very slow: the sum of the first \(n\) terms is about \(\ln n + 0.5772\). To pass 100 you need around \(1.5\times10^{43}\) terms.</span></p>
+<figure class="fig" data-fig="harmonic"><canvas aria-label="Grouping the harmonic series: each group of terms stacks up past ½."></canvas><figcaption>Grouping the harmonic series: each group of terms stacks up past ½.</figcaption></figure>
+
+<h3>Squares tame it</h3>
+<p>Square the bottoms and the sum calms down:</p>
+<p class="center">\(1 + \tfrac14 + \tfrac19 + \tfrac1{16} + \tfrac1{25} + \dots = \dfrac{\pi^2}{6} \approx 1.6449.\)</p>
+<p>This is the famous <dfn>Basel problem</dfn>, solved by Leonhard Euler in 1734. It is astonishing: a sum built from whole numbers equals something built from \(\pi\), the circle number.<span class="fn">Here \(\pi\) is back to meaning 3.14159…, the ratio of a circle's circumference to its diameter. Euler's first argument was daring and not fully rigorous. He treated \(\sin x / x\) as an infinite polynomial and factored it by its zeros. He made it rigorous later.</span> Circles hiding inside whole numbers is a theme we will meet again.</p>
+<h3>The zeta function is born</h3>
+<p>Why stop at squares? Use any power \(s\):</p>
+<div class="thm"><div class="tht">The zeta function</div><p>\(\displaystyle \zeta(s) = 1 + \frac1{2^s} + \frac1{3^s} + \frac1{4^s} + \dots = \sum_{n=1}^{\infty} \frac{1}{n^s}\)</p></div>
+<p>In words: raise every whole number to the power \(s\), flip each one upside down, and add them all.<span class="fn">The big \(\Sigma\) is a capital Greek S, for "sum". \(\sum_{n=1}^\infty\) means "let \(n\) run through 1, 2, 3, … and add up what follows". \(\zeta\) is the Greek letter zeta.</span> We just saw that \(\zeta(1)\) is infinite and \(\zeta(2) = \pi^2/6\). For any \(s\) bigger than 1 the sum converges. Euler also found \(\zeta(4) = \pi^4/90\) and kept going.</p>
+<p>In my own notebook, adding cosine waves \(\cos(2\pi x/n)/n^2\) for every \(n\) gave me a mysterious constant term of \(\pi^2/6\). That was \(\zeta(2)\) showing up uninvited. It was my first meeting with this function.</p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="euler" data-title="7 · Euler's golden key">
+<div class="chnum">Chapter 7</div>
+<h2>Euler's golden key</h2>
+<p class="dropcap">So far zeta is a sum over <i>all</i> whole numbers. What does it have to do with primes? In 1737 Euler found the link, and it is so beautiful that it is often called the golden key.</p>
+<div class="thm"><div class="tht">The Euler product</div><p>\(\displaystyle \sum_{n=1}^\infty \frac1{n^s} \;=\; \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}} \;=\; \frac{1}{1-2^{-s}}\cdot\frac{1}{1-3^{-s}}\cdot\frac{1}{1-5^{-s}}\cdots\)</p></div>
+<p>The left side involves every whole number. The right side involves only primes.<span class="fn">The big \(\Pi\) is a capital Greek P, for "product": multiply everything that follows, one factor for each prime \(p\). And \(p^{-s}\) just means \(1/p^s\).</span> They are equal. Here is why, with nothing but schoolroom algebra.</p>
+<h3>Why it works</h3>
+<p>Start with one fact about walk-to-the-wall sums: for any number \(r\) between 0 and 1,</p>
+<p class="center">\(1 + r + r^2 + r^3 + \dots = \dfrac{1}{1-r}.\)</p>
+<p>(With \(r = \tfrac12\) that is \(1 + \tfrac12 + \tfrac14 + \dots = 2\).) So each prime's factor unfolds into</p>
+<p class="center">\(\dfrac{1}{1-2^{-s}} = 1 + \dfrac1{2^s} + \dfrac1{4^s} + \dfrac1{8^s} + \dots,\qquad \dfrac{1}{1-3^{-s}} = 1 + \dfrac1{3^s} + \dfrac1{9^s} + \dots\)</p>
+<p>Now multiply all those brackets together. Each term of the result comes from picking one item from each bracket: say \(\tfrac1{2^s}\) from the 2-bracket, \(\tfrac1{3^s}\) from the 3-bracket, \(\tfrac1{5^s}\) from the 5-bracket, and 1 from all the rest. That gives \(\tfrac{1}{30^s}\). Picking \(\tfrac1{8^s}\) and \(\tfrac1{9^s}\) gives \(\tfrac1{72^s}\).</p>
+<p>Every whole number appears, because every whole number is a product of primes. And each appears exactly once, because that product is unique. That is the Fundamental Theorem of Arithmetic from Chapter 1, doing the heavy lifting.<span class="fn">Multiplying infinitely many brackets needs some care, but for \(s > 1\) everything converges nicely and the argument is completely rigorous.</span></p>
+<figure class="fig" data-fig="euler"><canvas aria-label="Euler product approaching pi squared over six"></canvas><figcaption><span class="ctrl"><button type="button" data-act="more">Multiply in the next prime</button><button type="button" data-act="reset">Start again</button></span> <span class="val"></span></figcaption></figure>
+<div class="aside"><b>A free bonus.</b> Put \(s=1\). The left side is the harmonic series, which is infinite. If there were only finitely many primes, the right side would be a finite product of finite numbers. So there must be infinitely many primes. That is Euler's proof of Euclid's theorem, and it says more: the primes are common enough that \(\tfrac12+\tfrac13+\tfrac15+\tfrac17+\tfrac1{11}+\dots\) also diverges.</div>
+<p>The golden key means that anything we learn about the zeta function is secretly information about the primes. And the zeta function, unlike the primes, is smooth. You can use the tools of calculus on it. That is the bet Riemann made.</p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="complex" data-title="8 · Numbers that turn">
+<div class="chnum">Chapter 8</div>
+<h2>Numbers that turn</h2>
+<p class="dropcap">Riemann's great idea was to feed zeta numbers that are not on the ordinary number line. To follow him we need complex numbers. They have a scary name and a friendly meaning: they are arrows on a flat page.</p>
+<h3>The square root of −1</h3>
+<p>No ordinary number squares to −1, because positive times positive and negative times negative are both positive. So mathematicians invented one and called it \(i\), with the single rule \(i \times i = -1\).<span class="fn">For centuries these were called "imaginary", a name Descartes gave partly as a put-down. They are no more imaginary than negative numbers, which were also distrusted for a long time. Both are useful extensions of counting.</span></p>
+<p>A <dfn>complex number</dfn> is something like \(3 + 2i\): a real part (3) and an imaginary part (2). Picture it as a point on a map, 3 steps east and 2 steps north. The ordinary numbers are the east–west line; the multiples of \(i\) are the north–south line. The whole page is the <dfn>complex plane</dfn>.</p>
+<h3>Multiplying by i is turning</h3>
+<p>Take 1 and multiply by \(i\) repeatedly: \(1 \to i \to -1 \to -i \to 1\). On the map that is east, north, west, south, east. Multiplying by \(i\) turns any arrow a quarter-turn anticlockwise. In general, multiplying two complex numbers multiplies their lengths and <b>adds their angles</b>. That one fact is the key to everything that follows.</p>
+<figure class="fig" data-fig="plane"><canvas aria-label="The complex plane. 3 + 2i is an arrow; multiplying by i turns arrows a quarter turn."></canvas><figcaption>The complex plane. 3 + 2i is an arrow; multiplying by i turns arrows a quarter turn.</figcaption></figure>
+
+<h3>Euler's spinning formula</h3>
+<p>An arrow of length 1 pointing at angle \(\theta\) (measured in radians<span class="fn">A <dfn>radian</dfn> is the angle that cuts off an arc as long as the radius. A full turn is \(2\pi \approx 6.283\) radians, so a quarter turn is \(\pi/2\).</span>) is written</p>
+<p class="center">\(e^{i\theta} = \cos\theta + i\sin\theta.\)</p>
+<p>This is Euler's formula. The cosine is how far east the arrow tip is, the sine is how far north. Setting \(\theta = \pi\), a half turn, gives the celebrated \(e^{i\pi} = -1\).<span class="fn">Often written \(e^{i\pi}+1=0\) and voted "the most beautiful equation" in more than one poll. It links \(e\), \(i\), \(\pi\), 1 and 0 in one line.</span> As \(\theta\) grows steadily, \(e^{i\theta}\) spins round the circle steadily. It is a clock hand.</p>
+<figure class="fig" data-fig="clock"><canvas aria-label="Turn the hand: its east and north shadows trace out the cosine and sine waves."></canvas><figcaption><label>θ <input type="range" min="0" max="6.283" step="0.01" value="1"> <b class="vth">1.00</b></label> Turn the hand: its east and north shadows trace out the cosine and sine waves.</figcaption></figure>
+
+<h3>Powers with a complex exponent</h3>
+<p>What could \(n^{s}\) mean if \(s = \sigma + it\) is complex?<span class="fn">By tradition the real part of \(s\) is called \(\sigma\) (sigma) and the imaginary part \(t\). These letters go back to Riemann's own paper.</span> Using the rule that exponents add,</p>
+<p class="center">\(n^{-s} = n^{-\sigma}\cdot n^{-it} = \dfrac{1}{n^\sigma}\cdot e^{-it\ln n}.\)</p>
+<p>In words: \(\tfrac1{n^s}\) is an arrow of length \(\tfrac1{n^\sigma}\), turned by an angle \(-t\ln n\). The real part \(\sigma\) sets how fast the arrows shrink. The imaginary part \(t\) sets how fast they spin. Bigger \(n\) spins faster, but only logarithmically faster.</p>
+<p>So \(\zeta(s)\) with complex \(s\) is a chain of arrows laid head to tail, each shorter than the last and each turned a little more. Where the chain ends up is the value of \(\zeta(s)\). Play with it:</p>
+<figure class="fig tall" data-fig="spiral"><canvas aria-label="Partial sums of zeta as a chain of arrows"></canvas><figcaption><label>σ <input type="range" min="0.2" max="1.5" step="0.01" value="0.5" data-k="s"> <b class="vs">0.50</b></label><label>t <input type="range" min="0" max="40" step="0.01" value="14.1347" data-k="t"> <b class="vt">14.13</b></label><span class="val"></span></figcaption></figure>
+<p>When \(\sigma\) is bigger than 1, the arrows shrink fast enough that the chain settles to a point. When \(\sigma\) is 1 or less, the chain spirals outward forever, so we use a standard correction that subtracts the drift, and the chain then winds into a definite point.<span class="fn">The figure plots \(\sum_{n\le N} n^{-s} - \frac{N^{1-s}}{1-s}\), which tends to \(\zeta(s)\) whenever \(\sigma > 0\) and \(s \ne 1\). The ghost spiral that keeps drifting is the uncorrected sum.</span> Set \(\sigma = 0.5\) and \(t = 14.1347\). The chain winds right into the centre. You have just found the first zero of the zeta function.</p>
+<figure class="fig film" data-scene="s-zeta"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">The zeta spiral, swept upward in t. Each time the spiral winds into the centre, the music stops: a zero.</span><span class="tag">from the film</span></figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="continuation" data-title="9 · Beyond the edge of the map">
+<div class="chnum">Chapter 9</div>
+<h2>Beyond the edge of the map</h2>
+<p class="dropcap">The sum \(1 + 2^{-s} + 3^{-s} + \dots\) only makes sense when the real part of \(s\) is bigger than 1. To the left of that line the arrows do not shrink fast enough and the sum falls apart. In 1859 Bernhard Riemann showed that the function itself does not have to stop there.</p>
+<h3>One road, many paths</h3>
+<p>Here is a simpler example of the same magic. The sum \(1 + x + x^2 + x^3 + \dots\) only works when \(x\) is between −1 and 1. Inside that range it equals \(\tfrac{1}{1-x}\). But the formula \(\tfrac1{1-x}\) makes perfect sense for \(x = 3\), giving \(-\tfrac12\), even though the sum \(1+3+9+27+\dots\) is nonsense.</p>
+<p>The formula is the "true" function. The sum was just one way of describing it that happened to work in one region. Extending a function beyond the region where its first description works is called <dfn>analytic continuation</dfn>.<span class="fn">The deep fact is that for well-behaved complex functions (called <i>analytic</i> or <i>holomorphic</i>), the continuation is unique. Knowing the function on any small patch determines it everywhere it can reach. Complex functions are far more rigid than real ones, like a crystal where one corner fixes the whole shape.</span> For zeta, the continuation reaches every complex number except \(s = 1\), where the function shoots off to infinity like the harmonic series.</p>
+<h3>Riemann's mirror</h3>
+<p>Riemann found that zeta has a hidden symmetry. Its value at \(s\) and its value at \(1 - s\) are tied together by an exact formula, the <dfn>functional equation</dfn>:</p>
+<p class="center">\(\zeta(s) = 2^s\,\pi^{s-1}\,\sin\!\Big(\dfrac{\pi s}{2}\Big)\,\Gamma(1-s)\,\zeta(1-s).\)</p>
+<p>Do not worry about the individual pieces.<span class="fn">\(\Gamma\) (capital gamma) is the Gamma function, which extends the factorial to non-whole numbers: \(\Gamma(n) = (n-1)!\). I spent several days in August plotting it, which is how it ended up in the research folder.</span> The shape is what matters: the formula is a mirror. The point \(s\) and the point \(1-s\) are reflections of each other through the point \(\tfrac12\). The line where the real part is exactly \(\tfrac12\) is the mirror itself. That line will matter enormously.</p>
+<figure class="fig" data-fig="mirror"><canvas aria-label="The functional equation pairs every s with its reflection 1 − s through the point ½."></canvas><figcaption>The functional equation pairs every s with its reflection 1 − s through the point ½.</figcaption></figure>
+
+<div class="aside"><b>The famous −1/12.</b> Continuation gives \(\zeta(-1) = -\tfrac1{12}\). You may have seen the claim "\(1+2+3+4+\dots = -\tfrac1{12}\)". That is not true as ordinary addition, the sum is infinite. What is true is that the continued zeta function, which <i>would</i> be that sum if the sum made sense, takes the value \(-\tfrac1{12}\) at \(s=-1\). Physicists use this in string theory and the Casimir effect, carefully.</div>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="zeros" data-title="10 · Where zeta vanishes">
+<div class="chnum">Chapter 10</div>
+<h2>Where zeta vanishes</h2>
+<p class="dropcap">A <dfn>zero</dfn> of a function is an input where its output is exactly 0. For zeta there are two very different kinds.</p>
+<h3>The trivial zeros</h3>
+<p>The \(\sin(\pi s/2)\) in the mirror formula is zero at every even whole number. That forces \(\zeta(-2) = \zeta(-4) = \zeta(-6) = \dots = 0\). These are called the <dfn>trivial zeros</dfn>, not because they are unimportant but because we know exactly where they are and why.</p>
+<h3>The nontrivial zeros</h3>
+<p>All the other zeros live in a narrow vertical band where the real part is between 0 and 1, called the <dfn>critical strip</dfn>.<span class="fn">Zeta has no zeros with real part above 1, because there the Euler product is a product of nonzero factors that converges, and such a product cannot be zero. The mirror then rules out zeros with real part below 0, apart from the trivial ones.</span> They come in mirror pairs and in up–down pairs, so if \(\tfrac12 + 14.13i\) is a zero, so is \(\tfrac12 - 14.13i\). The first few, going up from the real line, are near</p>
+<p class="center">\(t = 14.1347,\;\; 21.0220,\;\; 25.0109,\;\; 30.4249,\;\; 32.9351,\;\; 37.5862,\;\dots\)</p>
+<p>and every single one ever computed has real part exactly \(\tfrac12\). They sit right on the mirror line, which is called the <dfn>critical line</dfn>.</p>
+<figure class="fig" data-fig="strip"><canvas aria-label="Where the zeros of ζ live, up to height 50."></canvas><figcaption>Where the zeros of ζ live, up to height 50.</figcaption></figure>
+
+<figure class="fig" data-fig="critical"><canvas aria-label="Size of zeta along a vertical line"></canvas><figcaption><label>σ <input type="range" min="0.05" max="0.95" step="0.01" value="0.5" data-k="s"> <b class="vs">0.50</b></label> The size \(|\zeta(\sigma+it)|\) as \(t\) runs from 0 to 50. Only at σ = ½ does the curve touch zero.</figcaption></figure>
+<div class="thm hyp"><div class="tht">The Riemann Hypothesis</div><p>Every nontrivial zero of the zeta function has real part exactly \(\tfrac12\).</p></div>
+<p>Riemann wrote, in the middle of his paper, that this was "very likely", and that he had set aside the search for a proof after some fleeting vain attempts.<span class="fn">The original German is "sehr wahrscheinlich". His paper is only eight pages long and is the only one he ever wrote on number theory. It contains several claims he did not prove, most of which were proved later. This one never was.</span> That was 1859. It is still open.</p>
+<figure class="fig film" data-scene="s-domain"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">Colouring ζ: every point is coloured by the angle of ζ(s). Where all the colours meet, ζ is zero, and they always meet on the line.</span><span class="tag">from the film</span></figcaption></figure>
+
+<p>How much evidence is there? Over ten trillion zeros have been computed, and every one lies on the line.<span class="fn">Xavier Gourdon and Patrick Demichel checked the first \(10^{13}\) zeros in 2004. David Platt and Tim Trudgian gave a rigorous verification to height \(3\times10^{12}\) in 2021. Andrew Odlyzko computed zeros near the \(10^{23}\)rd, also all on the line.</span> We also know that at least 40% of all the zeros are on the line. But in number theory, ten trillion examples can still fail to be a proof. Some patterns hold for longer than any computer can check and then break.<span class="fn">Famous example: \(\pi(x) < \mathrm{Li}(x)\) for every \(x\) anyone has ever checked, yet Littlewood proved in 1914 that it fails infinitely often. The first failure is somewhere below about \(10^{316}\), far beyond computation.</span></p>
+<figure class="fig film" data-scene="s-critical"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">Slide the line: only at σ = ½ does the curve of ζ pass through zero. Later, the spacing of the zeros against the random-matrix law.</span><span class="tag">from the film</span></figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="music" data-title="11 · The music of the primes">
+<div class="chnum">Chapter 11</div>
+<h2>The music of the primes</h2>
+<p class="dropcap">Why should anyone care where the zeros of some function live? Because of the most beautiful formula in this book, Riemann's explicit formula. It says the primes are a chord, and the zeros are its notes.</p>
+<h3>A tidier staircase</h3>
+<p>The count \(\pi(x)\) jumps up by 1 at every prime. It is a staircase with uneven steps. Mathematicians prefer a slightly different staircase, written \(\psi(x)\) ("psi of x"), which jumps by \(\ln p\) at each prime \(p\), and also at each prime power \(p^2, p^3, \dots\)<span class="fn">Called the Chebyshev function. Weighting each prime by \(\ln p\) cancels out its thinning, so \(\psi(x)\) grows almost exactly like the straight line \(x\). The prime number theorem is equivalent to \(\psi(x)/x \to 1\).</span> The reason is simple: if the chance of being prime near \(x\) is \(1/\ln x\), giving each prime a weight of \(\ln x\) makes the staircase climb like a straight line, \(\psi(x) \approx x\).</p>
+<h3>Riemann's formula</h3>
+<p class="center">\(\psi(x) = x \;-\; \displaystyle\sum_{\rho} \frac{x^{\rho}}{\rho} \;-\; \ln 2\pi \;-\; \tfrac12\ln\!\big(1-x^{-2}\big).\)</p>
+<p>In words: the prime staircase equals the straight line \(x\), minus one correction for every nontrivial zero \(\rho\) ("rho") of zeta, minus two small tidy-up terms.<span class="fn">This form was proved by Hans von Mangoldt in 1895, following Riemann's sketch. The sum over zeros has to be taken in pairs, \(\rho\) with its partner \(\bar\rho\), in order of height, or it does not converge.</span></p>
+<p>Now look at one correction term. Write the zero as \(\rho = \tfrac12 + i\gamma\). Then</p>
+<p class="center">\(x^{\rho} = x^{1/2}\cdot x^{i\gamma} = \sqrt{x}\; e^{\,i\gamma\ln x}.\)</p>
+<p>That is a spinning arrow, from Chapter 8! Its length is \(\sqrt x\), and it spins as \(\ln x\) grows, at a speed set by the height \(\gamma\) of the zero. Paired with its mirror partner, the spin becomes a wave: a cosine of \(\gamma \ln x\), with loudness \(\sqrt x\). <b>Every zero contributes one pure tone.</b> The real part of the zero sets how loud that tone gets. The height of the zero sets its pitch.</p>
+<figure class="fig" data-fig="explicit"><canvas aria-label="The prime staircase rebuilt from zeta zeros"></canvas><figcaption><label>zeros used <input type="range" min="0" max="200" step="1" value="10" data-k="k"> <b class="vk">10</b></label> The bright staircase is \(\psi(x)\) from the true primes. The blue curve is Riemann's formula with only the first few zeros. Add more and watch the steps appear.</figcaption></figure>
+<p>This is what my prime wave was groping toward from the first day. I tried to build the primes out of waves from the small primes, and those waves repeat every 210 steps, so they can never capture something that does not repeat. Riemann's waves come from the zeros, not from the primes, and their frequencies are not related by simple ratios. They never quite repeat. Add enough of them and the staircase of the primes rises out of pure oscillation.<span class="fn">In the film, the explicit formula scene literally plays each zero as a tone as it gets added, so you can hear the staircase being built. Marcus du Sautoy's book <i>The Music of the Primes</i> takes its title from this idea.</span></p>
+<figure class="fig film" data-scene="s-explicit"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">Riemann's explicit formula, adding the zeros one at a time, up to 1,000 of them.</span><span class="tag">from the film</span></figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="why" data-title="12 · Why the line matters">
+<div class="chnum">Chapter 12</div>
+<h2>Why the line matters</h2>
+<p class="dropcap">Now the hypothesis has a meaning you can feel. Each zero adds a wave of loudness \(x^{\sigma}\), where \(\sigma\) is its real part. If every \(\sigma\) is \(\tfrac12\), every wave grows like \(\sqrt x\) and no faster.</p>
+<p>So if the Riemann hypothesis is true, the error in counting primes is about the size of \(\sqrt x\):</p>
+<p class="center">\(\big|\pi(x) - \mathrm{Li}(x)\big| \;\le\; \dfrac{\sqrt{x}\,\ln x}{8\pi}\quad\text{for all } x \ge 2657.\)</p>
+<p>This exact bound was proved by Lowell Schoenfeld in 1976, assuming the hypothesis.<span class="fn">And the converse holds too: if the error stays that small, the hypothesis is true. The two statements are logically the same.</span> And \(\sqrt x\) is special. Flip a fair coin \(x\) times and count heads; your typical distance from \(x/2\) is also about \(\sqrt x\). The hypothesis says the primes are as orderly as a fair random process can be. No more chaotic than coin tosses, and, since the primes are not literally random, it is the best regularity one could hope for.</p>
+<p>If even one zero were off the line, at real part \(0.6\) say, its wave would grow like \(x^{0.6}\), drowning out all the others, and the primes would have a lopsided bias that we have never seen.</p>
+<figure class="fig" data-fig="loud"><canvas aria-label="Why one zero off the line would matter: its wave would outgrow all the others."></canvas><figcaption>Why one zero off the line would matter: its wave would outgrow all the others.</figcaption></figure>
+
+<h3>Other doors into the same room</h3>
+<p>The hypothesis can be restated in surprising ways that do not mention complex numbers at all. Each one is exactly equivalent.</p>
+<ul class="doors">
+<li><b>Robin's inequality (1984).</b> Let \(\sigma(n)\) be the sum of all divisors of \(n\).<span class="fn">Yes, a third meaning for the letter \(\sigma\). Sorry. Here \(\sigma(12) = 1+2+3+4+6+12 = 28\).</span> The hypothesis is true exactly when \(\sigma(n) < e^{\gamma}\, n\ln\ln n\) for every \(n\) bigger than 5040, where \(\gamma \approx 0.5772\) is Euler's constant. This is the one I tested up to a million in the film's last scene. It held, as it has for every number anyone has tried.</li>
+<li><b>The Mertens function.</b> Give each square-free number<span class="fn">A number is <dfn>square-free</dfn> if no prime appears twice in its factorisation. 30 is square-free, 12 is not.</span> a +1 if it has an even number of prime factors and −1 if odd, and add these up to \(x\). The hypothesis says the total stays below about \(x^{1/2+\varepsilon}\), for any tiny \(\varepsilon\). Like a random walk.</li>
+<li><b>Li's criterion (1997).</b> A certain infinite list of numbers \(\lambda_1, \lambda_2, \dots\) built from the zeros are all positive.</li>
+<li><b>De Bruijn–Newman.</b> A heat-flow deformation of zeta has a constant \(\Lambda\). The hypothesis says \(\Lambda = 0\). Rodgers and Tao proved \(\Lambda \ge 0\) in 2018, so it is "barely true" if true at all.</li>
+</ul>
+<p>The Clay Mathematics Institute offers one million dollars for a proof. Hundreds of published theorems begin "Assuming the Riemann hypothesis…", and they would all become unconditional the day it is proved.<span class="fn">It is one of the seven Millennium Prize Problems announced in 2000, and it was already on David Hilbert's famous list of 23 problems in 1900. Hilbert supposedly said that if he woke after sleeping for five hundred years, his first question would be whether it had been proved.</span></p>
+<figure class="fig film" data-scene="s-robin"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">Robin's inequality checked for every n up to a million. Past 5040 nothing crosses the line.</span><span class="tag">from the film</span></figcaption></figure>
+
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="physics" data-title="13 · An echo from physics">
+<div class="chnum">Chapter 13</div>
+<h2>An echo from physics</h2>
+<p class="dropcap">In 1972, at afternoon tea in Princeton, the number theorist Hugh Montgomery mentioned to the physicist Freeman Dyson what he had found about the spacing between consecutive zeta zeros. Dyson recognised the formula at once. It was the spacing law for energy levels of heavy atomic nuclei.</p>
+<p>The zeros do not scatter like raindrops, which would sometimes land close together. They repel each other, keeping a characteristic distance, exactly like the eigenvalues of large random matrices of a particular type, called the <dfn>Gaussian Unitary Ensemble</dfn>.<span class="fn">An <dfn>eigenvalue</dfn> of a matrix is a number \(\lambda\) for which the matrix acts on some arrow by just stretching it by \(\lambda\). In quantum mechanics, the eigenvalues of the energy operator are the allowed energy levels. "Unitary" refers to the symmetry type of the matrices.</span> Andrew Odlyzko later checked this across millions of zeros at enormous heights, and the match is breathtaking.</p>
+<figure class="fig" data-fig="spacing"><canvas aria-label="Zeta zeros against random points."></canvas><figcaption>Zeta zeros against random points.</figcaption></figure>
+
+<p>This suggests a dream, the <dfn>Hilbert–Pólya idea</dfn>: maybe there is some physical system whose energy levels are exactly the heights of the zeta zeros. The energies of a quantum system are always real numbers, for a certain kind of operator. That would force every zero onto the critical line, and the hypothesis would follow. Nobody has found the system. My own "prime matrix" on 17 August was a crooked first step in this direction. Its eigenvalues split by parity, odd and even, not by zeta. But it taught me what such an object would need to look like.</p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="journey" data-title="14 · What I tried, and what broke">
+<div class="chnum">Chapter 14</div>
+<h2>What I tried, and what broke</h2>
+<p class="dropcap">I spent June to September 2025 trying to break the primes open with code. I want to be honest about how that went, because the failures taught me the most, and because almost everyone who falls in love with primes makes the same mistakes I did.</p>
+<h3>The prime wave</h3>
+<p>Each prime sends a wave, and where no wave arrives, the number is prime. My checker printed 78,498 correct out of 78,498 below a million and I was thrilled. Then I noticed I had used waves from all primes up to \(\sqrt{1{,}000{,}000} = 1000\). Of course it was perfect: that is the sieve of Eratosthenes, which is exact up to \(P^2\). With fewer waves, composites like 121 slip through. <b>Lesson: a perfect score is a warning sign. Check what information you fed in.</b></p>
+<h3>Primes on a circle</h3>
+<p>I sent each number into the complex plane as a sum of spinning arrows, one for each prime factor. Every prime landed on the unit circle. Then I tested every number, not just the convenient ones, and 4, 8, 9, 16 and 25 were on the circle too. A number with only one distinct prime factor gets only one arrow, and one arrow of length 1 always ends on the circle. I had built a prime-power detector. <b>Lesson: test the negatives, not just the positives.</b></p>
+<h3>Asking machines</h3>
+<p>I encoded the primes as a string of bits, two for each \(k\) (is \(6k-1\) prime, is \(6k+1\) prime), and asked large language models for the rule. They gave me recurrences that matched my first hundred pairs perfectly, then scored 24% and 25% on the next nine hundred. Always guessing "not prime" scored 47%. A rule that fits \(n\) bits always exists, about \(n/2\) long,<span class="fn">This is the Berlekamp–Massey algorithm: given any sequence of \(n\) bits, it finds the shortest linear recurrence that reproduces it, and for a random-looking sequence that recurrence has length about \(n/2\). Fitting is free. Predicting is everything.</span> so fitting proved nothing. <b>Lesson: fitting the data you trained on is not understanding. Always hold some back.</b></p>
+<h3>Spirals and sound</h3>
+<p>The spirals and walks I drew were real and beautiful, and they showed real structure: multiples of 6 dominate the gaps, Euler's polynomial draws the Sacks curves, and Dirichlet's theorem<span class="fn">Dirichlet proved in 1837 that every progression \(a, a+d, a+2d, \dots\) with \(a\) and \(d\) sharing no factor contains infinitely many primes, and in the long run, equally many in each such progression. So primes ending in 1, 3, 7 and 9 each make up a quarter.</span> draws the webs. But every pattern I found was one that number theorists had explained long ago. <b>Lesson: beauty is a reason to look closer, not a proof.</b></p>
+<figure class="fig film" data-scene="s-walk"><div class="frame"></div><figcaption><button type="button">Play</button><input type="range" min="0" max="1" step="0.001" value="0" aria-label="Scene position"><span class="cap">The prime walk: walk straight, and turn at every prime by the size of the gap. Twenty thousand primes as one thread.</span><span class="tag">from the film</span></figcaption></figure>
+
+<h3>Where it led</h3>
+<p>Every road I took bent toward the same place. Waves led to zeta. Phases led to the complex plane. The complex plane led to the critical line. The wave picture was right all along, it was just pointed the wrong way. The primes really are made of waves. The waves come from the zeros, not from the primes themselves.</p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="next" data-title="15 · If you want to go on">
+<div class="chnum">Chapter 15</div>
+<h2>If you want to go on</h2>
+<p>If this book made you curious, here is a path, from gentle to serious.</p>
+<ul class="doors">
+<li><b>Play first.</b> Write a sieve in any language and count primes up to a billion. Plot \(\pi(x)\), \(x/\ln x\) and \(\mathrm{Li}(x)\) together. Then plot the error and watch it wobble.</li>
+<li><b>Compute zeros yourself.</b> The Riemann–Siegel formula finds them fast. Turing's method certifies that none were missed between two heights.</li>
+<li><b>Read.</b> <i>Prime Obsession</i> by John Derbyshire alternates history chapters with maths chapters at exactly this level. <i>The Music of the Primes</i> by Marcus du Sautoy is the story. <i>Riemann's Zeta Function</i> by H. M. Edwards walks through Riemann's own paper line by line.</li>
+<li><b>Go deep.</b> Davenport's <i>Multiplicative Number Theory</i> and Titchmarsh's <i>The Theory of the Riemann Zeta-Function</i> are where professionals learn the subject.</li>
+</ul>
+<p>And please write to me at <a href="mailto:joycemalik14@gmail.com">joycemalik14@gmail.com</a> if you find a mistake, or anything strange in the numbers.</p>
+</section>
+
+<!-- ======================================================= -->
+<section class="chapter" id="glossary" data-title="Glossary">
+<div class="chnum">At the back</div>
+<h2>Glossary</h2>
+<dl class="gloss">
+<dt>Analytic continuation</dt><dd>Extending a function beyond the region where its first formula works, in the only consistent way. Chapter 9.</dd>
+<dt>Complex number</dt><dd>A number \(a + bi\) with \(i^2 = -1\), pictured as a point or arrow on a plane. Chapter 8.</dd>
+<dt>Composite</dt><dd>A whole number bigger than 1 that is not prime, like 4, 6, 9. Chapter 1.</dd>
+<dt>Converge / diverge</dt><dd>An infinite sum converges if its running total settles toward a fixed value, and diverges if it does not. Chapter 6.</dd>
+<dt>Critical line</dt><dd>The vertical line of complex numbers with real part exactly ½. Chapter 10.</dd>
+<dt>Critical strip</dt><dd>The band of complex numbers with real part between 0 and 1, where all nontrivial zeros live. Chapter 10.</dd>
+<dt>Divisor</dt><dd>A whole number that goes into another exactly. Chapter 1.</dd>
+<dt>Euler product</dt><dd>Zeta written as a product over primes. The link between zeta and primes. Chapter 7.</dd>
+<dt>Explicit formula</dt><dd>Riemann's formula writing the prime staircase as a line plus one wave per zero. Chapter 11.</dd>
+<dt>Logarithm</dt><dd>How many times you multiply a base to reach a number. \(\ln\) uses the base \(e \approx 2.718\). Chapter 4.</dd>
+<dt>π(x)</dt><dd>The number of primes up to \(x\). Chapter 4.</dd>
+<dt>Prime</dt><dd>A whole number bigger than 1 whose only divisors are 1 and itself. Chapter 1.</dd>
+<dt>Prime Number Theorem</dt><dd>\(\pi(x)\) is about \(x/\ln x\), with the ratio tending to 1. Chapter 4.</dd>
+<dt>Riemann hypothesis</dt><dd>All nontrivial zeros of zeta have real part ½. Chapter 10.</dd>
+<dt>Sieve of Eratosthenes</dt><dd>Finding primes by crossing out multiples. Chapter 3.</dd>
+<dt>Zero</dt><dd>An input where a function outputs 0. Chapter 10.</dd>
+<dt>Zeta function, ζ(s)</dt><dd>\(1 + 2^{-s} + 3^{-s} + \dots\), and its continuation to all complex \(s \ne 1\). Chapters 6 and 9.</dd>
+</dl>
+<p class="end">∎</p>
+</section>
+
+</main>
+<div class="pop" id="pop" role="dialog" aria-modal="false" hidden><button type="button" class="x" aria-label="Close note">×</button><div class="body"></div></div>
+<script src="assets/js/zeta.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/book.js"></script>
+</body>
+</html>

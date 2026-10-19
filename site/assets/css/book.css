@@ -1,0 +1,135 @@
+/* The Book of the Quiet Waves: a long read.
+   One comfortable text column, notes in the margin when there is room for them, and three reading lights:
+   paper (default), sepia and night. */
+
+:root {
+  --fs: 19px;
+  --bg: #F4EEE2; --bg-2: #EBE3D3; --ink: #1E1B16; --dim: #6B6355; --rule: rgba(30, 27, 22, .14);
+  --prime: #C8451E; --wave: #2F62B8; --violet: #7B4BC0; --box: rgba(200, 69, 30, .06);
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --title: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --mono: "Courier Prime", "Courier New", monospace;
+  --col: 36em; --note: 15rem;
+  color-scheme: light;
+}
+:root[data-theme="sepia"] { --bg: #EADBC0; --bg-2: #E0CFAF; --ink: #3A2C1A; --dim: #7A6448; --rule: rgba(58, 44, 26, .18); --box: rgba(160, 80, 30, .08); }
+:root[data-theme="night"] { --bg: #0D0F14; --bg-2: #151821; --ink: #E6DFD0; --dim: #9C9585; --rule: rgba(230, 223, 208, .14);
+  --prime: #FF7A4F; --wave: #7FB0FF; --violet: #C58BFF; --box: rgba(255, 122, 79, .07); color-scheme: dark; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) { --bg: #0D0F14; --bg-2: #151821; --ink: #E6DFD0; --dim: #9C9585; --rule: rgba(230, 223, 208, .14);
+    --prime: #FF7A4F; --wave: #7FB0FF; --violet: #C58BFF; --box: rgba(255, 122, 79, .07); color-scheme: dark; }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: var(--fs); line-height: 1.68;
+  font-optical-sizing: auto; text-rendering: optimizeLegibility; transition: background .3s, color .3s; }
+a { color: var(--prime); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--prime); outline-offset: 2px; }
+button { font: inherit; color: inherit; }
+
+/* top bar */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--prime); z-index: 30; }
+.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 14px; padding: 10px 16px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.top .home { color: var(--ink); text-decoration: none; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top button { background: transparent; border: 1px solid var(--rule); padding: 5px 10px; cursor: pointer; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.top button:hover { border-color: var(--prime); color: var(--prime); }
+.tools { display: flex; gap: 6px; }
+
+/* contents drawer */
+.toc { position: fixed; top: 0; bottom: 0; left: 0; width: min(320px, 86vw); z-index: 25; background: var(--bg-2); border-right: 1px solid var(--rule);
+  padding: 64px 20px 24px; overflow-y: auto; transform: translateX(-102%); transition: transform .3s ease; font-size: 15px; line-height: 1.4; }
+.toc.open { transform: none; box-shadow: 0 0 60px rgba(0, 0, 0, .25); }
+.tochead { font-family: var(--title); font-weight: 800; font-size: 28px; text-transform: uppercase; margin-bottom: 12px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc a { display: block; padding: 6px 8px; color: var(--ink); text-decoration: none; border-left: 2px solid transparent; }
+.toc a:hover { color: var(--prime); }
+.toc a.here { border-left-color: var(--prime); color: var(--prime); }
+.tocfoot { margin-top: 18px; font-size: 14px; }
+@media (min-width: 1360px) {
+  .toc { transform: none; top: 49px; width: 260px; background: transparent; border-right: 0; padding-top: 24px; }
+  .tocbtn { display: none; }
+}
+
+/* the column */
+.book { max-width: var(--col); margin: 0 auto; padding: 0 20px 20vh; }
+@media (min-width: 1100px) { .book { margin-left: max(20px, calc(50% - var(--col) / 2 - var(--note) / 2 - 24px)); } }
+@media (min-width: 1360px) { .book { margin-left: max(300px, calc(50% - var(--col) / 2 - var(--note) / 2)); } }
+
+.cover { min-height: 78vh; display: grid; align-content: center; gap: 18px; padding: 8vh 0; border-bottom: 1px solid var(--rule); }
+.kicker, .chnum { font-family: var(--mono); font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: var(--prime); }
+.cover h1 { font-family: var(--title); font-weight: 800; text-transform: uppercase; font-size: clamp(3.2rem, 11vw, 6.6rem); line-height: .86; margin: 0; }
+.cover h1 span { color: var(--prime); }
+.lede { font-size: 1.25em; font-style: italic; max-width: 28em; margin: 0; }
+.byline, .readtime { font-family: var(--mono); font-size: 13px; color: var(--dim); margin: 0; letter-spacing: .04em; }
+
+.chapter { padding-top: 12vh; }
+.chapter h2 { font-family: var(--title); font-weight: 800; text-transform: uppercase; font-size: clamp(2.4rem, 7vw, 3.8rem); line-height: .92; margin: 8px 0 28px; }
+.chapter h3 { font-size: 1.15em; font-weight: 600; margin: 2em 0 .4em; }
+p { margin: 0 0 1.05em; hyphens: auto; }
+.dropcap::first-letter { float: left; font-family: var(--title); font-weight: 800; font-size: 4.1em; line-height: .82; padding: .06em .1em 0 0; color: var(--prime); }
+.center { text-align: center; overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+.big { font-size: 1.15em; letter-spacing: .04em; color: var(--prime); }
+dfn { font-style: normal; font-weight: 600; color: var(--prime); }
+mjx-container { max-width: 100%; }
+
+.def, .thm, .box, .aside { margin: 1.6em 0; padding: 18px 20px; border-radius: 2px; }
+.def { border-left: 3px solid var(--prime); background: var(--box); }
+.thm { border: 1px solid var(--rule); background: var(--bg-2); }
+.thm p, .box p, .def, .aside { margin-bottom: 0; }
+.thm.hyp { border: 2px solid var(--prime); }
+.tht, .boxt { font-family: var(--mono); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--prime); margin-bottom: 8px; }
+.box { background: var(--bg-2); }
+.aside { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: .92em; color: var(--dim); }
+.aside b { color: var(--ink); }
+.steps, .doors { padding-left: 1.3em; margin: 0 0 1.2em; }
+.steps li, .doors li { margin-bottom: .55em; }
+table.data { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: .78em; margin: 1.2em 0 1.6em; font-variant-numeric: tabular-nums; }
+table.data th { text-align: right; font-weight: 400; color: var(--dim); border-bottom: 1px solid var(--rule); padding: 6px 8px; }
+table.data td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+.gloss dt { font-weight: 600; margin-top: 1em; color: var(--prime); }
+.gloss dd { margin: .2em 0 0; }
+.end { text-align: center; font-size: 2em; color: var(--prime); margin-top: 2em; }
+
+/* figures */
+.fig { margin: 2em -8px; background: var(--bg-2); border: 1px solid var(--rule); }
+.fig canvas { display: block; width: 100%; height: 300px; }
+.fig.tall canvas { height: 380px; }
+.fig figcaption { font-size: .82em; color: var(--dim); padding: 12px 14px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; border-top: 1px solid var(--rule); }
+.fig .ctrl { display: inline-flex; gap: 6px; align-items: center; }
+.fig button { background: var(--ink); color: var(--bg); border: 0; padding: 7px 12px; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; }
+.fig button:hover { background: var(--prime); }
+.fig .val, .fig b { color: var(--ink); font-family: var(--mono); font-weight: 400; font-size: .95em; }
+.fig label { display: inline-flex; gap: 8px; align-items: center; font-family: var(--mono); }
+.fig input[type=range] { accent-color: var(--prime); width: 150px; }
+
+/* footnotes: a number in the text, the note in the margin (wide) or in a popover (narrow) */
+.fnref { font-family: var(--mono); font-size: .62em; vertical-align: super; line-height: 0; background: none; border: 0; padding: 0 1px 0 2px; color: var(--prime); cursor: pointer; font-weight: 700; }
+.sn { display: none; }
+@media (min-width: 1100px) {
+  .sn { display: block; float: right; clear: right; width: var(--note); margin: .3em calc(-1 * var(--note) - 32px) 1em 0; font-size: 14px; line-height: 1.5; color: var(--dim); transition: color .2s; }
+  .sn .n { font-family: var(--mono); color: var(--prime); font-weight: 700; margin-right: 4px; }
+  .sn.lit { color: var(--ink); }
+  .fnref { cursor: default; }
+}
+.pop { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; background: var(--bg-2); border: 1px solid var(--rule); border-top: 3px solid var(--prime);
+  padding: 16px 44px 18px 18px; font-size: 16px; line-height: 1.55; box-shadow: 0 20px 60px rgba(0, 0, 0, .3); max-height: 50vh; overflow-y: auto; }
+.pop .x { position: absolute; top: 6px; right: 8px; background: none; border: 0; font-size: 24px; cursor: pointer; color: var(--dim); }
+.pop .n { font-family: var(--mono); color: var(--prime); font-weight: 700; margin-right: 6px; }
+@media (min-width: 700px) { .pop { left: auto; width: 420px; right: 20px; bottom: 20px; } }
+
+@media (max-width: 560px) { :root { --fs: 17.5px; } .fig canvas { height: 240px; } .fig.tall canvas { height: 320px; } .top .home { font-size: 11px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .toc { transition: none; } }
+
+/* scenes from the film, framed like a screening inside the page */
+.fig.film { background: #07080B; border-color: #07080B; }
+@media (min-width: 761px) and (max-width: 1099px) { .fig.film { margin-left: -40px; margin-right: -40px; } }
+.fig.film .frame { position: relative; aspect-ratio: 16 / 10; background: #07080B; }
+.fig.film iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.fig.film figcaption { background: var(--bg-2); color: var(--dim); }
+.fig.film input[type=range] { flex: 1 1 160px; width: auto; }
+.fig.film .cap { flex: 1 1 100%; }
+.fig.film .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--prime); }
+@media (max-width: 760px) { .fig.film { margin-left: -20px; margin-right: -20px; } .fig.film .frame { aspect-ratio: 4 / 5; } }

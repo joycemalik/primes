@@ -530,7 +530,10 @@ const OPEN = (() => {
 const sceneEls = [...document.querySelectorAll('.scene')].map(el => ({ el, def: SCENES[el.dataset.scene], cv: el.querySelector('canvas'), words: [...el.querySelectorAll('.line')].reduce((a, l) => a + l.textContent.split(/\s+/).length, 0), lines: [...el.querySelectorAll('.line')].map((l, i, a) => ({ l, at: +l.dataset.at, to: i + 1 < a.length ? +a[i + 1].dataset.at : 1.01 })) }));
 const whereEls = [...document.querySelectorAll('[data-where]')];
 const actEls = [...document.querySelectorAll('.act')];
-const SOLO = (() => { const q = new URLSearchParams(location.search); if (!q.get('solo')) return null; const [id, pp] = q.get('solo').split(':'); const s = document.getElementById(id); if (!s) return null; document.body.classList.add('solo'); s.classList.add('solo-on'); return { id, p: clamp(+pp || 0) }; })();
+const SOLO = (() => { const q = new URLSearchParams(location.search); if (!q.get('solo')) return null; const [id, pp] = q.get('solo').split(':'); const s = document.getElementById(id); if (!s) return null; document.body.classList.add('solo'); s.classList.add('solo-on'); const o = { id, p: clamp(+pp || 0) };
+  // embedded in the book: the page that holds us moves the playhead
+  if (q.has('embed')) { document.body.classList.add('embed'); addEventListener('message', (e) => { if (e.origin === location.origin && e.data && typeof e.data.p === 'number') o.p = clamp(e.data.p); }); }
+  return o; })();
 let filmCarry = 0, film = false, tempo = 76, lastTs = performance.now(), nextBeat = 0, active = null, lastAct = null, T = 0;
 const btnFilm = $('#film'), btnSound = $('#sound'), countEl = $('#count');
 

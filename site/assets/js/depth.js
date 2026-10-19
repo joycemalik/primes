@@ -5,6 +5,7 @@
 // front of the fractal rather than on top of it.
 (() => {
 'use strict';
+if (new URLSearchParams(location.search).has('embed')) return;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const root = document.documentElement;
 const cv = document.createElement('canvas'); cv.className = 'depth'; cv.setAttribute('aria-hidden', 'true');

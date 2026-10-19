@@ -179,3 +179,10 @@ body.solo .scene.solo-on { height: 100vh; }
   .stage canvas, .note, .act > *, .act h2, .opening h1 { transform: none !important; filter: none !important; }
   .lines { transform: translateX(-50%); }
 }
+
+/* embed: one scene inside a figure in the book (?solo=s-zeta:0&embed) */
+body.embed .bar, body.embed .progress, body.embed .lines, body.embed .grain, body.embed .stage::after { display: none; }
+body.embed .note { top: 12px; right: 12px; width: min(300px, 46vw); font-size: .72rem; }
+body.embed .note .src { display: none; }
+body.embed .stage canvas { transform: none; opacity: 1; }
+@media (max-width: 520px) { body.embed .note .eq { display: none; } }
