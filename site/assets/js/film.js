@@ -538,8 +538,9 @@ function setFilm(v) { film = v && !reduce; btnFilm.setAttribute('aria-pressed', 
 function setSound(v) { const ok = Sound.setOn(v); btnSound.setAttribute('aria-pressed', String(v && ok)); btnSound.textContent = v && ok ? 'Sound on' : 'Sound off'; if (!v) { Sound.setDrone([]); Sound.setRiser(0, 300); } }
 btnFilm.addEventListener('click', () => setFilm(!film));
 btnSound.addEventListener('click', () => setSound(!Sound.isOn()));
-$('#begin-sound').addEventListener('click', () => { setSound(true); setFilm(true); if (scrollY < 10) window.scrollBy(0, 1); });
-$('#begin-quiet').addEventListener('click', () => { setFilm(true); if (scrollY < 10) window.scrollBy(0, 1); });
+const goFull = () => { const el = document.documentElement; try { const p = (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen); if (p && !document.fullscreenElement) { const r = p.call(el); if (r && r.catch) r.catch(() => {}); } } catch (e) {} };
+$('#begin-sound').addEventListener('click', () => { goFull(); setSound(true); setFilm(true); if (scrollY < 10) window.scrollBy(0, 1); });
+$('#begin-quiet').addEventListener('click', () => { goFull(); setFilm(true); if (scrollY < 10) window.scrollBy(0, 1); });
 const stopFilm = () => { if (film) setFilm(false); };
 addEventListener('wheel', stopFilm, { passive: true }); addEventListener('touchstart', stopFilm, { passive: true });
 addEventListener('keydown', (e) => { if (e.target.closest('input, select, textarea')) return; if (e.code === 'Space') { e.preventDefault(); setFilm(!film); } else if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(e.key)) stopFilm(); });
